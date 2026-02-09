@@ -11,9 +11,11 @@
         "desktop": "assets/screenshot-desktop.jpg"
     },
     "scripts": {
-        "dev": "rollup -c --environment BUILD:development -w",
-        "build": "rollup -c --environment BUILD:production",
-        "zip": "npm run build && bestzip $npm_package_name.zip assets/* partials/* members/* *.hbs package.json",
+        "build": "node esbuild.config.js",
+        "dev": "npx nodemon --watch . --ext js,css,hbs --ignore assets/dist --ignore node_modules --exec \"node esbuild.config.js --watch\"",
+        "format": "prettier --write .",
+        "preview": "node esbuild.config.js --preview",
+        "zip": "npm run build && bestzip $npm_package_name.zip assets/dist/* partials/* members/* *.hbs package.json",
         "test": "npx gscan .",
         "pretest": "npm run build"
     },
@@ -39,28 +41,26 @@
         "url": "https://github.com/frontendweb3/logly.git"
     },
     "bugs": "https://github.com/frontendweb3/logly/issues",
-    "contributors": "https://github.com/frontendweb3/logly/graphs/contributors",
+    "contributors": [
+        "https://github.com/frontendweb3/logly/graphs/contributors"
+    ],
     "devDependencies": {
-        "@babel/core": "^7.21.0",
-        "@babel/preset-env": "^7.20.2",
-        "@rollup/plugin-babel": "^6.0.3",
-        "@rollup/plugin-commonjs": "^29.0.0",
-        "@rollup/plugin-node-resolve": "^16.0.0",
-        "@rollup/plugin-terser": "^0.4.0",
+        "@tailwindcss/postcss": "^4.1.18",
+        "@tailwindcss/typography": "^0.5.19",
         "bestzip": "^2.2.1",
-        "postcss": "^8.4.24",
-        "postcss-import": "^16.0.0",
-        "postcss-preset-env": "^10.0.0",
-        "rollup": "^4.0.0",
-        "rollup-plugin-livereload": "^2.0.5",
-        "rollup-plugin-postcss": "^4.0.2"
+        "chokidar": "^3.6.0",
+        "esbuild": "^0.27.2",
+        "esbuild-plugin-tailwindcss": "^2.1.0",
+        "postcss": "^8.5.6",
+        "prettier": "^3.7.3",
+        "tailwindcss": "^4.0.0"
     },
     "browserslist": [
         "defaults"
     ],
     "config": {
         "card_assets": true,
-        "posts_per_page": 15,
+        "posts_per_page": 10,
         "image_sizes": {
             "xxs": {
                 "width": 30
@@ -82,5 +82,9 @@
             }
         }
     },
-    "type": "module"
+    "type": "module",
+    "dependencies": {
+        "flowbite": "^4.0.1",
+        "prettier-plugin-tailwindcss": "^0.7.2"
+    }
 }
