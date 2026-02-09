@@ -1,0 +1,7 @@
+# Lock files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+
+# Skip broken HTML parsing in Ghost error template
+error.hbs
