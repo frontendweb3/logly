@@ -1,20 +1,49 @@
 {{!< default}}
-<div class="gh-page">
-    <div class="gh-container">
+<div class="mt-14">
+    <div class="mb-8 flex items-center justify-between">
+        <h1 class="text-xl font-bold md:text-2xl">Latest Articles</h1>
+    </div>
 
-        <div class="gh-postfeed">
-        {{#foreach posts}}
-
-            {{> "card" page=../pagination.page }} {{!-- partials/card.hbs --}}
-
+    <div class="flex w-full flex-col gap-10 md:flex-row">
+        {{#foreach posts limit="4" }} {{!-- Display the first four posts in a
+        2-column grid --}} {{#if @first}} {{> "feature_card"}} {{!-- Use the
+        feature_card partial for the first post --}} {{else}} {{#match @index
+        "=" 1 }}
+        <div class="flex basis-3/6 flex-col gap-5">
+            {{/match}} {{> "side_card"}} {{!-- Use the side_card partial for the
+            next three posts --}} {{#match @index "=" 3}}
+        </div>
+        {{/match}} {{!-- Close the grid after the fourth post --}} {{/if}}
         {{/foreach}}
+    </div>
+
+    {{!-- # TODO: dynamic --}}
+    <div class="mt-16 w-full px-8 py-8">
+        <h2 class="mb-2 text-center text-3xl font-bold">All Articles</h2>
+        <p class="mb-8 text-center text-gray-600">
+            Discover our full collection of insights, tutorials, and industry
+            news.
+        </p>
+
+        <div class="mb-8 flex justify-center space-x-4">
+            {{#get "tags" limit="10" include="count.posts" order="count.posts
+            desc"}} {{#foreach tags}}
+            <a
+                href="{{url}}"
+                class="px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 {{slug}}"
+            >
+                {{name}}
+            </a>
+            {{/foreach}} {{/get}}
         </div>
 
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {{#foreach posts from="5" limit="10"}} {{!-- Skip the first three
+            posts --}} {{> "card"}} {{/foreach}}
+        </div>
         {{!-- If JS isn't enabled, fallback to standard pagination --}}
         <noscript>
-            <div class="gh-pagination">
-                {{pagination}}
-            </div>
+            <div class="mt-8 text-center">{{pagination}}</div>
         </noscript>
     </div>
 </div>
