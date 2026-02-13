@@ -1,79 +1,52 @@
 <!DOCTYPE html>
-<html lang="{{@site.locale}}">
-<head>
+<html lang="{{@site.locale}}" class="scroll-smooth">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="stylesheet" href="{{asset 'dist/css/index.css'}}" />
+        <script src="{{asset 'dist/js/index.js'}}" defer></script>
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{asset "built/index.css"}}" />
-    <script src="{{asset "built/index.js"}}" defer></script>
+        <title>{{meta_title}}</title>
 
-    <title>{{meta_title}}</title>
+        <script>
+            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+            if (
+                localStorage.getItem('color-theme') === 'dark' ||
+                (!('color-theme' in localStorage) &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        </script>
 
-    {{ghost_head}}
-    {{!-- Outputs important meta data and settings, should always be in <head> --}}
+        {{ghost_head}}
+    </head>
 
-</head>
-<body class="{{body_class}}">
-<div class="gh-viewport">
+    <body
+        class="{{body_class}} bg-background text-foreground relative flex overscroll-none"
+    >
+        {{> "sidebar"}} {{!-- # TODO: Announcement --}}
+        <main class="w-full overscroll-y-auto px-10 py-8 lg:ml-72">
+            {{!-- Header --}} {{> "header"}} {{!-- Content --}} {{{body}}}
+        </main>
 
-<header id="gh-head" class="gh-head">
-    <nav class="gh-head-inner gh-container">
+        {{!-- Theme Toggle Button --}}
 
-        <div class="gh-head-brand">
-            <a class="gh-head-logo" href="{{@site.url}}">
-                {{#if @site.logo}}
-                    <img src="{{@site.logo}}" alt="{{@site.title}}" />
-                {{else}}
-                    {{@site.title}}
-                {{/if}}
-            </a>
-            <a class="gh-burger" role="button" aria-label="menu">
-                <div class="gh-burger-box">
-                    <div class="gh-burger-inner"></div>
-                </div>
-            </a>
-        </div>
-        <div class="gh-head-menu">
-            {{navigation}}
-        </div>
-        <div class="gh-head-actions">
-            <div class="gh-head-actions-list">
-                {{search}}
-                {{#if @site.members_enabled}}
-                    {{^if @member}}
-                    <a class="gh-button" href="{{@site.signup_url}}">Subscribe</a>
-                    {{else}}
-                    <a class="gh-button" href="#/portal/account">Account</a>
-                    {{/if}}
-                {{/if}}
-            </div>
-        </div>
-    </nav>
-</header>
+        <button
+            id="theme-toggle"
+            type="button"
+            class="fixed right-6 bottom-6 z-50 flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors hover:scale-110 dark:border-slate-700 dark:bg-slate-800"
+        >
+            {{> "icons/sun" }} {{!-- partials/icons/sun.hbs --}} {{>
+            "icons/moon" }} {{!-- partials/icons/moon.hbs --}}
+        </button>
 
-<main class="gh-main">
-
-    {{{body}}}
-    {{!-- All content gets inserted here, index.hbs, post.hbs, etc --}}
-
-</main>
-
-<footer class="gh-foot">
-    <div class="gh-container">
-        <div class="gh-foot-menu">
-            {{navigation type="secondary"}}
-        </div>
-        <div class="gh-foot-meta">
-            Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a>
-        </div>
-    </div>
-</footer>
-
-</div>
-
-{{!-- <foot> --}}
-{{ghost_foot}}
-{{!-- Outputs important scripts - should always be included before closing body tag --}}
-
-</body>
+        {{ghost_foot}}
+        <script src="https://unpkg.com/lucide@latest"></script>
+        <script>
+            lucide.createIcons();
+        </script>
+    </body>
 </html>
