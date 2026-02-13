@@ -53,7 +53,9 @@
         "esbuild-plugin-tailwindcss": "^2.1.0",
         "postcss": "^8.5.6",
         "prettier": "^3.7.3",
-        "tailwindcss": "^4.0.0"
+        "prettier-plugin-handlebars": "^0.0.1",
+        "tailwindcss": "^4.0.0",
+        "tw-animate-css": "^1.4.0"
     },
     "browserslist": [
         "defaults"
