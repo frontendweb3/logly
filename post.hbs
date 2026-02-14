@@ -1,93 +1,95 @@
-{{!< default}}
+{{!< default}} {{#post}} {{!--
+    class="prose container md:prose-lg lg:prose-xl mx-auto hover:prose-a:text-cc hover:prose-a:transition" --}} <article
+    class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full px-4 py-10">
+    <header class="w-full px-4 pt-5 text-center">
+        <span class="block text-sm">
+            <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="D MMM YYYY"}}</time>
+            <span class="bull">&bull;</span>
+            {{reading_time}}
+        </span>
 
-{{#post}}
-
-<article class="gh-article {{post_class}}">
-
-    <header class="gh-header gh-canvas">
-        <span class="gh-post-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span>
-        <h1 class="gh-title">{{title}}</h1>
+        {{!-- // TODO: Responsive the --}}
+        <h1 class="mt-8!">{{title}}</h1>
 
         {{#if custom_excerpt}}
-        <p class="gh-excerpt">{{custom_excerpt}}</p>
-        {{/if}}
-
-        {{#if feature_image}}
-        <figure class="gh-feature-image">
-            <picture>
-              <source 
-                srcset="
-                {{img_url feature_image size="xxs" format="avif"}} 30w,
-                {{img_url feature_image size="xs" format="avif"}} 100w,
-                {{img_url feature_image size="s" format="avif"}} 300w,
-                {{img_url feature_image size="m" format="avif"}} 600w,
-                {{img_url feature_image size="l" format="avif"}} 1200w,
-                {{img_url feature_image size="xl" format="avif"}} 2000w"
-                sizes="(min-width: 1200px) 1200px, 90vw" 
-                type="image/avif"
-              >
-              <source 
-                srcset="
-                {{img_url feature_image size="xxs" format="webp"}} 30w,
-                {{img_url feature_image size="xs" format="webp"}} 100w,
-                {{img_url feature_image size="s" format="webp"}} 300w,
-                {{img_url feature_image size="m" format="webp"}} 600w,
-                {{img_url feature_image size="l" format="webp"}} 1200w,
-                {{img_url feature_image size="xl" format="webp"}} 2000w"
-                sizes="(min-width: 1200px) 1200px, 90vw" 
-                type="image/webp"
-              >
-              <img
-                srcset="
-                {{img_url feature_image size="xxs"}} 30w,
-                {{img_url feature_image size="xs"}} 100w,
-                {{img_url feature_image size="s"}} 300w,
-                {{img_url feature_image size="m"}} 600w,
-                {{img_url feature_image size="l"}} 1200w,
-                {{img_url feature_image size="xl"}} 2000w"
-                sizes="(min-width: 1200px) 1200px, 90vw" 
-                src="{{img_url feature_image size="l"}}"
-                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-              >
-            </picture>
-            {{#if feature_image_caption}}
-                <figcaption>{{feature_image_caption}}</figcaption>
-            {{/if}}
-        </figure>
+            <p class="lead -mt-10!">{{custom_excerpt}}</p>
         {{/if}}
     </header>
 
-    <div class="gh-content gh-canvas">
-        {{content}}
+    <div class="flex flex-row items-center justify-center">
+        <ul class="-my-1! list-none p-0! flex font-light text-sm flex-row justify-between items-center">
+            <li> <span>Published By</span> </li>
+            {{#if authors}}
+                {{#foreach authors}}
+                    <li> <a href="{{url}}" title="{{name}}">{{name}}</a> </li>
+                    {{#unless @last}}
+                    <li> <span>,</span> </li>
+                    {{/unless}}
+                {{/foreach}}
+            {{/if}}
+            <li> <span>on</span> </li>
+            <li> <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time> </li>
+        </ul>
     </div>
 
-    <footer class="gh-footer gh-canvas">
+    {{content}}
 
-        <div class="gh-post-authors">
-            Written by {{#foreach authors}}<a href="{{url}}">{{name}}</a>{{/foreach}}
-        </div>
+    {{!-- # TODO: Redesin the Tags button --}}
 
-        {{#if comments}}
-        <section class="gh-post-comments">
-            {{comments}}
-        </section>
-        {{/if}}
+    {{#if tags}}
+    <div class="my-12 flex flex-wrap justify-start gap-4">
+        {{#foreach tags}}
+        <a href="{{url}}" class="px-3 py-1 rounded-sm bg-gray-200 text-gray-700  hover:bg-gray-300 {{slug}}">
+            {{name}}
+        </a>
+        {{/foreach}}
+    </div>
+    {{/if}} {{!-- # TODO share it --}}
+    </article>
 
-    </footer>
-
-</article>
-
-<aside class="gh-readmore">
-    <div class="gh-readmore-inner gh-container">
-        <div class="gh-readmore-next">
-            {{#next_post}}<a href="{{url}}">{{> "icons/arrow-left"}} <h4>{{title}}</h4></a>{{/next_post}}
-        </div>
-        <div class="gh-readmore-prev">
-            {{#prev_post}}<a href="{{url}}">
-                <h4>{{title}}</h4> {{> "icons/arrow-right"}}
-            </a>{{/prev_post}}
+    {{!-- navigation Previous and Next Posts --}}
+    <div class="mx-auto my-32">
+        <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
+            <div class="w-full text-left md:w-1/2">
+                {{#next_post}}
+                <a href="{{url}}" class="group inline-flex items-center gap-3 p-4 text-left transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
+                    <svg aria-hidden="true" class="h-5 w-5 transition-transform duration-200 group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M15 6l-6 6 6 6" />
+                    </svg>
+                    <span class="mb-1 text-xs md:text-2xl">Previous Post</span>
+                </a>
+                {{/next_post}}
+            </div>
+            <div class="w-full text-right md:w-1/2">
+                {{#prev_post}}
+                <a href="{{url}}" class="group inline-flex items-center gap-3 p-4 justify-end text-right transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
+                    <span class="mb-1 text-xs md:text-2xl">Next Post</span>
+                    <svg aria-hidden="true" class="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 6l6 6-6 6" />
+                    </svg>
+                </a>
+                {{/prev_post}}
+            </div>
         </div>
     </div>
-</aside>
 
-{{/post}}
+    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3"
+    include="authors" as |related_posts| }} 
+    {{#if related_posts}} {{!-- Author Related Posts --}}
+    <div class="bg-accent text-accent-foreground container mx-auto mt-10 px-5 py-10">
+        <h3 class="mt-5 mb-10 text-left text-xl font-bold lg:text-2xl">
+            More By {{../primary_author.name}}
+        </h3>
+        <div class="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {{#foreach related_posts}} {{> "card"}} {{/foreach}}
+        </div>
+    </div>
+    {{/if}} 
+    {{/get}} 
+    {{#if comments}}
+    <div class="mt-10 w-full px-4 py-8 text-center bg-accent text-accent-foreground">{{comments}}</div>
+    {{/if}} 
+    {{!-- # TODO: like and dislike --}} 
+    {{> "footer" }}  {{!-- partials/footer.hbs --}} 
+    
+    {{/post}}
