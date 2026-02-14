@@ -1,0 +1,40 @@
+<a
+    href="{{url}}"
+    class="bg-card group/card text-card-foreground flex h-fit flex-col gap-4 rounded-sm sm:gap-3"
+>
+    {{#if feature_image}}
+    <img
+        class="h-80 w-full rounded-sm object-cover"
+        src="{{feature_image}}"
+        alt="{{title}}"
+    />
+    {{/if}}
+    <div class="p-6">
+        <h2 class="text-lg leading-snug font-medium md:text-xl lg:text-2xl">
+            {{title}}
+        </h2>
+        <p class="text-muted-foreground mt-2 text-sm">
+            {{excerpt characters='100' }}
+        </p>
+        <div class="mt-5 flex flex-row items-center justify-between">
+            <div class="flex items-center">
+                {{#if primary_author.profile_image}}
+                <img
+                    class="mr-3 h-10 w-10 rounded-full"
+                    src="{{primary_author.profile_image}}"
+                    alt="{{primary_author.name}}"
+                />
+                {{/if}}
+                <div>
+                    <p class="text-sm font-semibold">{{primary_author.name}}</p>
+                    <time
+                        class="text-xs"
+                        datetime="{{date format='YYYY-MM-DD'}}"
+                        >{{date format='DD MMMM YYYY'}}</time
+                    >
+                </div>
+            </div>
+            <div>{{reading_time}}</div>
+        </div>
+    </div>
+</a>

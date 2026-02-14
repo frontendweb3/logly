@@ -1,57 +1,55 @@
-{{!--
-Re-usable card for linking to posts
---}}
-
-<article class="gh-card {{post_class}}">
-    <a class="gh-card-link" href="{{url}}">
-        {{#if feature_image}}
-            <picture class="gh-card-picture">
-              <source 
-                srcset="
-                {{img_url feature_image size="xxs" format="avif"}} 30w,
-                {{img_url feature_image size="xs" format="avif"}} 100w,
-                {{img_url feature_image size="s" format="avif"}} 300w,
-                {{img_url feature_image size="m" format="avif"}} 600w,
-                {{img_url feature_image size="l" format="avif"}} 1200w,
-                {{img_url feature_image size="xl" format="avif"}} 2000w"
-                {{^if @first}}sizes="(min-width: 1200px) 1200px, 100vw)"{{else}}sizes="(min-width: 800px) 100vw, 700px"{{/if}}
-                type="image/avif"
-                {{^if @first}}loading="lazy"{{/if}}
-              >
-              <source 
-                srcset="
-                {{img_url feature_image size="xxs" format="webp"}} 30w,
-                {{img_url feature_image size="xs" format="webp"}} 100w,
-                {{img_url feature_image size="s" format="webp"}} 300w,
-                {{img_url feature_image size="m" format="webp"}} 600w,
-                {{img_url feature_image size="l" format="webp"}} 1200w,
-                {{img_url feature_image size="xl" format="webp"}} 2000w"
-                {{^if @first}}sizes="(min-width: 1200px) 1200px, 100vw)"{{else}}sizes="(min-width: 800px) 100vw, 700px"{{/if}}
-                type="image/webp"
-                {{^if @first}}loading="lazy"{{/if}}
-
-              >
-              <img
-                srcset="
-                {{img_url feature_image size="xxs"}} 30w,
-                {{img_url feature_image size="xs"}} 100w,
-                {{img_url feature_image size="s"}} 300w,
-                {{img_url feature_image size="m"}} 600w,
-                {{img_url feature_image size="l"}} 1200w,
-                {{img_url feature_image size="xl"}} 2000w"
-                {{^if @first}}sizes="(min-width: 1200px) 1200px, 100vw)"{{else}}sizes="(min-width: 800px) 100vw, 700px"{{/if}}
-                src="{{img_url feature_image size="m"}}"
-                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                class="gh-card-image"
-                {{^if @first}}loading="lazy"{{/if}}
-              >
-            </picture>
-        {{/if}}
-        <div class="gh-card-content">
-            <span class="gh-card-meta"><time datetime="{{date format="YYYY-MM-DD"}}">{{date format="D MMM YYYY"}}</time> <span class="bull">&bull;</span> {{reading_time}}</span>
-            <h2 class="gh-card-title">{{title}}</h2>
-            <p>{{excerpt}}</p>
-            <strong>Read more</strong>
+{{!-- # TODO: Design Second card for the index page. It should be a smaller card
+with the title, author and date. It should be used for the latest articles
+section. It should be used in the sidebar as well. It should be used in the
+related posts section as well. It should be used in the search results section
+as well. It should be used in the tag page as well. It should be used in the
+author page as well. It should be used in the category page as well. It should
+be used in the archive page as well. It should be used in the 404 page as well.
+It should be used in the pagination as well. It should be used in the newsletter
+section as well. It should be used in the footer as well. It should be used in
+the header as well. It should be used in the hero section as well. It should be
+used in the about page as well. It should be used in the contact page as well.
+It should be used in the privacy policy page as well. It should be used in the
+terms of service page as well. It should be used in the disclaimer page as well.
+It should be used in the cookie policy page as well. It should be used in the
+accessibility statement page as well. It should be used in the sitemap page as
+well. It should be used in the rss feed page as well. It should be used in the
+atom feed page as well. It should be used in the json feed page as well. --}}
+<a
+    href="{{url}}"
+    class="bg-card text-card-foreground group/card flex w-full basis-5/6 flex-col gap-4 rounded-sm sm:gap-3"
+>
+    {{#if feature_image}}
+    <img
+        class="h-80 w-full rounded-none object-cover"
+        src="{{feature_image}}"
+        alt="{{title}}"
+    />
+    {{/if}}
+    <div class="p-6">
+        <h2 class="mb-3 text-2xl font-bold">{{title}}</h2>
+        <p class="text-muted-foreground text-sm">
+            {{excerpt characters='100' }}
+        </p>
+        <div class="mt-5 flex flex-row items-center justify-between">
+            <div class="flex items-center">
+                {{#if primary_author.profile_image}}
+                <img
+                    class="mr-3 h-10 w-10 rounded-full"
+                    src="{{primary_author.profile_image}}"
+                    alt="{{primary_author.name}}"
+                />
+                {{/if}}
+                <div>
+                    <p class="text-sm font-semibold">{{primary_author.name}}</p>
+                    <time
+                        class="text-xs"
+                        datetime="{{date format='YYYY-MM-DD'}}"
+                        >{{date format='DD MMMM YYYY'}}</time
+                    >
+                </div>
+            </div>
+            <div>{{reading_time}}</div>
         </div>
-    </a>
-</article>
+    </div>
+</a>
