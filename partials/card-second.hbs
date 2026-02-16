@@ -1,0 +1,30 @@
+<a href="{{url}}">
+    <article
+        class="group bg-white h-[35rem] dark:bg-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-primary/50 transition-all duration-300 flex flex-col">
+        <div class="aspect-video overflow-hidden">
+            {{#if feature_image}}
+            <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                src="{{feature_image}}" alt="{{title}}" />
+            {{/if}}
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+            <div class="flex items-center gap-2 mb-3">
+                <span
+                    class="px-2 py-1 bg-primary/10 text-primary text-[10px] font-bold uppercase rounded tracking-wider">Interface</span>
+                <time class="text-xs text-slate-500" datetime="{{date format='YYYY-MM-DD'}}">{{date format='DD MMMM
+                    YYYY'}}</time>
+            </div>
+            <h4 class="text-xl font-bold leading-tight mb-3 group-hover:text-primary transition-colors">
+                {{title}}
+            </h4>
+            <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 mb-4 flex-1">
+                {{excerpt characters='100'}}
+            </p>
+            <div class="flex items-center justify-between mt-auto">
+                <span class="text-xs text-slate-500 font-medium">{{reading_time}}</span>
+                {{!-- <span class="material-symbols-outlined text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span> --}}
+                    {{> "icons/arrow-right" }} {{!-- partials/icons/arrow-right.hbs --}}
+            </div>
+        </div>
+    </article>
+</a>

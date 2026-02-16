@@ -1,0 +1,36 @@
+<div
+    class="group cursor-pointer group bg-white dark:bg-slate-800/30 rounded-2xl overflow-hidden transition-all duration-300 flex flex-col">
+    
+    {{#if feature_image}}
+
+    <div class="overflow-hidden rounded-sm mb-4 h-50">
+
+        <img class="w-full h-full object-cover group-hover:scale-150 transition-transform duration-500"
+            src="{{feature_image}}" alt="{{title}}" />
+    </div>
+    {{/if}}
+
+    <div class="flex flex-col p-5 gap-3">
+
+        <div class="flex flex-row justify-between items-center mb-2">
+            <time class="text-xs text-slate-400" datetime="{{date format='YYYY-MM-DD'}}">
+                {{date format='DD MMMM YYYY'}}
+            </time>
+            <span class="text-xs text-slate-400">
+                # {{primary_tag.name}}
+            </span>
+        </div>
+
+        <h2
+            class="font-bold text-lg text-gray-900 dark:text-white leading-snug mb-2 group-hover:text-primary transition-colors">
+            {{title}}
+        </h2>
+        <div class="flex items-center text-primary group-hover:text-primary/15 text-xs font-bold uppercase tracking-wide mt-3">
+            {{primary_author.name}}
+            <span class="material-symbols-outlined text-sm ml-1">
+                {{> "icons/arrow-right" }}
+            </span>
+        </div>
+    </div>
+
+</div>
