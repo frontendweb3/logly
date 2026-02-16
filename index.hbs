@@ -1,49 +1,66 @@
-{{!< default}}
-<div class="mt-14">
-    <div class="mb-8 flex items-center justify-between">
-        <h1 class="text-xl font-bold md:text-2xl">Latest Articles</h1>
-    </div>
+{{!< default}} <div class="mt-14">
 
-    <div class="flex w-full flex-col gap-10 md:flex-row">
-        {{#foreach posts limit="4" }} {{!-- Display the first four posts in a
-        2-column grid --}} {{#if @first}} {{> "feature_card"}} {{!-- Use the
-        feature_card partial for the first post --}} {{else}} {{#match @index
-        "=" 1 }}
-        <div class="flex basis-3/6 flex-col gap-5">
-            {{/match}} {{> "side_card"}} {{!-- Use the side_card partial for the
-            next three posts --}} {{#match @index "=" 3}}
-        </div>
-        {{/match}} {{!-- Close the grid after the fourth post --}} {{/if}}
-        {{/foreach}}
-    </div>
+    {{!-- Show feature layout only on the first page --}}
+    {{#match pagination.page "==" 1}}
+    {{> feature }}
+    {{/match}}
 
-    {{!-- # TODO: dynamic --}}
     <div class="mt-16 w-full px-8 py-8">
-        <h2 class="mb-2 text-center text-3xl font-bold">All Articles</h2>
-        <p class="mb-8 text-center text-gray-600">
-            Discover our full collection of insights, tutorials, and industry
-            news.
-        </p>
+        {{#match pagination.page "==" 1}}
 
-        <div class="mb-8 flex justify-center space-x-4">
-            {{#get "tags" limit="10" include="count.posts" order="count.posts
-            desc"}} {{#foreach tags}}
-            <a
-                href="{{url}}"
-                class="px-6 py-2 rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 {{slug}}"
-            >
+        {{#if @custom.all_articles_title}}
+        <h2 class="mb-2 text-center text-3xl font-bold"> {{@custom.all_articles_title}}</h2>
+        {{else}}
+        <h2 class="mb-2 text-center text-3xl font-bold"> All Articles </h2>
+        {{/if}}
+        {{#if @custom.all_articles_description}}
+        <p class="mb-8 text-center text-gray-600">
+            {{@custom.all_articles_description}}
+        </p>
+        {{else}}
+        <p class="mb-8 text-center text-gray-600">
+            Discover our full collection of insights, tutorials, and industry news.
+        </p>
+        {{/if}}
+        {{#get "tags" limit="5" include="count.posts" order="count.postsdesc"}}
+
+        {{#if tags}}
+
+        {{!-- Show tags only on the first page --}}
+        <div class="mb-20 flex justify-center space-x-4">
+            {{#foreach tags}}
+
+            <a href="{{url}}"
+                class="px-6 py-2 inline-flex gap-4 items-center rounded-full bg-gray-200 text-gray-700 font-semibold hover:bg-gray-300 {{slug}}">
+                {{> "icons/tag" class="size-5" }} {{!-- partials/icons/tag.hbs --}}
                 {{name}}
             </a>
-            {{/foreach}} {{/get}}
+
+            {{/foreach}}
+
         </div>
 
+        {{/if}}
+
+        {{/get}}
+
+        {{/match}}
+
+        {{!-- Posts --}}
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {{#foreach posts from="5" limit="10"}} {{!-- Skip the first three
-            posts --}} {{> "card"}} {{/foreach}}
+            {{!-- On page 1, skip the four featured posts; on later pages, show all available posts --}}
+            {{#match pagination.page "==" 1}}
+            {{#foreach posts from="5" limit="10"}}
+            {{> "card"}}
+            {{/foreach}}
+            {{else}}
+            {{#foreach posts}}
+            {{> "card"}}
+            {{/foreach}}
+            {{/match}}
         </div>
         {{!-- If JS isn't enabled, fallback to standard pagination --}}
-        <noscript>
-            <div class="mt-8 text-center">{{pagination}}</div>
-        </noscript>
+        <div class="mt-20 text-center">{{pagination}}</div>
+
     </div>
-</div>
+    </div>
