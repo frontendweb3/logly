@@ -1,50 +1,85 @@
-{{!< default}} {{#post}} {{!--
-    class="prose container md:prose-lg lg:prose-xl mx-auto hover:prose-a:text-cc hover:prose-a:transition" --}} <article
+{{!< default}} {{#post}} <article
     class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full px-4 py-10">
-    <header class="w-full px-4 pt-5 text-center">
+    <header class="not-prose w-full px-4 pt-5 text-center">
         <span class="block text-sm">
-            <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="D MMM YYYY"}}</time>
+            <time datetime="{{date published_at format='YYYY-MM-DD'}}">{{date published_at format="DD MMM YYYY"}}</time>
             <span class="bull">&bull;</span>
             {{reading_time}}
         </span>
 
-        {{!-- // TODO: Responsive the --}}
-        <h1 class="mt-8!">{{title}}</h1>
+        <h1
+            class="animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
+            {{title}}
+        </h1>
 
         {{#if custom_excerpt}}
-            <p class="lead -mt-10!">{{custom_excerpt}}</p>
+        <p
+            class="animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(0.3rem,1.1vw,2.2rem)] font-light tracking-tight duration-400">
+            {{custom_excerpt}}
+        </p>
         {{/if}}
     </header>
 
     <div class="flex flex-row items-center justify-center">
-        <ul class="-my-1! list-none p-0! flex font-light text-sm flex-row justify-between items-center">
-            <li> <span>Published By</span> </li>
-            {{#if authors}}
-                {{#foreach authors}}
-                    <li> <a href="{{url}}" title="{{name}}">{{name}}</a> </li>
-                    {{#unless @last}}
-                    <li> <span>,</span> </li>
-                    {{/unless}}
-                {{/foreach}}
-            {{/if}}
-            <li> <span>on</span> </li>
-            <li> <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time> </li>
+        <ul class="flex list-none flex-row items-center justify-between text-sm font-semibold">
+            <li><span>Published By</span></li>
+            <li>
+                {{#if authors}} {{#foreach authors}}
+                <a href="{{url}}" title="{{name}}">{{name}}</a>
+                {{#unless @last}}
+                <span>,</span>
+                {{/unless}} {{/foreach}} {{/if}}
+            </li>
+            <li><span>on</span></li>
+            <li>
+                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+            </li>
         </ul>
     </div>
+    {{!-- content --}}
+    <div class="flex w-full flex-row  gap-5">
 
-    {{content}}
+        <div class="hidden not-prose md:flex flex-col items-center gap-5 mr-5">
 
-    {{!-- # TODO: Redesin the Tags button --}}
+            <span class="text-md font-bold uppercase mb-2 tracking-wide">Share</span>
+
+            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+                href="https://twitter.com/intent/tweet?url={{url absolute=" true"}}&text={{title}}" target="_blank"
+                rel="noopener noreferrer">
+                {{> "icons/twitter"}}
+            </a>
+            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+                href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}" target="_blank"
+                rel="noopener noreferrer">
+                {{> "icons/facebook"}}
+            </a>
+
+            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+                href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute=" true"}}" target="_blank"
+                rel="noopener noreferrer">
+                {{> "icons/linkedin"}} {{!--
+                partials/icons/linkedin.hbs --}}
+            </a>
+
+        </div>
+
+        <div
+            class="{{post_class}} w-full leading-relaxed first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl">
+            {{content}}
+        </div>
+    </div>
+
 
     {{#if tags}}
-    <div class="my-12 flex flex-wrap justify-start gap-4">
+    <div class="my-12 flex flex-wrap justify-start gap-5">
         {{#foreach tags}}
-        <a href="{{url}}" class="px-3 py-1 rounded-sm bg-gray-200 text-gray-700  hover:bg-gray-300 {{slug}}">
+        <a href="{{url}}"
+            class="px-2 py-0.5 text-sm rounded-sm bg-gray-200 text-gray-700  hover:bg-gray-300 no-underline {{slug}}">
             {{name}}
         </a>
         {{/foreach}}
     </div>
-    {{/if}} {{!-- # TODO share it --}}
+    {{/if}}
     </article>
 
     {{!-- navigation Previous and Next Posts --}}
@@ -52,44 +87,125 @@
         <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
             <div class="w-full text-left md:w-1/2">
                 {{#next_post}}
-                <a href="{{url}}" class="group inline-flex items-center gap-3 p-4 text-left transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
-                    <svg aria-hidden="true" class="h-5 w-5 transition-transform duration-200 group-hover:-translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M15 6l-6 6 6 6" />
-                    </svg>
+                <a href="{{url}}"
+                    class="group inline-flex items-center gap-3 p-4 text-left transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
+                  {{> "icons/chevron-left"}} {{!-- partials/icons/chevron-left.hbs --}}
                     <span class="mb-1 text-xs md:text-2xl">Previous Post</span>
                 </a>
                 {{/next_post}}
             </div>
             <div class="w-full text-right md:w-1/2">
                 {{#prev_post}}
-                <a href="{{url}}" class="group inline-flex items-center gap-3 p-4 justify-end text-right transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
+                <a href="{{url}}"
+                    class="group inline-flex items-center justify-end gap-3 p-4 text-right transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
                     <span class="mb-1 text-xs md:text-2xl">Next Post</span>
-                    <svg aria-hidden="true" class="h-5 w-5 transition-transform duration-200 group-hover:translate-x-1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                        <path d="M9 6l6 6-6 6" />
-                    </svg>
+                    {{> "icons/chevron-right"}} {{!-- partials/icons/chevron-right.hbs --}}
                 </a>
                 {{/prev_post}}
             </div>
         </div>
     </div>
 
-    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3"
-    include="authors" as |related_posts| }} 
-    {{#if related_posts}} {{!-- Author Related Posts --}}
-    <div class="bg-accent text-accent-foreground container mx-auto mt-10 px-5 py-10">
+    {{!-- Author Related Posts --}}
+    {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors" as |related_posts| }}
+
+    {{#if related_posts}}
+
+    <div class="container mx-auto mt-10 px-5 py-10">
         <h3 class="mt-5 mb-10 text-left text-xl font-bold lg:text-2xl">
             More By {{../primary_author.name}}
         </h3>
         <div class="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {{#foreach related_posts}} {{> "card"}} {{/foreach}}
+            {{#foreach related_posts}} {{> "card" card-second=true}} {{/foreach}}
         </div>
     </div>
-    {{/if}} 
-    {{/get}} 
-    {{#if comments}}
-    <div class="mt-10 w-full px-4 py-8 text-center bg-accent text-accent-foreground">{{comments}}</div>
-    {{/if}} 
-    {{!-- # TODO: like and dislike --}} 
-    {{> "footer" }}  {{!-- partials/footer.hbs --}} 
-    
+
+    {{/if}}
+
+    {{/get}}
+
+    {{!-- comment --}}
+    {{> "comment"}}
+
+    {{> "footer" }} {{!-- partials/footer.hbs --}}
     {{/post}}
+
+
+    {{!-- Download Highlight.js Scripts --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/jsx.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/xml.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.hljs) {
+                // Full bundle is loaded plus key language modules to guarantee React/JS/HTML/CSS
+                hljs.highlightAll();
+                hljs.initLineNumbersOnLoad();
+                hljs.configure({
+                    languages: [
+                        'javascript',
+                        'typescript',
+                        'jsx',
+                        'xml',
+                        'css',
+                    ],
+                });
+            }
+        });
+    </script>
+
+    {{!-- Copy Code Button Script --}}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            {{!-- Copy Code Button in pre code --}}
+
+            document.querySelectorAll("pre").forEach((pre) => {
+                if (pre.querySelector(".copy-icon")) return;
+
+                pre.classList.add("relative");
+
+                const copyBtn = document.createElement("button");
+                copyBtn.type = "button";
+                copyBtn.className =
+                    "copy-icon copy-code-btn absolute top-2 right-2 md:top-3 md:right-3 z-10 flex size-9 md:size-10 items-center justify-center p-0 rounded-md " +
+                    "border border-slate-200 bg-white text-black dark:text-white shadow-sm transition-all duration-200 hover:scale-[1.02] dark:border-slate-700 dark:bg-slate-800";
+                copyBtn.innerHTML =
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-copy-icon"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+
+                const copiedBtn = document.createElement("button");
+                copiedBtn.type = "button";
+                copiedBtn.className =
+                    "copied-icon copy-code-btn hidden absolute top-2 right-2 md:top-3 md:right-3 z-10 flex size-9 md:size-10 items-center justify-center p-0 rounded-md " +
+                    "border border-slate-200 bg-white text-black dark:text-white shadow-sm transition-all duration-200 dark:border-slate-700 dark:bg-slate-800";
+                copiedBtn.innerHTML =
+                    '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 15 2 2 4-4"/><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
+
+                pre.appendChild(copyBtn);
+                pre.appendChild(copiedBtn);
+
+                copyBtn.addEventListener("click", async () => {
+                    const code = pre.querySelector("code").innerText;
+                    await navigator.clipboard.writeText(code);
+
+                    copyBtn.classList.add("hidden");
+                    copiedBtn.classList.remove("hidden");
+                    copiedBtn.classList.add("animate-in", "fade-in", "zoom-in");
+
+                    setTimeout(() => {
+                        copiedBtn.classList.add("animate-out", "fade-out", "zoom-out");
+                        setTimeout(() => {
+                            copyBtn.classList.remove("hidden");
+                            copiedBtn.classList.add("hidden");
+                            copiedBtn.classList.remove("animate-in", "fade-in", "zoom-in", "animate-out", "fade-out", "zoom-out");
+                        }, 300);
+                    }, 1500);
+                });
+            });
+        });
+    </script>

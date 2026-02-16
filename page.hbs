@@ -2,34 +2,32 @@
 
 {{#post}}
 
-<article
-    class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full px-4 py-10 {{post_class}}"
->
+<article class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full px-4 py-10 {{post_class}}">
+        
+    {{!-- Show title and feature image only if the setting is enabled in Ghost Admin --}}
     {{#if @page.show_title_and_feature_image}}
-        <header class="text-center">
-            <h1>{{title }}</h1>
+    <header class="text-center">
+        <h1>{{title }}</h1>
 
-            {{#if custom_excerpt}}
-            <p class="lead -mt-10!">{{custom_excerpt}}</p>
-            {{/if}} {{#if feature_image}}
-            <figure>
-                <img
-                    src="{{img_url feature_image size='small' format='webp'}}"
-                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                />
-                {{#if feature_image_caption}}
-                <figcaption class="text-center">
-                    {{feature_image_caption}}
-                </figcaption>
-                {{/if}}
-            </figure>
+        {{#if custom_excerpt}}
+        <p class="lead -mt-10!">{{custom_excerpt}}</p>
+        {{/if}} {{#if feature_image}}
+        <figure>
+            <img
+                src="{{img_url feature_image size='small' format='webp'}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+            />
+            {{#if feature_image_caption}}
+            <figcaption class="text-center">
+                {{feature_image_caption}}
+            </figcaption>
             {{/if}}
-        </header>
+        </figure>
+        {{/if}}
+    </header>
     {{/if}}
 
-    <div>
-        {{{content}}}
-    </div>
+    <div class="{{post_class}} w-full leading-relaxed first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl">{{{content}}}</div>
 </article>
 
 {{/post}}
