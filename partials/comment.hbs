@@ -1,0 +1,17 @@
+{{#if comments }}
+<div class="w-full mx-auto mt-10 px-5 py-10">
+    <div class="flex items-center justify-between p-5 flex-row">
+        <h2 class="mt-5 mb-10 text-left text-xl font-bold lg:text-2xl">
+            Member discussion
+        </h2>
+        <p class="flex flex-row">
+            {{comment_count empty="0" class="mx-1" singular="comment" plural="comments" autowrap="span" }} comments
+        </p>
+    </div>          
+    {{!-- Render the comments section --}}
+    <div class="w-full text-black! dark:text-white!
+     [&_[data-testid='cta-box']_h1]:text-black! [&_[data-testid='cta-box']_h1]:dark:text-white!  px-4 py-8 text-center">
+       {{comments title="" count=false }}
+    </div>
+</div>
+{{/if}}
