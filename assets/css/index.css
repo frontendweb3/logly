@@ -2,6 +2,8 @@
 @import 'tailwindcss';
 @plugin '@tailwindcss/typography';
 @import 'tw-animate-css';
+@import './screen.css';
+@import './ghost.css';
 
 @source '../**/*.hbs';
 @source '../../**/*.hbs';
@@ -15,6 +17,7 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
+    
     --color-background: var(--background);
     --color-foreground: var(--foreground);
     --font-sans: var(--font-sans);
@@ -58,6 +61,7 @@
 }
 
 :root {
+
     --background: oklch(1 0 0);
     --foreground: oklch(0.141 0.005 285.823);
     --card: oklch(1 0 0);
@@ -93,6 +97,7 @@
 }
 
 .dark {
+
     --background: oklch(0.141 0.005 285.823);
     --foreground: oklch(0.985 0 0);
     --card: oklch(0.21 0.006 285.885);
@@ -124,13 +129,5 @@
     --sidebar-accent-foreground: oklch(0.985 0 0);
     --sidebar-border: oklch(1 0 0 / 10%);
     --sidebar-ring: oklch(0.552 0.016 285.938);
-}
-
-@layer base {
-    * {
-        @apply border-border outline-ring/50;
-    }
-    body {
-        @apply bg-background text-foreground;
-    }
+    
 }
