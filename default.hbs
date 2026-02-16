@@ -3,9 +3,14 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" href="{{asset 'dist/css/index.css'}}" />
+        <link rel="stylesheet" href="{{asset 'dist/css/index.css' hasMinFile="true" }}" />
         <script src="{{asset 'dist/js/index.js'}}" defer></script>
-
+       
+        <!-- Highlight.js CSS (Dark Theme) -->
+        {{#is "post"}}
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
+        {{/is}}
+    
         <title>{{meta_title}}</title>
 
         <script>
@@ -21,17 +26,35 @@
             }
         </script>
 
+        <style>
+            :root {
+                --accent-color: {{@site.accent_color}};
+            }
+        </style>
+
         {{ghost_head}}
+
     </head>
 
-    <body
-        class="{{body_class}} bg-background text-foreground relative flex overscroll-none"
-    >
-        {{> "sidebar"}} {{!-- # TODO: Announcement --}}
-        <main class="w-full overscroll-y-auto px-10 py-8 lg:ml-72">
-            {{!-- Header --}} {{> "header"}} {{!-- Content --}} {{{body}}}
-        </main>
+    <body class="{{body_class}} bg-[var(--accent-color)] text-foreground relative p-0 m-0 overscroll-none">
+        
+        {{!-- wrap with main element to show Announcement --}}
+        <main class="m-0 flex p-0">
 
+            {{> "sidebar"}}
+
+            <div class="lg:ml-72 w-full overscroll-y-none px-10 py-8">
+
+                {{!-- Header --}} 
+                {{> "header"}} 
+                
+                {{!-- Content --}} 
+                {{{body}}}
+
+            </div>
+
+        </main>
+        
         {{!-- Theme Toggle Button --}}
 
         <button
@@ -39,14 +62,11 @@
             type="button"
             class="fixed right-6 bottom-6 z-50 flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors hover:scale-110 dark:border-slate-700 dark:bg-slate-800"
         >
-            {{> "icons/sun" }} {{!-- partials/icons/sun.hbs --}} {{>
-            "icons/moon" }} {{!-- partials/icons/moon.hbs --}}
+            {{> "icons/sun" }} {{!-- partials/icons/sun.hbs --}} 
+            {{> "icons/moon" }} {{!-- partials/icons/moon.hbs --}}
         </button>
 
         {{ghost_foot}}
-        <script src="https://unpkg.com/lucide@latest"></script>
-        <script>
-            lucide.createIcons();
-        </script>
+
     </body>
 </html>
