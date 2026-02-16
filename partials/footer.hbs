@@ -27,13 +27,13 @@
             </a>
         </div>
 
-            {{navigation type='secondary'}} {{! partials/navigation.hbs with isSecondary=true }}
-            
+        {{navigation type='secondary'}} {{! show secondary navigation partials/navigation.hbs }}
+
         <div class="flex gap-4">
             {{#if @site.twitter}}
             <a
                 class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://twitter.com/{{@site.twitter}}"
+                href={{social_url type="twitter" }}
                 target="_blank"
                 rel="noopener noreferrer"
             >
@@ -42,7 +42,7 @@
             {{/if}} {{#if @site.facebook}}
             <a
                 class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://facebook.com/{{@site.facebook}}"
+                href={{social_url type="facebook" }}
                 target="_blank"
                 rel="noopener noreferrer"
             >

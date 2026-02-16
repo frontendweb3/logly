@@ -1,52 +1,56 @@
-<nav class="w-full">
-    <div class="px-3 py-3 lg:px-6 lg:pl-3">
-        <div class="flex items-center justify-between">
-            <div class="flex items-center justify-start gap-5">
-                <button id="logly-sidebar-show" type="button"
-                    class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors lg:hidden dark:border-slate-700 dark:bg-slate-800">
-                    <span class="sr-only">Open sidebar</span>
-                    {{> "icons/open" }}
-                </button>
-            </div>
-            <div class="flex items-center justify-between space-x-4">
-                {{!-- Custom Search Form --}}
-                <button type="button"
-                    class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                    data-ghost-search>
-                    {{> "icons/search"}}
-                    <span class="sr-only">Search</span>
-                </button>
+<nav class="w-full px-3 py-3 lg:px-6 lg:pl-3">
+    <div class="flex items-center justify-between">
 
-                {{#if @site.twitter}}
-                <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                    href={{social_url type="twitter" }} target="_blank" rel="noopener noreferrer">
-                    {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
-                </a>
-                {{/if}}
-                {{#if @site.facebook}}
-                <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                    href={{social_url type="facebook" }} target="_blank" rel="noopener noreferrer">
-                    {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
-                </a>
-                {{/if}}
+        <div class="w-3/6 lg:flex items-center justify-start gap-5">
+            <button id="logly-sidebar-show" type="button"
+                class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors lg:hidden dark:border-slate-700 dark:bg-slate-800">
+                <span class="sr-only">Open sidebar</span>
+                {{> "icons/open" }}
+            </button>
+        </div>
 
-                {{#if @member}}
-                <div class="h-[20px] rounded-3xl w-0.5 bg-amber-700"></div>
-                <a href="#/portal/account"
-                    class="flex items-center gap-2 rounded-full border border-slate-200  p-2 shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
-                    {{#if @member.avatar_image}}
-                         {{!-- remove the query parameters from the Gravatar URL: https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
-                        {{#foreach (split @member.avatar_image separator="?")}}
-                        {{#if @first}}
-                            <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar" />
-                        {{/if}}
-                        {{/foreach}}                   
-                    {{else}}
-                    <img class="h-9 w-9 rounded-full object-cover" src="{{@site.url}}/assets/images/profile.png" alt="{{@member.name}} avatar" />
-                    {{/if}}
-                </a>
+        <div class="w-3/6 justify-end flex items-center space-x-4">
+            
+            {{!-- Custom Search Form --}}
+            <button type="button"
+                class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+                data-ghost-search>
+                {{> "icons/search"}}
+                <span class="sr-only">Search</span>
+            </button>
+
+            {{#if @site.twitter}}
+            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+                href={{social_url type="twitter" }} target="_blank" rel="noopener noreferrer">
+                {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
+            </a>
+            {{/if}}
+            {{#if @site.facebook}}
+            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+                href={{social_url type="facebook" }} target="_blank" rel="noopener noreferrer">
+                {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
+            </a>
+            {{/if}}
+
+            {{#if @member}}
+            <div class="h-[20px] rounded-3xl w-0.5 bg-primary"></div>
+            <a href="#/portal/account"
+                class="flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
+                {{#if @member.avatar_image}}
+                {{!-- remove the query parameters from the Gravatar URL:
+                https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
+                {{#foreach (split @member.avatar_image separator="?")}}
+                {{#if @first}}
+                <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar" />
                 {{/if}}
-            </div>
+                {{/foreach}}
+                {{else}}
+                <img class="h-9 w-9 rounded-full object-cover" src="{{@site.url}}/assets/images/profile.png"
+                    alt="{{@member.name}} avatar" />
+                {{/if}}
+            </a>
+            {{/if}}
+
         </div>
     </div>
 </nav>
