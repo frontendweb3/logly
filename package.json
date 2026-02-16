@@ -82,6 +82,23 @@
             "xl": {
                 "width": 2000
             }
+        },
+        "custom": {
+            "logo_dark": {
+                "type": "image",
+                "default": "",
+                "description": "Logo used in dark mode (falls back to light logo if empty)"
+            },
+            "all_articles_title": {
+                "type": "text",
+                "default": "All Articles",
+                "description": "Heading text for the All Articles section"
+            },
+            "all_articles_description": {
+                "type": "text",
+                "default": "Discover our full collection of insights, tutorials, and industry news.",
+                "description": "Subheading text beneath the All Articles heading"
+            }
         }
     },
     "type": "module",
