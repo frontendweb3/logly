@@ -7,11 +7,13 @@
     {{!-- Show title and feature image only if the setting is enabled in Ghost Admin --}}
     {{#if @page.show_title_and_feature_image}}
     <header class="text-center">
-        <h1>{{title }}</h1>
+        
+        <h1 class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">{{title }}</h1>
 
         {{#if custom_excerpt}}
-        <p class="lead -mt-10!">{{custom_excerpt}}</p>
+            <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(0.3rem,1.1vw,2.2rem)] font-light tracking-tight duration-400">{{custom_excerpt}}</p>
         {{/if}} {{#if feature_image}}
+        
         <figure>
             <img
                 src="{{img_url feature_image size='small' format='webp'}}"
@@ -23,11 +25,14 @@
             </figcaption>
             {{/if}}
         </figure>
+        
         {{/if}}
     </header>
     {{/if}}
 
     <div class="{{post_class}} w-full leading-relaxed first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl">{{{content}}}</div>
 </article>
+
+{{> "footer"}}
 
 {{/post}}
