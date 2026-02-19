@@ -89,15 +89,40 @@
                 "default": "",
                 "description": "Logo used in dark mode (falls back to light logo if empty)"
             },
-            "all_articles_title": {
-                "type": "text",
-                "default": "All Articles",
-                "description": "Heading text for the All Articles section"
+            "card_style": {
+                "type": "select",
+                "options": [
+                    "card-first",
+                    "card-second",
+                    "card-third"
+                ],
+                "default": "card-first",
+                "description": "Choose which post card layout to use across the site"
             },
-            "all_articles_description": {
+            "copyright_enabled": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show or hide the footer copyright line"
+            },
+            "copyright_text": {
                 "type": "text",
-                "default": "Discover our full collection of insights, tutorials, and industry news.",
-                "description": "Subheading text beneath the All Articles heading"
+                "default": "",
+                "description": "Optional custom copyright message; leave blank to use the default"
+            },
+            "text_color_light": {
+                "type": "color",
+                "default": "#000000",
+                "description": "Primary text color used throughout the theme"
+            },
+            "text_color_dark": {
+                "type": "color",
+                "default": "#000000",
+                "description": "Primary text color used throughout the theme"
+            },
+             "background_color_dark": {
+                "type": "color",
+                "default": "#000000",
+                "description": "Primary background color used throughout the theme"
             }
         }
     },
