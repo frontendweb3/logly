@@ -6,8 +6,8 @@
         <link rel="stylesheet" href="{{asset 'dist/css/index.css' hasMinFile="true" }}" />
         <script src="{{asset 'dist/js/index.js'}}" defer></script>
        
-        <!-- Highlight.js CSS (Dark Theme) -->
         {{#is "post"}}
+            <!-- Highlight.js CSS (Dark Theme) -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
         {{/is}}
     
@@ -26,17 +26,30 @@
             }
         </script>
 
+        {{ghost_head}}
+        
+        {{!-- TODO: Add DYNAMIC  styles with ghost cms --}}
+
         <style>
+        
             :root {
-                --accent-color: {{@site.accent_color}};
+                --background: {{#if @site.accent_color}} {{@site.accent_color}} {{else}} oklch(1 0 0) {{/if}};
+                --foreground: {{#if @custom.text_color_light}}{{@custom.text_color_light}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
+                --color-background: var(--background);
+                --color-foreground: var(--foreground);
+            }
+             .dark {
+                --background: {{#if @custom.background_color_dark}}{{@custom.background_color_dark}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
+                --foreground: {{#if @custom.text_color_dark}}{{@custom.text_color_dark}}{{else}} oklch(0.985 0 0) {{/if}};
+                --color-background: var(--background);
+                --color-foreground: var(--foreground);
+  
             }
         </style>
 
-        {{ghost_head}}
-
     </head>
 
-    <body class="{{body_class}} bg-[var(--accent-color)] text-foreground relative p-0 m-0 overscroll-none">
+    <body class="{{body_class}} bg-background text-foreground relative p-0 m-0 overscroll-none">
         
         {{!-- wrap with main element to show Announcement --}}
         <main class="m-0 flex p-0">
