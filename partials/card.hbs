@@ -1,7 +1,16 @@
+{{!-- Local overrides still work for specific cases, otherwise fall back to the theme setting --}}
 {{#if card-second}}
-     {{> "card-second" }} {{!-- partials/card-second.hbs --}}
+    {{> "card-second" }} {{!-- partials/card-second.hbs --}}
 {{else if card-third}}
     {{> "card-third" }} {{!-- partials/card-third.hbs --}}
 {{else}}
-    {{> "card-first" }} {{!-- partials/card-first.hbs --}}
+    {{#match @custom.card_style "card-second"}}
+        {{> "card-second" }}
+    {{else}}
+        {{#match @custom.card_style "card-third"}}
+            {{> "card-third" }}
+        {{else}}
+            {{> "card-first" }}
+        {{/match}}
+    {{/match}}
 {{/if}}
