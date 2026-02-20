@@ -83,11 +83,4 @@
     font-family: var(--gh-font-heading, "Inter"), system-ui, sans-serif;
   }
 
-  .kg-width-wide {
-    max-width: 100%;
-  }
-
-  .kg-width-full {
-    max-width: 100%;
-  }
 }
