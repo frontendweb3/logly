@@ -1,17 +1,23 @@
-<div class="mb-8 flex items-center justify-between">
-    <h1 class="text-xl font-bold md:text-2xl">Latest Articles</h1>
-</div>
+<div class="my-24">
+    <div class="mb-12 flex items-center justify-between">
+        <h1 class="text-xl font-bold md:text-2xl">Latest Articles</h1>
+    </div>
 
-<div class="flex w-full flex-col gap-10 md:flex-row">
-    {{#foreach posts limit="4" }}
-    {{!-- Display the first four posts in a 2-column grid --}}
-    {{#if @first}}
-    {{> "feature_card"}}
-    {{!-- Use the feature_card partial for the first post --}}
-    {{else}}
-    {{#match @index "=" 1 }} <div class="flex basis-3/6 flex-col gap-5"> {{/match}}
-        {{> "side_card"}} {{!-- Use the side_card partial for the next three posts --}}
-        {{#match @index "=" 3}} </div> {{/match}} {{!-- Close the grid after the fourth post --}}
-    {{/if}}
-    {{/foreach}}
+    <div class="grid gap-3 grid-cols-1 lg:grid-cols-9">
+
+
+        {{#foreach posts limit="4" }}
+        {{!-- Display the first four posts in a 2-column grid --}}
+            {{#if @first}}
+            <div class="lg:col-span-5">
+                {{> "card" }}
+            </div>
+            {{!-- Use the feature_card partial for the first post --}}
+            {{else}}
+                {{#match @index "=" 1 }} <div class="flex lg:col-span-4 flex-col gap-5"> {{/match}}
+                    {{> "side_card"}} {{!-- Use the side_card partial for the next three posts --}}
+                    {{#match @index "=" 3}} </div> {{/match}} {{!-- Close the grid after the fourth post --}}
+                {{/if}}
+        {{/foreach}}
+    </div>
 </div>
