@@ -123,6 +123,11 @@
                 "type": "color",
                 "default": "#000000",
                 "description": "Primary background color used throughout the theme"
+            },
+            "featured_enable": {
+                "type": "boolean",
+                "default": true,
+                "description": "Enable or disable featured section on the homepage"
             }
         }
     },
