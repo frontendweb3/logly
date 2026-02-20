@@ -1,48 +1,55 @@
-{{!< default}} <div class="mt-14">
+{{!< default}} 
 
-    {{!-- Show feature layout only on the first page --}}
-    {{#match pagination.page "==" 1}}
-    {{> feature }}
-    {{/match}}
+<div class="p-4 md:p-8 lg:p-12">
 
-    <div class="mt-16 w-full px-8 py-8">
+    {{#if @custom.featured_enable }}
+
+        {{!-- Show feature layout only on the first page --}}
+        {{#match pagination.page "==" 1 }}
+            {{> feature }}
+        {{/match}}
+            
+    {{/if}}
+
+    {{!-- <div class="w-full px-8 py-8"> --}}
+        
         {{#match pagination.page "==" 1}}
 
+            {{#get "tags" limit="5" include="count.posts" order="count.postsdesc"}}
 
-        {{#get "tags" limit="5" include="count.posts" order="count.postsdesc"}}
+                {{#if tags}}
 
-        {{#if tags}}
+                    {{!-- Show tags only on the first page --}}
+                    <div class="mb-28 mt-18 flex justify-center space-x-10">
+                        {{#foreach tags}}
+                        <a href="{{url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
+                            {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
+                            {{name}}
+                        </a>
+                        {{/foreach}}
+                    </div>
 
-        {{!-- Show tags only on the first page --}}
-       <div class="mb-24 mt-14 flex justify-center space-x-10">
-            {{#foreach tags}}
-             <a href="{{url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
-                {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
-                {{name}}
-            </a>
-            {{/foreach}}
-        </div>
+                {{/if}}
 
-        {{/if}}
-
-        {{/get}}
+            {{/get}}
 
         {{/match}}
 
         {{!-- Posts --}}
         <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+            
             {{!-- On page 1, skip the four featured posts; on later pages, show all available posts --}}
             {{#match pagination.page "==" 1}}
-            {{#foreach posts from="5" limit="10"}}
-            {{> "card"}}
-            {{/foreach}}
+                {{#foreach posts from="5" limit="10"}}
+                    {{> "card"}}
+                {{/foreach}}
             {{else}}
-            {{#foreach posts}}
-            {{> "card"}}
-            {{/foreach}}
+                {{#foreach posts}}
+                    {{> "card"}}
+                {{/foreach}}
             {{/match}}
+
         </div>
         {{!-- If JS isn't enabled, fallback to standard pagination --}}
-        <div class="mt-20 text-center">{{pagination}}</div>
-    </div>
+        <div class="mt-20 text-center"> {{pagination}} </div>
     </div>
