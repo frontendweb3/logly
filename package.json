@@ -8,7 +8,7 @@
     },
     "license": "MIT",
     "screenshots": {
-        "desktop": "assets/screenshot-desktop.jpg"
+        "desktop": "assets/images/screenshot-desktop.jpg"
     },
     "scripts": {
         "build": "node esbuild.config.js",
@@ -116,13 +116,28 @@
             },
             "text_color_dark": {
                 "type": "color",
-                "default": "#000000",
+                "default": "#ffffff",
                 "description": "Primary text color used throughout the theme"
+            },
+            "background_color_light": {
+                "type": "color",
+                "default": "#ffffff",
+                "description": "Primary background color used throughout the theme"
             },
             "background_color_dark": {
                 "type": "color",
                 "default": "#000000",
                 "description": "Primary background color used throughout the theme"
+            },
+            "sidebar_background_color_dark": {
+                "type": "color",
+                "default": "#000000",
+                "description": "Sidebar background color used throughout the theme"
+            },
+            "sidebar_background_color_light": {
+                "type": "color",
+                "default": "#ffffff",
+                "description": "Sidebar background color used throughout the theme"
             },
             "featured_enable": {
                 "type": "boolean",
