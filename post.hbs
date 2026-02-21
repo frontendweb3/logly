@@ -3,11 +3,11 @@
 {{#post}}
  
  <article
-    class="prose md:prose-lg lg:prose-xl xl:prose-2xl dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full py-10 border-b">
+    class="prose md:prose-lg lg:prose-xl xl:prose-2xl prose-img:w-full dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full py-10 border-b">
     <header class="w-full px-4 pt-5 text-center">
         <span class="inline-flex items-center text-sm">
             {{#if primary_tag}}
-            <a href="{{url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
+            <a href="{{primary_tag.url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
                 {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
                 {{primary_tag.name}}
             </a>
@@ -45,7 +45,9 @@
             </li>
         </ul>
     </div>
+    
     {{!-- content --}}
+
     <div class="flex w-full flex-row  gap-5">
 
         <div class="hidden not-prose md:flex flex-col items-center gap-5 mr-5">
@@ -53,18 +55,18 @@
             <span class="text-md font-bold uppercase mb-2 tracking-wide">Share</span>
 
             <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://twitter.com/intent/tweet?url={{url absolute=" true"}}&text={{title}}" target="_blank"
+                href="https://twitter.com/intent/tweet?url={{url absolute="true" }}&text={{title}}" target="_blank"
                 rel="noopener noreferrer">
                 {{> "icons/twitter"}}
             </a>
             <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://www.facebook.com/sharer/sharer.php?u={{url absolute=" true"}}" target="_blank"
+                href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true" }}" target="_blank"
                 rel="noopener noreferrer">
                 {{> "icons/facebook"}}
             </a>
 
             <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute=" true"}}" target="_blank"
+                href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute="true" }}" target="_blank"
                 rel="noopener noreferrer">
                 {{> "icons/linkedin"}} {{!--
                 partials/icons/linkedin.hbs --}}
