@@ -5,13 +5,13 @@
                 {{#if @site.logo}}
                 <span class="relative flex items-center justify-center">
                     <img width="100" height="100" class="block h-12 w-12 dark:hidden" src="{{@site.logo}}"
-                        alt="{{@site.title}}" />
+                        alt="{{@site.title}}" loading="lazy" decoding="async" />
                     {{#if @custom.logo_dark}}
                     <img width="100" height="100" class="hidden h-12 w-12 dark:block" src="{{@custom.logo_dark}}"
-                        alt="{{@site.title}}" />
+                        alt="{{@site.title}}" loading="lazy" decoding="async" />
                     {{else}}
                     <img width="100" height="100" class="hidden h-12 w-12 dark:block" src="{{@site.logo}}"
-                        alt="{{@site.title}}" />
+                        alt="{{@site.title}}" loading="lazy" decoding="async" />
                     {{/if}}
                 </span>
                 {{else}}
@@ -40,7 +40,7 @@
     </div>
     {{!-- Optional copyright line controlled by theme settings --}}
     {{#if @custom.copyright_enabled}}
-    <div aria-label="Copyright information" class="mt-8 text-center text-sm">
+    <div aria-label="Copyright information" class="mt-24 text-center text-sm">
         <p>
             {{#if @custom.copyright_text}}
                 {{@custom.copyright_text}}

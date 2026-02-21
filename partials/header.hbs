@@ -1,15 +1,15 @@
 <nav class="w-full px-3 py-3 lg:px-6">
     <div class="flex items-center justify-between">
 
-        <div class="w-3/6 lg:flex items-center justify-start gap-5">
-            <button id="logly-sidebar-show" type="button"
+        <div class="sm:w-3/6 lg:flex items-center justify-start gap-5">
+            <button id="logly-sidebar-show" type="button" aria-controls="default-sidebar" aria-expanded="false"
                 class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors lg:hidden dark:border-slate-700 dark:bg-slate-800">
                 <span class="sr-only">Open sidebar</span>
                 {{> "icons/open" }}
             </button>
         </div>
 
-        <div class="w-3/6 justify-end flex items-center space-x-4">
+        <div class=" sm:w-3/6 justify-end flex items-center space-x-4">
             
             {{!-- Custom Search Form --}}
             <button type="button"
@@ -34,21 +34,21 @@
             {{/if}}
 
             {{#if @member}}
-            <div class="h-[20px] rounded-3xl w-0.5 bg-primary"></div>
+            <div class="hidden sm:block h-[20px] rounded-3xl w-0.5 bg-primary"></div>
             <a href="#/portal/account"
                 aria-label="Open your account page"
-                class="flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
+                class="hidden sm:flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
                 {{#if @member.avatar_image}}
                 {{!-- remove the query parameters from the Gravatar URL:
                 https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
                 {{#foreach (split @member.avatar_image separator="?")}}
                 {{#if @first}}
-                <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar" />
+                <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar" decoding="async" />
                 {{/if}}
                 {{/foreach}}
                 {{else}}
                 <img class="h-9 w-9 rounded-full object-cover" src="{{asset "assets/images/profile.png"}}"
-                    alt="{{@member.name}} avatar" />
+                    alt="{{@member.name}} avatar" decoding="async" />
                 {{/if}}
             </a>
             {{/if}}

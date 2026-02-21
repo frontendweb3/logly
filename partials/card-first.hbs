@@ -5,8 +5,15 @@
     {{#if feature_image}}
     <img
         class="h-80 w-full rounded-none object-cover"
-        src="{{feature_image}}"
+        srcset="{{img_url feature_image size="s" format='webp'}} 320w,
+                {{img_url feature_image size="m" format='webp'}} 600w,
+                {{img_url feature_image size="l" format='webp'}} 960w,
+                {{img_url feature_image size="xl" format='webp'}} 1200w"
+        sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
+        src="{{img_url feature_image size="l" format='webp'}}"
         alt="{{title}}"
+        loading="lazy"
+        decoding="async"
     />
     {{/if}}
     <div class="p-6">
@@ -21,6 +28,8 @@
                     class="mr-3 h-10 w-10 rounded-full"
                     src="{{primary_author.profile_image}}"
                     alt="{{primary_author.name}}"
+                    loading="lazy"
+                    decoding="async"
                 />
                 {{/if}}
                 <div>
