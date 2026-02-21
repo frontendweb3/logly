@@ -28,7 +28,7 @@
         "type": "theme",
         "categories": [
             "Minimal",
-            "Magazine"
+            "blog"
         ]
     },
     "keywords": [
@@ -97,12 +97,12 @@
                     "card-third"
                 ],
                 "default": "card-first",
-                "description": "Choose which post card layout to use across the site"
+                "description": "Choose which post card to use see on across the site"
             },
             "copyright_enabled": {
                 "type": "boolean",
                 "default": true,
-                "description": "Show or hide the footer copyright line"
+                "description": "Show or hide the footer copyright text"
             },
             "copyright_text": {
                 "type": "text",
