@@ -15,7 +15,10 @@ function applyThemeState(isDark) {
     }
     if (themeToggleBtn) {
         themeToggleBtn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-        themeToggleBtn.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        themeToggleBtn.setAttribute(
+            'aria-label',
+            isDark ? 'Switch to light mode' : 'Switch to dark mode',
+        );
     }
 }
 
@@ -66,7 +69,8 @@ document.addEventListener('DOMContentLoaded', function () {
     if (sidebar && sidebarShowBtn && sidebarHideBtn) {
         const syncSidebarState = () => {
             const isDesktop = window.matchMedia('(min-width: 1024px)').matches;
-            const isHidden = sidebar.classList.contains('-translate-x-full') && !isDesktop;
+            const isHidden =
+                sidebar.classList.contains('-translate-x-full') && !isDesktop;
 
             if (isHidden) {
                 sidebarShowBtn.classList.remove('hidden');
