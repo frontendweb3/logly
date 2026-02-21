@@ -4,6 +4,8 @@
     {{#foreach navigation type='secondary'}}
 
     <li
+        aria-label="Navigate to {{label}} page"
+
         class="items-center gap-3 rounded-lg px-2 py-3 text-center text-sm transition-colors hover:underline hover:underline-offset-4"
     >
         {{#link href=(url) }} {{label}}
@@ -19,6 +21,7 @@
     {{#foreach navigation}}
     
     <li
+        aria-label="Navigate to {{label}} page"
         class="h-10 w-full rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
     >
         {{#link activeClass="bg-primary text-primary-foreground rounded-lg" class="flex text-sm items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group" href=(url) }}

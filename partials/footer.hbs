@@ -26,12 +26,12 @@
 
         <div class="flex gap-4">
             {{#if @site.twitter}}
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Visit our Twitter profile" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href={{social_url type="twitter" }} target="_blank" rel="noopener noreferrer">
                 {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
             </a>
             {{/if}} {{#if @site.facebook}}
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Visit our Facebook profile" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href={{social_url type="facebook" }} target="_blank" rel="noopener noreferrer">
                 {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
             </a>
@@ -40,7 +40,7 @@
     </div>
     {{!-- Optional copyright line controlled by theme settings --}}
     {{#if @custom.copyright_enabled}}
-    <div class="mt-8 text-center text-sm">
+    <div aria-label="Copyright information" class="mt-8 text-center text-sm">
         <p>
             {{#if @custom.copyright_text}}
                 {{@custom.copyright_text}}

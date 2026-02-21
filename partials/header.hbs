@@ -13,6 +13,7 @@
             
             {{!-- Custom Search Form --}}
             <button type="button"
+                aria-label="Open Search form"
                 class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 data-ghost-search>
                 {{> "icons/search"}}
@@ -20,13 +21,13 @@
             </button>
 
             {{#if @site.twitter}}
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Visit our Twitter profile" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href={{social_url type="twitter" }} target="_blank" rel="noopener noreferrer">
                 {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
             </a>
             {{/if}}
             {{#if @site.facebook}}
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Visit our Facebook profile" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href={{social_url type="facebook" }} target="_blank" rel="noopener noreferrer">
                 {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
             </a>
@@ -35,6 +36,7 @@
             {{#if @member}}
             <div class="h-[20px] rounded-3xl w-0.5 bg-primary"></div>
             <a href="#/portal/account"
+                aria-label="Open your account page"
                 class="flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
                 {{#if @member.avatar_image}}
                 {{!-- remove the query parameters from the Gravatar URL:
