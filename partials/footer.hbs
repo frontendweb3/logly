@@ -1,7 +1,7 @@
-<footer class="mx-auto mt-12 w-full border-t border-slate-200 px-8 py-12 dark:border-slate-800">
+<footer class="mx-auto mt-12 w-full border-t px-8 py-12">
     <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
         <div class="flex flex-col items-center gap-2 md:items-start">
-            <a class="flex items-center justify-center ps-2.5" href="{{@site.url}}">
+            <div class="flex items-center justify-center ps-2.5">
                 {{#if @site.logo}}
                 <span class="relative flex items-center justify-center">
                     <img width="100" height="100" class="block h-12 w-12 dark:hidden" src="{{@site.logo}}"
@@ -19,7 +19,7 @@
                     {{@site.title}}
                 </span>
                 {{/if}}
-            </a>
+            </div>
         </div>
 
         {{navigation type='secondary'}} {{! show secondary navigation partials/navigation.hbs }}
