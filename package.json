@@ -87,7 +87,7 @@
             "logo_dark": {
                 "type": "image",
                 "default": "",
-                "description": "Logo used in dark mode (falls back to light logo if empty)"
+                "description": "Logo used in dark mode"
             },
             "card_style": {
                 "type": "select",
@@ -112,37 +112,37 @@
             "text_color_light": {
                 "type": "color",
                 "default": "#000000",
-                "description": "Primary text color used throughout the theme"
+                "description": "text color used for entire website in light mode"
             },
             "text_color_dark": {
                 "type": "color",
                 "default": "#ffffff",
-                "description": "Primary text color used throughout the theme"
+                "description": "text color used for entire website in dark mode"
             },
             "background_color_light": {
                 "type": "color",
                 "default": "#ffffff",
-                "description": "Primary background color used throughout the theme"
+                "description": "background color used throughout the website in light mode"
             },
             "background_color_dark": {
                 "type": "color",
                 "default": "#000000",
-                "description": "Primary background color used throughout the theme"
+                "description": "background color used throughout the website in dark mode"
             },
             "sidebar_background_color_dark": {
                 "type": "color",
                 "default": "#000000",
-                "description": "Sidebar background color used throughout the theme"
+                "description": "Sidebar background color used throughout the website in dark mode"
             },
             "sidebar_background_color_light": {
                 "type": "color",
                 "default": "#ffffff",
-                "description": "Sidebar background color used throughout the theme"
+                "description": "Sidebar background color used throughout the website in light mode"
             },
             "featured_enable": {
                 "type": "boolean",
                 "default": true,
-                "description": "Enable or disable featured section on the homepage"
+                "description": "Enable or disable featured posts section on the homepage"
             }
         }
     },

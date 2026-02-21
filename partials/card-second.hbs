@@ -1,47 +1,62 @@
 <article
-    class="group group/card bg-white dark:bg-slate-800/30 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden hover:border-primary/50 
-    transition-all duration-300 flex flex-col">
-    <div class="aspect-video overflow-hidden h-80">
+    class="group group/card hover:border-primary/50 flex flex-col overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all duration-300 dark:border-slate-800 dark:bg-slate-800/30"
+>
+    <div class="aspect-video h-80 overflow-hidden">
         {{#if feature_image}}
-        <img class="w-full h-80 object-cover group-hover:scale-105 transition-transform duration-500"
-            srcset="{{img_url feature_image size="s" format='webp'}} 320w,
-                    {{img_url feature_image size="m" format='webp'}} 600w,
-                    {{img_url feature_image size="l" format='webp'}} 960w,
-                    {{img_url feature_image size="xl" format='webp'}} 1200w"
+        <img
+            class="h-80 w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            srcset="{{img_url feature_image size='s' format='webp'}} 320w,
+                    {{img_url feature_image size='m' format='webp'}} 600w,
+                    {{img_url feature_image size='l' format='webp'}} 960w,
+                    {{img_url feature_image size='xl' format='webp'}} 1200w"
             sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-            src="{{img_url feature_image size="l" format='webp'}}" alt="{{title}}"
+            src="{{img_url feature_image size='l' format='webp'}}"
+            alt="{{title}}"
             loading="lazy"
-            decoding="async" />
+            decoding="async"
+        />
         {{/if}}
     </div>
-    <div class="p-6 flex flex-col flex-1">
-
-        <div class="flex items-center gap-2 mb-3.5">
-
+    <div class="flex flex-1 flex-col p-6">
+        <div class="mb-3.5 flex items-center gap-2">
             {{#if primary_tag}}
 
-            <span class="px-2 py-1 bg-primary/10  text-primary text-[10px] font-bold uppercase rounded tracking-wider">
-                {{primary_tag.name}} </span>
+            <span
+                class="bg-primary/10 text-primary rounded px-2 py-1 text-[10px] font-bold tracking-wider uppercase"
+            >
+                {{primary_tag.name}}
+            </span>
 
             {{/if}}
 
-            <time class="text-xs text-slate-500" datetime="{{date format='YYYY-MM-DD'}}">{{date format='DD MMMM
-                YYYY'}}</time>
+            <time
+                class="text-xs text-slate-500"
+                datetime="{{date format='YYYY-MM-DD'}}"
+                >{{date format='DD MMMM YYYY'}}</time
+            >
         </div>
 
-        <h2 class="text-xl font-bold leading-tight mb-4 group-hover:text-primary transition-colors">
+        <h2
+            class="group-hover:text-primary mb-4 text-xl leading-tight font-bold transition-colors"
+        >
             {{title}}
         </h2>
-        <p class="text-slate-600 dark:text-slate-400 text-sm line-clamp-2 mb-4 flex-1">
+        <p
+            class="mb-4 line-clamp-2 flex-1 text-sm text-slate-600 dark:text-slate-400"
+        >
             {{excerpt characters='100'}}
         </p>
 
-        <div class="flex my-3 items-center justify-between">
-
-            <span class="text-xs text-slate-500 font-medium">{{reading_time}}</span>
-            <a href="{{url}}" class="text-primary hover:underline hover:underline-offset-4 text-sm font-semibold flex items-center gap-1">
-                Read More
-                {{> "icons/arrow-right" }} {{!-- partials/icons/arrow-right.hbs --}}
+        <div class="my-3 flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500"
+                >{{reading_time}}</span
+            >
+            <a
+                href="{{url}}"
+                class="text-primary flex items-center gap-1 text-sm font-semibold hover:underline hover:underline-offset-4"
+            >
+                Read More {{> "icons/arrow-right" }} {{!--
+                partials/icons/arrow-right.hbs --}}
             </a>
         </div>
     </div>

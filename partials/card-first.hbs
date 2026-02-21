@@ -5,12 +5,12 @@
     {{#if feature_image}}
     <img
         class="h-80 w-full rounded-none object-cover"
-        srcset="{{img_url feature_image size="s" format='webp'}} 320w,
-                {{img_url feature_image size="m" format='webp'}} 600w,
-                {{img_url feature_image size="l" format='webp'}} 960w,
-                {{img_url feature_image size="xl" format='webp'}} 1200w"
+        srcset="{{img_url feature_image size='s' format='webp'}} 320w,
+                {{img_url feature_image size='m' format='webp'}} 600w,
+                {{img_url feature_image size='l' format='webp'}} 960w,
+                {{img_url feature_image size='xl' format='webp'}} 1200w"
         sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
-        src="{{img_url feature_image size="l" format='webp'}}"
+        src="{{img_url feature_image size='l' format='webp'}}"
         alt="{{title}}"
         loading="lazy"
         decoding="async"
@@ -34,10 +34,7 @@
                 {{/if}}
                 <div>
                     <p class="text-sm font-semibold">{{primary_author.name}}</p>
-                    <time
-                        class="text-xs"
-                        datetime="{{date format='YYYY-MM-DD'}}"
-                        >{{date format='DD MMMM YYYY'}}</time>
+                    <time class="text-xs" datetime="{{date format='YYYY-MM-DD'}}">{{date format='DD MMMM YYYY'}}</time>
                 </div>
             </div>
             <div>{{reading_time}}</div>
