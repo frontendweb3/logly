@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const copyBtn = document.createElement("button");
         copyBtn.type = "button";
+        copyBtn.setAttribute("aria-label", "copy code button");
         copyBtn.className =
             "copy-icon copy-code-btn absolute top-2 right-2 md:top-3 md:right-3 z-10 flex size-9 md:size-10 items-center justify-center p-0 rounded-md " +
             "border border-slate-200 bg-white text-black dark:text-white shadow-sm transition-all duration-200 hover:scale-[1.02] dark:border-slate-700 dark:bg-slate-800";
@@ -39,6 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         copiedBtn.className =
             "copied-icon copy-code-btn hidden absolute top-2 right-2 md:top-3 md:right-3 z-10 flex size-9 md:size-10 items-center justify-center p-0 rounded-md " +
             "border border-slate-200 bg-white text-black dark:text-white shadow-sm transition-all duration-200 dark:border-slate-700 dark:bg-slate-800";
+        copiedBtn.setAttribute("aria-label", "Code copied");
         copiedBtn.innerHTML =
             '<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 15 2 2 4-4"/><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>';
 
