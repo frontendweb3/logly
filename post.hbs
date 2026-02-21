@@ -4,15 +4,15 @@
  
  <article
     class="prose md:prose-lg lg:prose-xl xl:prose-2xl prose-img:w-full dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full py-10 border-b">
-    <header class="w-full px-4 pt-5 text-center">
-        <span class="inline-flex items-center text-sm">
+    <header class="w-full flex flex-col justify-center px-4 pt-5 text-center">
+        <span class="flex justify-center text-center items-center text-sm">
             {{#if primary_tag}}
             <a href="{{primary_tag.url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
                 {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
                 {{primary_tag.name}}
             </a>
-            {{/if}}
             <span class="mx-1">&bull;</span>
+            {{/if}}
             {{reading_time}}
         </span>
 
