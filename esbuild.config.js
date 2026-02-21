@@ -11,7 +11,11 @@ const watchGlobs = [
 ];
 
 const buildOptions = {
-    entryPoints: ['assets/js/index.js', 'assets/js/post.js', 'assets/css/index.css'],
+    entryPoints: [
+        'assets/js/index.js',
+        'assets/js/post.js',
+        'assets/css/index.css',
+    ],
     bundle: true,
     minify: true,
     minifyWhitespace: true,
