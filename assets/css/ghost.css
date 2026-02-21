@@ -2,18 +2,41 @@
     width: 100%;
 }
 
-.kg-image-card {
-    width: 100%;
-}
-
-.kg-card-hascaption {
-    text-align: center;
-}
-
 .kg-width-wide {
-    width: 100%;
+    @apply w-full;
 }
 
 .kg-width-full {
-    width: 100%;
+    @apply w-full;
+}
+
+/* Image */
+.kg-image-card {
+    @apply w-full;
+}
+
+.kg-card-hascaption {
+    @apply text-center;
+}
+
+/* Book Mark for content */
+
+.kg-bookmark-card {
+    @apply flex flex-col items-center justify-between w-full;
+}
+
+.kg-bookmark-container {
+    @apply w-full;
+}
+
+.kg-bookmark-thumbnail > img{
+    @apply mt-0;
+}
+
+.kg-embed-card {
+    @apply w-full h-[464px];
+}
+
+.kg-embed-card iframe {
+    @apply w-full h-full;
 }
