@@ -119,7 +119,7 @@
                 "default": "#000000",
                 "description": "Primary text color used throughout the theme"
             },
-             "background_color_dark": {
+            "background_color_dark": {
                 "type": "color",
                 "default": "#000000",
                 "description": "Primary background color used throughout the theme"
@@ -133,7 +133,6 @@
     },
     "type": "module",
     "dependencies": {
-        "flowbite": "^4.0.1",
         "prettier-plugin-tailwindcss": "^0.7.2"
     }
 }
