@@ -18,7 +18,7 @@
                 {{#if tags}}
 
                     {{!-- Show tags only on the first page --}}
-                    <div class="mb-28 mt-18 flex justify-center space-x-10">
+                    <div class="mb-28 mt-18 flex flex-wrap gap-5 justify-center space-x-10">
                         {{#foreach tags}}
                         <a href="{{url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
                             {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
