@@ -18,25 +18,66 @@
 .kg-card-hascaption {
     @apply text-center;
 }
-
+/* TODO: CHECK AND PUBLISHED IT */
 /* Book Mark for content */
 
 .kg-bookmark-card {
-    @apply flex flex-col items-center justify-between w-full;
+    @apply flex w-full flex-col items-center justify-between;
 }
 
 .kg-bookmark-container {
     @apply w-full;
 }
 
-.kg-bookmark-thumbnail > img{
+.kg-bookmark-thumbnail > img {
     @apply mt-0;
 }
 
 .kg-embed-card {
-    @apply w-full h-[464px];
+    @apply h-[464px] w-full;
 }
 
 .kg-embed-card iframe {
-    @apply w-full h-full;
+    @apply h-full w-full;
+}
+/*  */
+
+.kg-gallery-container {
+    @apply w-full;
+}
+
+.kg-gallery-row {
+    @apply -mx-2 flex flex-wrap;
+}
+
+.kg-gallery-image {
+    @apply mb-4 w-full px-2;
+}
+
+.kg-bookmark-content {
+    @apply w-full;
+}
+
+.kg-bookmark-title {
+    @apply text-lg font-semibold;
+}
+
+.kg-bookmark-description {
+    @apply text-sm text-gray-600;
+}
+
+.kg-bookmark-metadata {
+    @apply text-xs text-gray-500;
+}
+
+.kg-bookmark-icon {
+    @apply h-6 w-6;
+}
+
+.kg-bookmark-author {
+    @apply text-sm font-medium;
+}
+
+.kg-bookmark-publisher {
+    @apply text-sm text-gray-500;
 }

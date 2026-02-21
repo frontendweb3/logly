@@ -1,7 +1,7 @@
 /* Post.css: code block */
 
 pre {
-    @apply overflow-x-auto rounded-xl p-6 bg-primary/10 dark:bg-primary/20 text-primary-foreground;
+    @apply bg-primary/10 dark:bg-primary/20 text-primary-foreground overflow-x-auto rounded-xl p-6;
 }
 
 pre code {
