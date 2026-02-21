@@ -4,7 +4,7 @@
     {{#foreach navigation type='secondary'}}
 
     <li
-        class="items-center gap-3 rounded-lg px-2 py-3 text-center text-sm  transition-colors hover:underline hover:underline-offset-4"
+        class="items-center gap-3 rounded-lg px-2 py-3 text-center text-sm transition-colors hover:underline hover:underline-offset-4"
     >
         {{#link href=(url) }} {{label}}
         {{/link}}
@@ -17,13 +17,13 @@
 
 <ul class="flex w-full flex-col space-y-5">
     {{#foreach navigation}}
-
+    
     <li
-        class="h-10 w-full rounded-lg hover:bg-slate-100 hover:text-black  dark:hover:bg-slate-300 dark:hover:text-black"
+        class="h-10 w-full rounded-lg hover:bg-primary hover:text-primary-foreground transition-colors"
     >
-        {{#link activeClass="bg-slate-100 text-black rounded-lg" class="flex text-sm items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group" href=(url) }}
+        {{#link activeClass="bg-primary text-primary-foreground rounded-lg" class="flex text-sm items-center gap-3 px-3 py-2.5 rounded-lg transition-colors group" href=(url) }}
         <span
-            class="group-hover:bg-primary h-2 w-2 rounded-full bg-slate-300 transition-colors dark:bg-slate-700"
+            class="bg-secondary-foreground group-hover:bg-primary-foreground h-2 w-2 rounded-full transition-colors"
         ></span>
         <span class="text-sm font-medium"> {{label}} </span>
         {{/link}}
