@@ -3,7 +3,7 @@
 {{#post}}
  
  <article
-    class="prose md:prose-lg lg:prose-xl xl:prose-2xl prose-img:w-full dark:prose-invert max-width lg:max-width-4xl mx-auto mb-5 w-full py-10 border-b">
+    class="prose md:prose-lg lg:prose-xl xl:prose-2xl prose-img:w-full dark:prose-invert max-width prose-hr:bg-foreground dark:prose-hr:bg-background lg:max-width-4xl mx-auto mb-5 w-full py-10 border-b">
     <header class="w-full flex flex-col justify-center px-4 pt-5 text-center">
         <span class="flex justify-center text-center items-center text-sm">
             {{#if primary_tag}}
@@ -54,18 +54,18 @@
 
             <span class="text-md font-bold uppercase mb-2 tracking-wide">Share</span>
 
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Share on Twitter"  class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href="https://twitter.com/intent/tweet?url={{url absolute="true" }}&text={{title}}" target="_blank"
                 rel="noopener noreferrer">
                 {{> "icons/twitter"}}
             </a>
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Share on Facebook" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true" }}" target="_blank"
                 rel="noopener noreferrer">
                 {{> "icons/facebook"}}
             </a>
 
-            <a class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
+            <a aria-label="Share on LinkedIn" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
                 href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute="true" }}" target="_blank"
                 rel="noopener noreferrer">
                 {{> "icons/linkedin"}} {{!--
@@ -74,8 +74,7 @@
 
         </div>
 
-        <div
-            class="{{post_class}} w-full leading-relaxed first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl">
+        <div aria-label="article content" class="{{post_class}} w-full leading-relaxed first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl">
             {{content}}
         </div>
     </div>
@@ -140,10 +139,12 @@
     {{> "comment"}}
 
     {{> "footer" }} {{!-- partials/footer.hbs --}}
+    
     {{/post}}
 
 
     {{!-- Download Highlight.js Scripts --}}
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
@@ -154,4 +155,4 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
     
     {{!-- Highlight code and config the copy code button on code block --}}
-    <script defer src="{{asset "dist/js/post.js"}}"></script>
+    <script src="{{asset "dist/js/post.js"}}"></script>
