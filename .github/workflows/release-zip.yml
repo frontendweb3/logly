@@ -57,5 +57,4 @@ jobs:
         with:
           files: dist-artifacts/logly-${{ github.event.release.tag_name }}.zip
           tag_name: ${{ github.event.release.tag_name }}
-          overwrite: true
           token: ${{ github.token }}
