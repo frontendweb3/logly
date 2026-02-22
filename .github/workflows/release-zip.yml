@@ -2,7 +2,9 @@ name: Release Zip
 
 on:
   release:
-    types: [published]
+    types: [created]
+
+
 
 jobs:
   build-and-attach:
@@ -37,7 +39,7 @@ jobs:
       - name: Create release archive
         run: |
           mkdir -p dist-artifacts
-          pnpm bestzip dist-artifacts/logly-${{ github.ref_name }}.zip \
+          pnpm bestzip dist-artifacts/logly-${{ github.ref_name }}-${{ github.run_number }}.zip \
             *.hbs \
             partials \
             assets/dist \
@@ -49,6 +51,6 @@ jobs:
       - name: Upload release asset
         uses: softprops/action-gh-release@v2.5.0
         with:
-          files: dist-artifacts/logly-${{ github.ref_name }}.zip
+          files: dist-artifacts/logly-${{ github.ref_name }}-${{ github.run_number }}.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
