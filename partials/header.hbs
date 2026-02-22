@@ -52,8 +52,7 @@
                 aria-label="Open your account page"
                 class="hidden sm:flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
                 {{#if @member.avatar_image}}
-                {{!-- remove the query parameters from the Gravatar URL:
-                https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
+                {{!-- remove the query parameters from the Gravatar URL: https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}               
                 {{#foreach (split @member.avatar_image separator="?")}}
                 {{#if @first}}
                 <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar" decoding="async" />
