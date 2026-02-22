@@ -10,17 +10,15 @@
     <div class="sticky mt-20 w-full flex-grow overflow-y-auto px-3 py-4">
         <a class="mb-5 flex items-center justify-center ps-2.5" href="{{@site.url}}">
             {{#if @site.logo}}
-            <span class="relative flex items-center justify-center">
-                <img width="100" height="100" class="block h-12 w-12 dark:hidden" src="{{@site.logo}}"
+                <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}"
                     alt="{{@site.title}}" loading="lazy" decoding="async" />
                 {{#if @custom.logo_dark}}
-                <img width="100" height="100" class="hidden h-12 w-12 dark:block" src="{{@custom.logo_dark}}"
+                <img width="120" height="120" class="hidden dark:block" src="{{@custom.logo_dark}}"
                     alt="{{@site.title}}" loading="lazy" decoding="async" />
                 {{else}}
-                <img width="100" height="100" class="hidden h-12 w-12 dark:block" src="{{@site.logo}}"
+                <img width="120" height="120" class="hidden dark:block" src="{{@site.logo}}"
                     alt="{{@site.title}}" loading="lazy" decoding="async" />
                 {{/if}}
-            </span>
             {{else}}
             <span class="text-heading self-center text-lg font-semibold whitespace-nowrap">
                 {{@site.title}}
