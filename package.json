@@ -4,7 +4,7 @@
     "demo": "https://github.com/frontendweb3/logly",
     "version": "1.0.0",
     "engines": {
-        "ghost": ">=5.0.0"
+        "ghost": ">=6.0.0"
     },
     "license": "MIT",
     "screenshots": {
@@ -13,10 +13,12 @@
     "scripts": {
         "build": "node esbuild.config.js",
         "dev": "npx nodemon --watch . --ext js,css,hbs --ignore assets/dist --ignore node_modules --exec \"node esbuild.config.js --watch\"",
-        "format": "prettier --write .",
+        "format": "prettier .",
+        "format-fix": "prettier --write .",
         "preview": "node esbuild.config.js --preview",
-        "zip": "npm run build && bestzip $npm_package_name.zip assets/dist/* partials/* members/* *.hbs package.json",
-        "test": "npx gscan .",
+        "zip": "npm run build && bestzip $npm_package_name.zip assets/dist/* assets/images/* partials/* members/* *.hbs package.json",
+        "test-v5": "pnpm dlx gscan@latest . --v5",
+        "test-v6": "pnpm dlx gscan@latest . --v6",
         "pretest": "npm run build"
     },
     "author": {
