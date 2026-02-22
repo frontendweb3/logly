@@ -1,6 +1,6 @@
 {
     "name": "logly",
-    "description": "A starter theme for Ghost theme development",
+    "description": "Logly is a minimalistic open-source theme designed for Ghost blogs.",
     "demo": "https://github.com/frontendweb3/logly",
     "version": "1.0.0",
     "engines": {
