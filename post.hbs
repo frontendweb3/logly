@@ -22,8 +22,7 @@
         </h1>
 
         {{#if custom_excerpt}}
-        <p
-            class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(0.3rem,1.1vw,2.2rem)] font-light tracking-tight duration-400">
+        <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,3vw,2rem)] font-light tracking-tight duration-400">
             {{custom_excerpt}}
         </p>
         {{/if}}
@@ -31,10 +30,10 @@
 
     <div class="flex flex-row items-center justify-center">
         <ul class="flex list-none flex-row items-center justify-between text-sm font-semibold">
-            <li><span>Published By</span></li>
+            <li class="hidden sm:inline-flex"><span>Published By</span></li>
             <li>
                 {{#if authors}} {{#foreach authors}}
-                <a href="{{url}}" title="{{name}}">{{name}}</a>
+                    <a href="{{url}}" title="{{name}}">{{name}}</a>
                 {{#unless @last}}
                 <span>,</span>
                 {{/unless}} {{/foreach}} {{/if}}
