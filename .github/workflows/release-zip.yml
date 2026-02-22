@@ -34,7 +34,6 @@ jobs:
           zip -r dist-artifacts/logly-${{ github.ref_name }}.zip \
             *.hbs \
             partials \
-            members \
             assets/dist \
             assets/images \
             package.json \
