@@ -18,9 +18,8 @@
 .kg-card-hascaption {
     @apply text-center;
 }
-/* TODO: CHECK AND PUBLISHED IT */
-/* Book Mark for content */
 
+/* Book Mark for content */
 .kg-bookmark-card {
     @apply flex w-full flex-col items-center justify-between;
 }
@@ -34,11 +33,11 @@
 }
 
 .kg-embed-card {
-    @apply h-[464px] w-full;
+    @apply w-full;
 }
 
 .kg-embed-card iframe {
-    @apply h-full w-full;
+    @apply h-[30rem] w-full;
 }
 /*  */
 
@@ -63,11 +62,11 @@
 }
 
 .kg-bookmark-description {
-    @apply text-sm text-gray-600;
+    @apply text-sm;
 }
 
 .kg-bookmark-metadata {
-    @apply text-xs text-gray-500;
+    @apply text-xs;
 }
 
 .kg-bookmark-icon {
@@ -79,5 +78,5 @@
 }
 
 .kg-bookmark-publisher {
-    @apply text-sm text-gray-500;
+    @apply text-sm;
 }

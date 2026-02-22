@@ -111,32 +111,32 @@
                 "default": "",
                 "description": "Optional custom copyright message; leave blank to use the default"
             },
-            "text_color_light": {
+            "font_color_for_light_mode": {
                 "type": "color",
                 "default": "#000000",
                 "description": "text color used for entire website in light mode"
             },
-            "text_color_dark": {
+            "font_color_for_dark_mode": {
                 "type": "color",
                 "default": "#ffffff",
                 "description": "text color used for entire website in dark mode"
             },
-            "background_color_light": {
+            "background_color_for_light_mode": {
                 "type": "color",
                 "default": "#ffffff",
                 "description": "background color used throughout the website in light mode"
             },
-            "background_color_dark": {
+            "background_color_for_dark_mode": {
                 "type": "color",
                 "default": "#000000",
                 "description": "background color used throughout the website in dark mode"
             },
-            "sidebar_background_color_dark": {
+            "sidebar_background_color_for_dark_mode": {
                 "type": "color",
                 "default": "#000000",
                 "description": "Sidebar background color used throughout the website in dark mode"
             },
-            "sidebar_background_color_light": {
+            "sidebar_background_color_for_light_mode": {
                 "type": "color",
                 "default": "#ffffff",
                 "description": "Sidebar background color used throughout the website in light mode"

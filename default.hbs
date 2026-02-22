@@ -31,18 +31,18 @@
         <style>
         
             :root {
-                --background: {{#if @custom.background_color_light}} {{@custom.background_color_light}} {{else}} oklch(1 0 0) {{/if}};
-                --foreground: {{#if @custom.text_color_light}}{{@custom.text_color_light}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
+                --background: {{#if @custom.background_color_for_light_mode}} {{@custom.background_color_for_light_mode}} {{else}} oklch(1 0 0) {{/if}};
+                --foreground: {{#if @custom.font_color_for_light_mode}}{{@custom.font_color_for_light_mode}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
-                --sidebar: {{#if @custom.sidebar_background_color_light}}{{@custom.sidebar_background_color_light}}{{else}} oklch(1 0 0) {{/if}};
+                --sidebar: {{#if @custom.sidebar_background_color_for_light_mode}}{{@custom.sidebar_background_color_for_light_mode}}{{else}} oklch(1 0 0) {{/if}};
             }
              .dark {
-                --background: {{#if @custom.background_color_dark}}{{@custom.background_color_dark}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
-                --foreground: {{#if @custom.text_color_dark}}{{@custom.text_color_dark}}{{else}} oklch(0.985 0 0) {{/if}};
+                --background: {{#if @custom.background_color_for_dark_mode}}{{@custom.background_color_for_dark_mode}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
+                --foreground: {{#if @custom.font_color_for_dark_mode}}{{@custom.font_color_for_dark_mode}}{{else}} oklch(0.985 0 0) {{/if}};
                 --color-background: var(--background);
                 --color-foreground: var(--foreground);
-                --sidebar: {{#if @custom.sidebar_background_color_dark}}{{@custom.sidebar_background_color_dark}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
+                --sidebar: {{#if @custom.sidebar_background_color_for_dark_mode}}{{@custom.sidebar_background_color_for_dark_mode}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
             }
         </style>
         {{ghost_head}}

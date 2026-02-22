@@ -13,17 +13,16 @@
         
         {{#match pagination.page "==" 1}}
 
-            {{#get "tags" limit="5" include="count.posts" order="count.postsdesc"}}
+            {{#get "tags" limit="5" include="count.posts" order="count.posts desc"}}
 
                 {{#if tags}}
-
                     {{!-- Show tags only on the first page --}}
-                    <div class="mb-28 mt-18 flex flex-wrap gap-5 justify-center space-x-10">
+                    <div class="mb-28 mt-18 flex flex-wrap gap-5 justify-center">
                         {{#foreach tags}}
-                        <a href="{{url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
-                            {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
-                            {{name}}
-                        </a>
+                            <a href="{{url}}" class="relative justify-center bg-[var(--ghost-accent-color)] text-white text-center px-3.5 py-2.5 rounded-full inline-flex gap-2.5 items-center no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
+                                <span> {{> "icons/tag" class="size-4 text-white"}} </span> 
+                                <span> {{name}} </span>
+                            </a>
                         {{/foreach}}
                     </div>
 
