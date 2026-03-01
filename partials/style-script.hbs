@@ -1,0 +1,62 @@
+{{#is "post"}}
+    <!-- Highlight.js CSS (Dark Theme) -->
+    <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
+{{/is}}
+    
+        
+<style>
+        body {
+            font-family: var(--font-body);
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+        }
+        :root {
+            --color-background: {{#if @custom.background_color_for_light_mode}} {{@custom.background_color_for_light_mode}} {{else}} var(--color-surface) {{/if}};
+            --color-foreground: {{#if @custom.font_color_for_light_mode}}{{@custom.font_color_for_light_mode}}{{else}} var(--color-on-surface) {{/if}};
+
+            --prose-color: var(--color-foreground);
+
+            --font-heading: var(--gh-font-heading), Arial, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-body: var(--gh-font-body), Helvetica, ui-sans, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+        }
+         .dark {
+            --color-background: {{#if @custom.background_color_for_dark_mode}}{{@custom.background_color_for_dark_mode}}{{else}} var(--color-surface-dark) {{/if}};
+            --color-foreground: {{#if @custom.font_color_for_dark_mode}}{{@custom.font_color_for_dark_mode}}{{else}} var(--color-on-surface-dark) {{/if}};
+            --prose-color: var(--color-foreground);
+            --font-heading: var(--gh-font-heading), Arial, ui-sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+            --font-body: var(--gh-font-body), Helvetica, ui-sans-serif, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+        }
+</style>
+
+
+<script>
+    
+
+    document.addEventListener('alpine:init', () => {
+        Alpine.data('themeSwitcher', () => ({
+            darkMode: localStorage.getItem('theme') === 'dark' ||  (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
+            toggle() {
+                this.darkMode = !this.darkMode;
+                localStorage.setItem('theme', this.darkMode ? 'dark' : 'light');
+                this.updateTheme();
+            },
+            updateTheme() {
+                if (this.darkMode) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            },
+            init() {
+                this.updateTheme();
+            }
+        }))
+    })
+
+</script>
+
+<script defer src="{{asset 'dist/js/alpine.js'}}"></script>
