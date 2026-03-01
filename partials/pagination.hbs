@@ -1,0 +1,16 @@
+<nav role="navigation" aria-label="Pagination" class="container mx-auto my-32 px-4 flex items-center">
+    {{#if prev}}
+        {{#> "button"  href=(page_url prev) class="h-14 w-14" aria="Previous page"}}
+            {{> "icons/chevron-left"}}
+        {{/ "button"}}
+    {{/if}}
+
+    <span class="text-sm mx-auto text-foreground">
+        Page {{page}} of {{pages}}
+    </span>
+    {{#if next}}
+        {{#> "button" href=(page_url next) class="h-14 w-14" aria="Next page"}}
+            {{> "icons/chevron-right"}}
+        {{/ "button"}}
+    {{/if}}
+</nav>
