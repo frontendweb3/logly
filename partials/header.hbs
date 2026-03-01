@@ -1,70 +1,106 @@
-<nav class="w-full px-3 py-3 lg:px-6">
-    <div class="flex items-center justify-between">
+<!-- top navbar  -->
+<header class="sticky top-0 z-10 flex items-center justify-between border-b border-outline bg-surface-alt px-4 py-2 dark:border-outline-dark dark:bg-surface-dark-alt"
+    aria-label="top navibation bar">
 
-        <div class="sm:w-3/6 lg:flex items-center justify-start gap-5">
-            <button id="logly-sidebar-show" type="button" aria-controls="default-sidebar" aria-expanded="false"
-                class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors lg:hidden dark:border-slate-700 dark:bg-slate-800">
-                <span class="sr-only">Open sidebar</span>
-                {{> "icons/open" }}
-            </button>
-        </div>
+    <div class="flex items-center gap-3">
+        <!-- toggle sidebar button for small screens  -->
+        <button type="button" class="md:hidden inline-block text-on-surface dark:text-on-surface-dark"
+            x-on:click="sidebarIsOpen = true">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-5"
+                aria-hidden="true">
+                <path
+                    d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
+            </svg>
+            <span class="sr-only">sidebar toggle</span>
+        </button>
 
-        <div class=" sm:w-3/6 justify-end flex items-center space-x-4">
-            
-            {{!-- Custom Search Form --}}
-            <button type="button"
-                aria-label="Open Search form"
-                class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                data-ghost-search>
-                {{> "icons/search"}}
-                <span class="sr-only">Search</span>
-            </button>
-            
-            {{!-- Theme Toggle Button --}}
-            <button
-                id="theme-toggle"
-                type="button"
-                aria-pressed="false"
-                aria-label="Switch to dark mode"
-                class="z-50 flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors hover:scale-110 dark:border-slate-700 dark:bg-slate-800"
-            >
-                <span id="theme-toggle-light-icon" class="hidden" aria-hidden="true">{{> "icons/sun" }}</span>
-                <span id="theme-toggle-dark-icon" class="hidden" aria-hidden="true">{{> "icons/moon" }}</span>
-                <span class="sr-only">Toggle color theme</span>
-            </button>
+        {{#if @custom.enable_breadcrumb }}
+             <!-- breadcrumbs  -->
+            <nav class="hidden md:inline-block text-sm font-medium text-on-surface dark:text-on-surface-dark" aria-label="breadcrumb">
+                <ol class="flex flex-wrap items-center gap-1">
+                    <li class="flex items-center gap-1">
+                        <a href="{{@site.url}}" class="hover:text-on-surface-strong dark:hover:text-on-surface-dark-strong">Home</a>
 
-            {{#if @site.twitter}}
-            <a aria-label="Visit our Twitter profile" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="{{social_url type="twitter" }}" target="_blank" rel="noopener noreferrer">
-                {{> "icons/twitter"}} {{!-- partials/icons/twitter.hbs --}}
-            </a>
-            {{/if}}
-            {{#if @site.facebook}}
-            <a aria-label="Visit our Facebook profile" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="{{social_url type="facebook" }}" target="_blank" rel="noopener noreferrer">
-                {{> "icons/facebook"}} {{!-- partials/icons/facebook.hbs --}}
-            </a>
-            {{/if}}
-
-            {{#if @member}}
-            <div class="hidden sm:block h-[20px] rounded-3xl w-0.5 bg-primary"></div>
-            <a href="#/portal/account"
-                aria-label="Open your account page"
-                class="hidden sm:flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
-                {{#if @member.avatar_image}}
-                {{!-- remove the query parameters from the Gravatar URL: https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}               
-                {{#foreach (split @member.avatar_image separator="?")}}
-                {{#if @first}}
-                <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar" decoding="async" />
-                {{/if}}
-                {{/foreach}}
-                {{else}}
-                <img class="h-9 w-9 rounded-full object-cover" src="{{asset "assets/images/profile.png"}}"
-                    alt="{{@member.name}} avatar" decoding="async" />
-                {{/if}}
-            </a>
-            {{/if}}
-
-        </div>
+                        {{^is "home" }}
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                            stroke-width="2" class="size-4" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                        </svg>
+                        {{/is}}
+                    </li>
+                    {{#if post}}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{post.title}}</li>
+                    {{else if tag}}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{tag.name}}</li>
+                    {{else if author}}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{author.name}}</li>
+                    {{else if page}}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{page.title}}</li>
+                    {{/if}}
+                </ol>
+            </nav>
+        {{/if}}
     </div>
-</nav>
+
+    <!-- social and profile menu -->
+    <div class="sm:w-3/6 justify-end flex items-center space-x-4">
+
+        {{!-- Custom Search Form --}}
+        <button data-ghost-search="true"  aria-pressed="false" aria-label="Open Search form" type="button"
+            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full border border-primary bg-primary p-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
+             {{> "icons/search"}}
+            <span class="sr-only">Search</span>
+        </button>
+
+        {{!-- Theme Toggle Button (Alpine) --}}
+
+        <button
+            x-data="themeSwitcher"
+            @click="toggle"
+            :aria-pressed="darkMode.toString()"
+            :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+            type="button"
+            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full border border-primary bg-primary p-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
+        >
+            <span x-show="!darkMode" x-cloak aria-hidden="true">{{> "icons/sun" }}</span>
+            <span x-show="darkMode" x-cloak aria-hidden="true">{{> "icons/moon" }}</span>
+            <span class="sr-only">Toggle color theme</span>
+        </button>
+
+
+        {{#if @site.twitter}}
+        {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
+        {{> "icons/twitter"}}
+        {{/ "button"}}
+        {{/if}}
+        
+        {{#if @site.facebook}}
+        {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
+        {{> "icons/facebook"}}
+        {{/ "button"}}
+        {{/if}}
+
+        {{#if @member}}
+        <div class="hidden sm:block h-[20px] rounded-3xl w-0.5 bg-primary dark:bg-primary-dark"></div>
+        <a href="#/portal/account" aria-label="Open your account page"
+            class="hidden sm:flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
+            {{#if @member.avatar_image}}
+            {{!-- remove the query parameters from the Gravatar URL:
+            https://www.gravatar.com/avatar/2a2c0d6c6a993402c5a107d39402e2fe?s=250&amp;r=g&amp;d=blank --}}
+            {{#foreach (split @member.avatar_image separator="?")}}
+            {{#if @first}}
+            <img class="h-9 w-9 rounded-full object-cover" src="{{this}}" alt="{{@member.name}} avatar"
+                decoding="async" />
+            {{/if}}
+            {{/foreach}}
+            {{else}}
+            <img class="h-9 w-9 rounded-full object-cover" src="{{asset "images/profile.png"}}"
+                alt="{{@member.name}} avatar" decoding="async" />
+            {{/if}}
+        </a>
+        {{/if}}
+
+    </div>
+
+
+</header>
