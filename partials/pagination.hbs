@@ -5,9 +5,11 @@
         {{/ "button"}}
     {{/if}}
 
-    <span class="text-sm mx-auto text-foreground">
+
+    <button type="button" class="whitespace-nowrap mx-auto bg-transparent rounded-full border border-primary px-4 py-2 text-sm font-medium tracking-wide text-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:text-primary-dark dark:focus-visible:outline-primary-dark">
         Page {{page}} of {{pages}}
-    </span>
+    </button>
+
     {{#if next}}
         {{#> "button" href=(page_url next) class="h-14 w-14" aria="Next page"}}
             {{> "icons/chevron-right"}}
