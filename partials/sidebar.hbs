@@ -1,14 +1,19 @@
-<aside id="default-sidebar" aria-label="Navigation"
-    class="fixed top-0 bg-sidebar left-0 z-50 flex h-screen w-72 -translate-x-full flex-col overflow-y-auto transition-transform duration-300 ease-in-out lg:z-70 lg:translate-x-0">
-    <button id="logly-sidebar-hide" type="button" aria-controls="default-sidebar" aria-expanded="true"
-        class="hover:text-foreground mt-18 ml-3 flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white 
-        shadow-sm transition-colors lg:hidden dark:border-slate-700 dark:bg-slate-800">
-        <span class="sr-only">Close sidebar</span>
-        {{> "icons/close" }} {{!-- partials/icons/close.hbs --}}
-    </button>
-    {{!-- logo --}}
-    <div class="sticky mt-20 w-full flex-grow overflow-y-auto px-3 py-4">
-        <a class="mb-5 flex items-center justify-center ps-2.5" href="{{@site.url}}">
+<div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-surface-dark/10 backdrop-blur-xs md:hidden" aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity></div>
+
+
+<nav
+    id="sidebar-navigation"
+    x-cloak
+    class="fixed left-0 z-30 flex items-stretch h-svh w-60 shrink-0 flex-col border-r border-outline bg-surface-alt p-4 transition-transform duration-300 -translate-x-60 md:w-64 md:translate-x-0 md:relative dark:border-outline-dark dark:bg-surface-dark-alt"
+    x-bind:class="sidebarIsOpen ? 'translate-x-0' : '-translate-x-60'"
+    aria-label="Sidebar navigation"
+    x-bind:aria-hidden="(!sidebarIsOpen).toString()"
+    x-bind:inert="sidebarIsOpen ? null : true"
+    x-init="sidebarIsOpen = false"
+>
+    
+    <!-- logo  -->
+    <a class="mb-10 mt-5 flex items-center justify-center ps-2.5" href="{{@site.url}}">
             {{#if @site.logo}}
                 <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}"
                     alt="{{@site.title}}" loading="lazy" decoding="async" />
@@ -24,24 +29,33 @@
                 {{@site.title}}
             </span>
             {{/if}}
-        </a>
-        <nav class="my-14">{{navigation}}</nav>
-    </div>
+     </a>
+
+    <!-- sidebar links  -->
+    <div class="flex mt-12 flex-col gap-2 overflow-y-auto pb-6"> {{navigation}} </div>
 
     {{!-- Signup actions pinned to bottom --}}
     <div class="mt-auto px-3 py-4 pt-4">
         <div class="flex flex-col gap-3">
             {{#unless @member}}
-            <a href="{{@site.url}}/#/portal/"
-                class="block w-full rounded-lg bg-primary hover:bg-secondary hover:text-secondary-foreground px-4 py-2.5 text-center text-sm  font-semibold text-primary-foreground shadow-sm  transition-colors">
+            
+            <a href="{{@site.url}}/#/portal/"  class="inline-flex justify-center items-center gap-2 whitespace-nowrap rounded-radius bg-primary border border-primary dark:border-primary-dark px-4 py-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
+                
+                <svg class="size-5 fill-on-primary dark:fill-on-primary-dark" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                </svg>
                 Sign up
             </a>
+            
             {{else}}
-            <button data-members-signout
-                class="block w-full rounded-lg bg-primary hover:bg-secondary hover:text-secondary-foreground px-4 py-2.5 text-center text-sm  font-semibold text-primary-foreground shadow-sm  transition-colors">
+            <button data-members-signout class="inline-flex justify-center items-center gap-2 whitespace-nowrap rounded-radius bg-primary border border-primary dark:border-primary-dark px-4 py-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
+                
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-log-out-icon lucide-log-out"><path d="m16 17 5-5-5-5"/><path d="M21 12H9"/><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/></svg>
+                
                 Sign out
             </button>
             {{/unless}}
         </div>
     </div>
-</aside>
+</nav>
