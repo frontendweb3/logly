@@ -101,35 +101,39 @@
                 "default": "card-first",
                 "description": "Choose which post card to use see on across the site"
             },
-            "copyright_enabled": {
+            "enable_breadcrumb": {
                 "type": "boolean",
                 "default": true,
-                "description": "Show or hide the footer copyright text"
+                "description": "Enable or disable breadcrumbs navigation in the header"
             },
-            "copyright_text": {
-                "type": "text",
-                "default": "",
-                "description": "Optional custom copyright message; leave blank to use the default"
+            "posts_grid_layout": {
+                "type": "select",
+                "options": [
+                    "two_columns",
+                    "three_columns"
+                ],
+                "default": "two_columns",
+                "description": "Choose whether post grids render in two or three columns."
             },
             "font_color_for_light_mode": {
                 "type": "color",
                 "default": "#000000",
-                "description": "text color used for entire website in light mode"
+                "description": "Change the font color for the whole website in light mode."
             },
             "font_color_for_dark_mode": {
                 "type": "color",
                 "default": "#ffffff",
-                "description": "text color used for entire website in dark mode"
+                "description": "Change the font color for the whole website in dark mode."
             },
             "background_color_for_light_mode": {
                 "type": "color",
                 "default": "#ffffff",
-                "description": "background color used throughout the website in light mode"
+                "description": "Change the background color for the whole website in light mode."
             },
             "background_color_for_dark_mode": {
                 "type": "color",
                 "default": "#000000",
-                "description": "background color used throughout the website in dark mode"
+                "description": "Change the background color for the whole website in dark mode."
             },
             "sidebar_background_color_for_dark_mode": {
                 "type": "color",
@@ -141,10 +145,15 @@
                 "default": "#ffffff",
                 "description": "Sidebar background color used throughout the website in light mode"
             },
-            "featured_enable": {
+            "copyright_enabled": {
                 "type": "boolean",
                 "default": true,
-                "description": "Enable or disable featured posts section on the homepage"
+                "description": "Show or hide the footer copyright text"
+            },
+            "copyright_text": {
+                "type": "text",
+                "default": "",
+                "description": "Optional custom copyright message; leave blank to use the default"
             }
         }
     },
