@@ -135,16 +135,6 @@
                 "default": "#000000",
                 "description": "Change the background color for the whole website in dark mode."
             },
-            "sidebar_background_color_for_dark_mode": {
-                "type": "color",
-                "default": "#000000",
-                "description": "Sidebar background color used throughout the website in dark mode"
-            },
-            "sidebar_background_color_for_light_mode": {
-                "type": "color",
-                "default": "#ffffff",
-                "description": "Sidebar background color used throughout the website in light mode"
-            },
             "copyright_enabled": {
                 "type": "boolean",
                 "default": true,
