@@ -4,14 +4,17 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="{{asset 'dist/css/index.css' hasMinFile=" true"}}" />
+    <link rel="stylesheet" href="{{asset 'dist/css/styles.css' hasMinFile=" true"}}" />
     <script src="{{asset 'dist/js/index.js'}}" defer></script>
     <title>{{statusCode}} — {{message}}</title>
+    <meta name="robots" content="noindex,nofollow">
+
+    {{> "style-script"}} {{!-- partials/style-script.hbs --}}
 
     {{ghost_head}}
 </head>
 
-<body class="{{body_class}} h-screen bg-background text-foreground relative flex overscroll-none">
+<body class="{{body_class}} h-screen bg-surface dark:bg-surface-dark  text-on-surface dark:text-on-surface-dark  relative flex overscroll-none">
     
     {{> "sidebar"}}
 
