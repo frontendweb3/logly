@@ -11,12 +11,11 @@
         h1, h2, h3, h4, h5, h6 {
             font-family: var(--font-heading);
         }
+        {{!-- # TODO: remove the varible replace with penguinui.css --}}
         :root {
             --color-background: {{#if @custom.background_color_for_light_mode}} {{@custom.background_color_for_light_mode}} {{else}} var(--color-surface) {{/if}};
             --color-foreground: {{#if @custom.font_color_for_light_mode}}{{@custom.font_color_for_light_mode}}{{else}} var(--color-on-surface) {{/if}};
-
             --prose-color: var(--color-foreground);
-
             --font-heading: var(--gh-font-heading), Arial, ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
             --font-body: var(--gh-font-body), Helvetica, ui-sans, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
