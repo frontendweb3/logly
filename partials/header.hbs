@@ -1,11 +1,17 @@
 <!-- top navbar  -->
 <header class="sticky top-0 z-10 flex items-center justify-between border-b border-outline bg-surface-alt px-4 py-2 dark:border-outline-dark dark:bg-surface-dark-alt"
-    aria-label="top navibation bar">
+    aria-label="Top navigation bar">
 
     <div class="flex items-center gap-3">
+        
         <!-- toggle sidebar button for small screens  -->
-        <button type="button" class="md:hidden inline-block text-on-surface dark:text-on-surface-dark"
-            x-on:click="sidebarIsOpen = true">
+        <button
+            type="button"
+            class="md:hidden inline-block text-on-surface dark:text-on-surface-dark"
+            x-on:click="sidebarIsOpen = true"
+            :aria-expanded="sidebarIsOpen.toString()"
+            aria-controls="sidebar-navigation"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-5"
                 aria-hidden="true">
                 <path
@@ -13,37 +19,39 @@
             </svg>
             <span class="sr-only">sidebar toggle</span>
         </button>
-
         {{#if @custom.enable_breadcrumb }}
              <!-- breadcrumbs  -->
             <nav class="hidden md:inline-block text-sm font-medium text-on-surface dark:text-on-surface-dark" aria-label="breadcrumb">
                 <ol class="flex flex-wrap items-center gap-1">
                     <li class="flex items-center gap-1">
                         <a href="{{@site.url}}" class="hover:text-on-surface-strong dark:hover:text-on-surface-dark-strong">Home</a>
-
                         {{^is "home" }}
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                            stroke-width="2" class="size-4" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                        </svg>
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
+                                stroke-width="2" class="size-4" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                            </svg>
                         {{/is}}
                     </li>
+                    {{#is "paged"}}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{pagination.page}}</li>
+                    {{/is}}
                     {{#if post}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{post.title}}</li>
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{post.title}}">{{post.title}}</li>
                     {{else if tag}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{tag.name}}</li>
-                    {{else if author}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{author.name}}</li>
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{tag.name}}">{{tag.name}}</li>
+                    {{else if author }}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{author.name}}">{{author.name}}</li>
                     {{else if page}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{page.title}}</li>
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{page.title}}">{{page.title}}</li>
                     {{/if}}
+
                 </ol>
             </nav>
         {{/if}}
     </div>
 
     <!-- social and profile menu -->
-    <div class="sm:w-3/6 justify-end flex items-center space-x-4">
+    <div class="justify-end flex items-center space-x-4">
 
         {{!-- Custom Search Form --}}
         <button data-ghost-search="true"  aria-pressed="false" aria-label="Open Search form" type="button"
