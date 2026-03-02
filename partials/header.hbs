@@ -19,6 +19,7 @@
             </svg>
             <span class="sr-only">sidebar toggle</span>
         </button>
+
         {{#if @custom.enable_breadcrumb }}
              <!-- breadcrumbs  -->
             <nav class="hidden md:inline-block text-sm font-medium text-on-surface dark:text-on-surface-dark" aria-label="breadcrumb">
@@ -47,6 +48,7 @@
 
                 </ol>
             </nav>
+
         {{/if}}
     </div>
 
@@ -60,8 +62,7 @@
             <span class="sr-only">Search</span>
         </button>
 
-        {{!-- Theme Toggle Button (Alpine) --}}
-
+        {{!-- Theme Toggle Button --}}
         <button
             x-data="themeSwitcher"
             @click="toggle"
@@ -70,8 +71,8 @@
             type="button"
             class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full border border-primary bg-primary p-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
         >
-            <span x-show="!darkMode" x-cloak aria-hidden="true">{{> "icons/sun" }}</span>
-            <span x-show="darkMode" x-cloak aria-hidden="true">{{> "icons/moon" }}</span>
+            <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "icons/sun" }}</span>
+            <span x-show="darkMode"  x-cloak aria-hidden="true"> {{> "icons/moon" }}</span>
             <span class="sr-only">Toggle color theme</span>
         </button>
 
