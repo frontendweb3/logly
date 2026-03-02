@@ -1,5 +1,7 @@
 {
     "singleQuote": true,
     "plugins": ["prettier-plugin-tailwindcss"],
-    "overrides": [{ "files": "*.hbs", "options": { "parser": "html" } }]
+    "overrides": [{ "files": "*.hbs", "options": { "parser": "html" } }],
+    "tailwindPreserveWhitespace": false,
+    "tailwindPreserveDuplicates": false
 }
