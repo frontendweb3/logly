@@ -1,120 +1,119 @@
-{{!< default}} 
+{{!< default}} {{#post}} 
 
-{{#post}}
- 
- <article
-    class="prose md:prose-lg lg:prose-xl xl:prose-2xl prose-img:w-full dark:prose-invert max-width prose-hr:bg-foreground dark:prose-hr:bg-background lg:max-width-4xl mx-auto mb-5 w-full py-10 border-b">
-    <header class="w-full flex flex-col justify-center px-4 pt-5 text-center">
-        <span class="flex justify-center text-center items-center text-sm">
-            {{#if primary_tag}}
-            <a href="{{primary_tag.url}}" class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
-                {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
-                {{primary_tag.name}}
-            </a>
-            <span class="mx-1">&bull;</span>
+    <article class="prose-sm prose-logly sm:prose-base lg:prose-lg dark:format-invert pt-8 pb-16 lg:pt-16 lg:pb-24 antialiased flex flex-col justify-between mx-auto"> 
+
+        <div  class="prose prose-logly mx-auto text-center flex flex-col w-full max-w-5xl">
+
+            <span class="flex justify-center text-center items-center text-sm">
+                {{#if primary_tag}}
+                    <a href="{{primary_tag.url}}"
+                        class="inline-flex gap-2 items-center py-0.5 no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
+                        {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
+                        {{primary_tag.name}}
+                    </a>
+                    <span class="mx-1">&bull;</span>
+                {{/if}}
+                {{reading_time}}
+            </span>
+
+            <h1
+                class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
+                {{title}}
+            </h1>
+
+            {{#if custom_excerpt}}
+            <p
+                class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,3vw,2rem)] font-light tracking-tight duration-400">
+                {{custom_excerpt}}
+            </p>
+            {{else}}
+            <p
+                class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,3vw,2rem)] font-light tracking-tight duration-400">
+                {{excerpt}}
+            </p>
             {{/if}}
-            {{reading_time}}
-        </span>
 
-        <h1
-            class="not-prose animate-in fade-in slide-in-from-bottom-4 inline-block align-middle text-[clamp(2rem,5vw,4rem)] font-bold tracking-tight duration-700">
-            {{title}}
-        </h1>
 
-        {{#if custom_excerpt}}
-        <p class="lead animate-in fade-in slide-in-from-bottom-3 inline-block align-middle text-[clamp(1rem,3vw,2rem)] font-light tracking-tight duration-400">
-            {{custom_excerpt}}
-        </p>
-        {{/if}}
-    </header>
+            <div class="flex flex-row items-center justify-center">
+                <ul class="flex list-none flex-row items-center justify-between text-sm font-semibold">
+                    <li class="hidden sm:inline-flex"><span>Published By</span></li>
+                    <li>
+                        {{#if authors}} {{#foreach authors}}
+                        <a href="{{url}}" title="{{name}}">{{name}}</a>
+                        {{#unless @last}}
+                        <span>,</span>
+                        {{/unless}} {{/foreach}} {{/if}}
+                    </li>
+                    <li><span>on</span></li>
+                    <li>
+                        <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
+                    </li>
+                </ul>
+            </div>
 
-    <div class="flex flex-row items-center justify-center">
-        <ul class="flex list-none flex-row items-center justify-between text-sm font-semibold">
-            <li class="hidden sm:inline-flex"><span>Published By</span></li>
-            <li>
-                {{#if authors}} {{#foreach authors}}
-                    <a href="{{url}}" title="{{name}}">{{name}}</a>
-                {{#unless @last}}
-                <span>,</span>
-                {{/unless}} {{/foreach}} {{/if}}
-            </li>
-            <li><span>on</span></li>
-            <li>
-                <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
-            </li>
-        </ul>
-    </div>
+        </div>
+
     
+
     {{!-- content --}}
 
-    <div class="flex w-full flex-row  gap-5">
+    <div aria-label="article content" class="relative prose prose-logly max-w-5xl prose-sm sm:prose-base lg:prose-lg mx-auto  w-full first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl
+             gap-5">
 
-        <div class="hidden not-prose md:flex flex-col items-center gap-5 mr-5">
+        <div class="hidden absolute top-5 -left-25 lg:flex flex-col items-center gap-5 mr-5">
 
             <span class="text-md font-bold uppercase mb-2 tracking-wide">Share</span>
 
-            <a aria-label="Share on Twitter"  class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://twitter.com/intent/tweet?url={{url absolute="true" }}&text={{title}}" target="_blank"
-                rel="noopener noreferrer">
+            {{#> "button" href=(concat 'https://twitter.com/intent/tweet?url=' (encode (url absolute='true')) '&text=' (encode title)) aria="Share on Twitter"}}
                 {{> "icons/twitter"}}
-            </a>
-            <a aria-label="Share on Facebook" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true" }}" target="_blank"
-                rel="noopener noreferrer">
-                {{> "icons/facebook"}}
-            </a>
+            {{/ "button"}}
 
-            <a aria-label="Share on LinkedIn" class="hover:text-primary flex size-10 items-center justify-center rounded-full border border-slate-200 bg-white shadow-sm transition-colors dark:border-slate-700 dark:bg-slate-800"
-                href="https://www.linkedin.com/sharing/share-offsite/?url={{url absolute="true" }}" target="_blank"
-                rel="noopener noreferrer">
-                {{> "icons/linkedin"}} {{!--
-                partials/icons/linkedin.hbs --}}
-            </a>
+             {{#> "button" href=(concat 'https://www.facebook.com/sharer/sharer.php?u=' (encode (url absolute='true'))) aria="Share on Facebook"}}
+                    {{> "icons/facebook"}}
+            {{/ "button"}}
+
+            {{#> "button" href=(concat 'https://www.linkedin.com/sharing/share-offsite/?url=' (encode (url absolute='true'))) aria="Share on LinkedIn"}}
+                    {{> "icons/linkedin"}}
+            {{/ "button"}}
 
         </div>
 
-        <div aria-label="article content" class="{{post_class}} w-full leading-relaxed first-letter:float-left first-letter:mr-3 first-letter:text-4xl first-letter:leading-none first-letter:font-bold md:first-letter:text-6xl lg:first-letter:text-7xl">
-            {{content}}
-        </div>
+        {{content}}
+        
     </div>
 
+        {{#if tags}}
+            <div class="my-20 flex flex-wrap max-w-5xl mx-auto justify-start gap-5">
+                {{#foreach tags}}
+                <a href="{{url}}"
+                    class="px-2.5 inline-flex gap-2 items-center py-0.5 text-sm no-underline hover:underline hover:underline-offset-4 {{slug}}">
+                    {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
+                    {{name}}
+                </a>
+                {{/foreach}}
+            </div>
+        {{/if}}
+   
 
-    {{#if tags}}
-    <div class="my-12 flex flex-wrap justify-start gap-5">
-        {{#foreach tags}}
-        <a href="{{url}}" class="px-2.5 inline-flex gap-2 items-center py-0.5 text-sm no-underline hover:underline hover:underline-offset-4 {{slug}}">
-            {{> "icons/tag" class="size-4"}} {{!-- partials/icons/tag.hbs --}}
-            {{name}}
-        </a>
-        {{/foreach}}
-    </div>
-    {{/if}}
-
-</article>
+    </article>
 
     {{!-- navigation Previous and Next Posts --}}
-    <div class="mx-auto my-32">
-        <div class="flex flex-col items-center justify-between gap-4 md:flex-row">
-            <div class="w-full text-left md:w-1/2">
-                {{#next_post}}
-                <a href="{{url}}"
-                    class="group inline-flex items-center gap-3 p-4 text-left transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
-                    {{> "icons/chevron-left"}} {{!-- partials/icons/chevron-left.hbs --}}
-                    <span class="mb-1 text-xs md:text-2xl">Previous Post</span>
-                </a>
-                {{/next_post}}
-            </div>
-            <div class="w-full text-right md:w-1/2">
-                {{#prev_post}}
-                <a href="{{url}}"
-                    class="group inline-flex items-center justify-end gap-3 p-4 text-right transition-colors duration-200 hover:text-gray-900 dark:hover:text-gray-100">
-                    <span class="mb-1 text-xs md:text-2xl">Next Post</span>
-                    {{> "icons/chevron-right"}} {{!-- partials/icons/chevron-right.hbs --}}
-                </a>
-                {{/prev_post}}
-            </div>
-        </div>
+
+    <div class="container mx-auto my-16 px-4 mt-10 flex flex-row justify-between items-center" role="navigation" aria-label="Pagination">
+        {{#prev_post}}
+            <a href="{{url}}" aria-label="Previous article" class="inline-flex h-16 w-16 justify-center items-center gap-2 whitespace-nowrap rounded-full bg-surface-alt border border-surface-alt dark:border-surface-dark-alt px-4 py-2 text-sm font-medium tracking-wide text-on-surface-strong transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-alt active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-surface-dark-alt dark:text-on-surface-dark-strong dark:focus-visible:outline-surface-dark-alt">
+                {{> "icons/chevron-left"}}
+            </a>
+        {{/prev_post}}
+        
+        {{#next_post}}
+            <a href="{{url}}" aria-label="Next article" class="inline-flex h-16 w-16 justify-center items-center gap-2 whitespace-nowrap rounded-full bg-surface-alt border border-surface-alt dark:border-surface-dark-alt px-4 py-2 text-sm font-medium tracking-wide text-on-surface-strong transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-surface-alt active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-surface-dark-alt dark:text-on-surface-dark-strong dark:focus-visible:outline-surface-dark-alt">
+                {{> "icons/chevron-right"}}
+            </a>
+        {{/next_post}}
     </div>
+
+
 
     {{!-- Author Related Posts --}}
     {{#get "posts" filter="authors:{{primary_author.slug}}+id:-{{id}}" limit="3" include="authors" as |related_posts| }}
@@ -125,9 +124,9 @@
         <h3 class="mt-5 mb-10 text-left text-xl font-bold lg:text-2xl">
             More By {{../primary_author.name}}
         </h3>
-        <div class="mt-6 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {{#foreach related_posts}} {{> "card"}} {{/foreach}}
-        </div>
+        {{!-- Posts --}}
+        {{> "layout/posts" posts=related_posts layout=@custom.posts_grid_layout }}
+
     </div>
 
     {{/if}}
@@ -137,13 +136,11 @@
     {{!-- comment --}}
     {{> "comment"}}
 
-    {{> "footer" }} {{!-- partials/footer.hbs --}}
-    
     {{/post}}
 
 
     {{!-- Download Highlight.js Scripts --}}
-    
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/javascript.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/typescript.min.js"></script>
@@ -152,6 +149,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/languages/css.min.js"></script>
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
-    
+
     {{!-- Highlight code and config the copy code button on code block --}}
     <script src="{{asset "dist/js/post.js"}}"></script>
