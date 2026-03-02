@@ -12,7 +12,7 @@
         sizes="(min-width:1024px) 33vw, (min-width:768px) 50vw, 100vw"
         src="{{img_url feature_image size='l' format='webp'}}"
         alt="{{title}}"
-        loading="lazy"
+        fetchpriority="high"
         decoding="async"
     />
     {{/if}}
@@ -28,7 +28,7 @@
                     class="mr-3 h-10 w-10 rounded-full"
                     src="{{primary_author.profile_image}}"
                     alt="{{primary_author.name}}"
-                    loading="lazy"
+                    fetchpriority="high"
                     decoding="async"
                 />
                 {{/if}}
