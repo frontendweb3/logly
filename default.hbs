@@ -1,77 +1,60 @@
 <!DOCTYPE html>
 <html lang="{{@site.locale}}" class="scroll-smooth">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="preload" as="style" href="{{asset 'dist/css/index.css' hasMinFile='true'}}" />
-        <link rel="stylesheet" type="text/css" href="{{asset 'dist/css/index.css' hasMinFile='true'}}" />
-        <link rel="preload" as="script" href="{{asset 'dist/js/index.js'}}" />
-        <script src="{{asset 'dist/js/index.js'}}" defer></script>
-       
-        {{#is "post"}}
-            <!-- Highlight.js CSS (Dark Theme) -->
-            <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
-        {{/is}}
-    
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" type="text/css" href="{{asset 'dist/css/styles.css'}}" />
+    <script src="{{asset 'dist/js/index.js'}}" defer></script>
+
+
+    {{> "style-script"}} {{!-- partials/style-script.hbs --}}
+
+    {{#is "paged"}}
+        <title> current page: {{pagination.page}} | {{@site.title}}</title>
+    {{else}}
         <title>{{meta_title}}</title>
+    {{/is}}
 
-        <script>
-            // On page load or when changing themes, best to add inline in `head` to avoid FOUC
-            if (
-                localStorage.getItem('color-theme') === 'dark' ||
-                (!('color-theme' in localStorage) &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches)
-            ) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        </script>
-        
-        <style>
-        
-            :root {
-                --background: {{#if @custom.background_color_for_light_mode}} {{@custom.background_color_for_light_mode}} {{else}} oklch(1 0 0) {{/if}};
-                --foreground: {{#if @custom.font_color_for_light_mode}}{{@custom.font_color_for_light_mode}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
-                --color-background: var(--background);
-                --color-foreground: var(--foreground);
-                --sidebar: {{#if @custom.sidebar_background_color_for_light_mode}}{{@custom.sidebar_background_color_for_light_mode}}{{else}} oklch(1 0 0) {{/if}};
-            }
-             .dark {
-                --background: {{#if @custom.background_color_for_dark_mode}}{{@custom.background_color_for_dark_mode}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
-                --foreground: {{#if @custom.font_color_for_dark_mode}}{{@custom.font_color_for_dark_mode}}{{else}} oklch(0.985 0 0) {{/if}};
-                --color-background: var(--background);
-                --color-foreground: var(--foreground);
-                --sidebar: {{#if @custom.sidebar_background_color_for_dark_mode}}{{@custom.sidebar_background_color_for_dark_mode}}{{else}} oklch(0.141 0.005 285.823) {{/if}};
-            }
-        </style>
-        {{ghost_head}}
-    </head>
+    {{ghost_head}}
 
-    <body class="{{body_class}} bg-background text-foreground relative p-0 m-0 overscroll-none">
+</head>
 
-        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-black">
-            Skip to main content
-        </a>
-        
-        {{!-- wrap with main element to show Announcement --}}
-        <main class="m-0 flex p-0" id="main-content" tabindex="-1">
+<body class="{{body_class}} bg-surface dark:bg-surface-dark  text-on-surface dark:text-on-surface-dark overflow-hidden relative p-0 m-0">
 
-            {{> "sidebar"}}
+    <main x-data="{ sidebarIsOpen: false }" class="relative flex min-h-screen w-full flex-col md:flex-row">
 
-            <div class="lg:ml-72 w-full overscroll-y-none px-10 py-8">
+        <!-- dark overlay for when the sidebar is open on smaller screens  -->
+        <div x-cloak x-show="sidebarIsOpen" class="fixed inset-0 z-20 bg-surface-dark/10 backdrop-blur-xs md:hidden" aria-hidden="true" x-on:click="sidebarIsOpen = false" x-transition.opacity ></div>
 
-                {{!-- Header --}} 
-                {{> "header"}} 
-                
-                {{!-- Content --}} 
-                {{{body}}}
 
+        {{!-- This allows screen readers to skip the sidebar and go directly to the main content. --}}
+        <a class="sr-only" href="#main-content">skip to the main content</a>
+
+        {{!-- Sidebar --}}
+        {{> "sidebar"}}
+
+        <!-- top navbar & main content  -->
+        <div class="flex h-svh w-full flex-col">
+
+            {{> "header"}}
+
+            <div id="main-content" class="flex-1 h-svh w-full p-4 overflow-y-auto px-4 py-4 md:overflow-y-auto">
+                <div class="p-2">
+
+                    {{!--  Add main content here  --}}
+                    {{{body}}}
+                    
+                    {{!-- partials/footer.hbs --}}
+                    {{> "footer"}} 
+                </div>
             </div>
+        </div>
 
-        </main>
-        
-        {{ghost_foot}}
+    </main>
 
-    </body>
+    {{ghost_foot}}
+
+</body>
+
 </html>
