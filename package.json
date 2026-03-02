@@ -91,6 +91,15 @@
                 "default": "",
                 "description": "Logo used in dark mode"
             },
+            "layout": {
+                "type": "select",
+                "options": [
+                    "two_columns",
+                    "three_columns"
+                ],
+                "default": "two_columns",
+                "description": "Choose whether post grids render in two or three columns."
+            },
             "card_style": {
                 "type": "select",
                 "options": [
@@ -105,15 +114,6 @@
                 "type": "boolean",
                 "default": true,
                 "description": "Enable or disable breadcrumbs navigation in the header"
-            },
-            "posts_grid_layout": {
-                "type": "select",
-                "options": [
-                    "two_columns",
-                    "three_columns"
-                ],
-                "default": "two_columns",
-                "description": "Choose whether post grids render in two or three columns."
             },
             "font_color_for_light_mode": {
                 "type": "color",

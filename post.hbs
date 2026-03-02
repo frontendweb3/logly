@@ -84,6 +84,7 @@
 
         {{#if tags}}
             <div class="my-20 flex flex-wrap max-w-5xl mx-auto justify-start gap-5">
+                <span class="px-2.5 inline-flex gap-2 items-center py-0.5 text-sm no-underline">TOPIC :</span>
                 {{#foreach tags}}
                 <a href="{{url}}"
                     class="px-2.5 inline-flex gap-2 items-center py-0.5 text-sm no-underline hover:underline hover:underline-offset-4 {{slug}}">
@@ -125,7 +126,7 @@
             More By {{../primary_author.name}}
         </h3>
         {{!-- Posts --}}
-        {{> "layout/posts" posts=related_posts layout=@custom.posts_grid_layout }}
+        {{> "layout/posts" posts=related_posts layout=@custom.layout }}
 
     </div>
 
