@@ -36,15 +36,19 @@
                     {{#is "paged"}}
                         <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{pagination.page}}</li>
                     {{/is}}
-                    {{#if post}}
+
+                    {{#is "post"}}
                         <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{post.title}}">{{post.title}}</li>
-                    {{else if tag}}
+                    {{/is}}
+                    {{#is "tag"}}
                         <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{tag.name}}">{{tag.name}}</li>
-                    {{else if author }}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{author.name}}">{{author.name}}</li>
-                    {{else if page}}
+                    {{/is}}
+                    {{#is "author"}}
+                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{primary_author.name}}">{{primary_author.name}}</li>
+                    {{/is}}
+                     {{#is "page"}}
                         <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{page.title}}">{{page.title}}</li>
-                    {{/if}}
+                    {{/is}}
 
                 </ol>
             </nav>
