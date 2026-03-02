@@ -4,16 +4,16 @@
 
     <header class="mx-auto w-full px-8 pt-12 pb-8 md:px-12">
         <div class="flex flex-col gap-4">
-            <h1 class="flex items-center gap-4 text-5xl font-bold tracking-tight text-slate-900 md:text-6xl dark:text-white">
+            <h1 class="flex items-center gap-4 text-5xl font-bold tracking-tight md:text-6xl ">
                  {{> "icons/tag"}} {{!-- partials/icons/tag.hbs --}}
                 <span>{{name}} </span>
             </h1>
             {{#if description}}
-            <p class="max-w-2xl text-lg leading-relaxed">
+            <p class="max-w-4xl text-lg leading-relaxed">
                 {{description}} {{!-- Display the tag description if it exists --}}
             </p>
             {{else}}
-            <p class="max-w-2xl text-lg leading-relaxed">
+            <p class="max-w-4xl text-lg leading-relaxed">
                 A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}} tagged with # {{name}}.
             </p>
             {{/if}}
