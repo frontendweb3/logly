@@ -1,52 +1,31 @@
 {{!< default}} 
+<div class="container mx-auto">
 
-<div class="p-4 md:p-8 lg:p-12">
+    {{#match pagination.page "==" 1}}
 
-    {{#if @custom.featured_enable }}
+    {{#get "tags" limit="5" include="count.posts" order="count.posts desc"}}
 
-        {{!-- Show feature layout only on the first page --}}
-        {{#match pagination.page "==" 1 }}
-            {{> feature }}
-        {{/match}}
-            
-    {{/if}}
-        
-        {{#match pagination.page "==" 1}}
-
-            {{#get "tags" limit="5" include="count.posts" order="count.posts desc"}}
-
-                {{#if tags}}
-                    {{!-- Show tags only on the first page --}}
-                    <div class="mb-28 mt-18 flex flex-wrap gap-5 justify-center">
-                        {{#foreach tags}}
-                            <a href="{{url}}" class="relative justify-center bg-[var(--ghost-accent-color)] text-white text-center px-3.5 py-2.5 rounded-full inline-flex gap-2.5 items-center no-underline hover:underline hover:underline-offset-4 {{primary_tag.slug}}">
-                                <span> {{> "icons/tag" class="size-4 text-white"}} </span> 
-                                <span> {{name}} </span>
-                            </a>
-                        {{/foreach}}
-                    </div>
-
-                {{/if}}
-
-            {{/get}}
-
-        {{/match}}
-
-        {{!-- Posts --}}
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            
-            {{!-- On page 1, skip the four featured posts; on later pages, show all available posts --}}
-            {{#match pagination.page "==" 1}}
-                {{#foreach posts from="5" limit="10"}}
-                    {{> "card"}}
-                {{/foreach}}
-            {{else}}
-                {{#foreach posts}}
-                    {{> "card"}}
-                {{/foreach}}
-            {{/match}}
-
-        </div>
-        {{!-- If JS isn't enabled, fallback to standard pagination --}}
-        <div class="mt-20 text-center"> {{pagination}} </div>
+    {{#if tags}}
+    {{!-- Show tags only on the first page --}}
+    <div class="mb-28 mt-20 flex flex-wrap gap-5 justify-center">
+        {{#foreach tags}}
+            <a href="{{url}}"
+                class="inline-flex justify-center items-center gap-2 whitespace-nowrap rounded-full bg-primary border border-primary dark:border-primary-dark px-4 py-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
+            {{> "icons/tag" class="size-4 "}}
+                {{name}}
+            </a>
+        {{/foreach}}
     </div>
+
+    {{/if}}
+
+    {{/get}}
+
+    {{/match}}
+
+    {{!-- Posts --}}
+    {{> "layout/posts" posts=posts layout=@custom.posts_grid_layout }}
+
+    <div class="mt-20"> {{pagination}} </div>
+
+</div>
