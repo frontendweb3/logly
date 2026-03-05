@@ -2,24 +2,27 @@
 
 A stylish, modern, and content-focused theme for Ghost. Logly is designed to be easy to use and customize, providing a great reading experience for your audience.
 
-&nbsp;
+## Demo
+
+![Desktop](./assets/screenshot-desktop.png)
+![Mobile](./assets/screenshot-mobile.png)
 
 ## Installation Guide
 
 Installing the Logly theme on your Ghost blog is a straightforward process. Follow these simple steps:
 
-1.  **Download the Theme**
-    - Navigate to the [releases page](https://github.com/frontendweb3/logly/releases) of this repository.
-    - Download the latest `logly.zip` file.
+1. **Download the Theme**
+   - Navigate to the [releases page](https://github.com/frontendweb3/logly/releases) of this repository.
+   - Download the latest `logly.zip` file from latest release.
 
-2.  **Upload to Ghost**
-    - Log in to your Ghost admin panel.
-    - Go to **Settings** -> **Design**.
-    - Click on **Change theme** and then click the **Upload theme** button.
-    - Select the `logly.zip` file you downloaded.
+2. **Upload to Ghost**
+   - Log in to your Ghost admin panel.
+   - Go to **Settings** -> **Design**.
+   - Click on **Change theme** and then click the **Upload theme** button.
+   - Select the `logly.zip` file you downloaded.
 
-3.  **Activate the Theme**
-    - Once the upload is complete, click **Activate** to start using the Logly theme on your site.
+3. **Activate the Theme**
+   - Once the upload is complete, click **Activate** to start using the Logly theme on your site.
 
 That's it! Your Ghost blog is now using the Logly theme.
 

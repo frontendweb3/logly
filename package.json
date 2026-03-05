@@ -8,7 +8,8 @@
     },
     "license": "MIT",
     "screenshots": {
-        "desktop": "assets/images/screenshot-desktop.png"
+        "desktop": "assets/images/screenshot-desktop.png",
+        "mobile": "assets/images/screenshot-mobile.png"
     },
     "scripts": {
         "build": "node esbuild.config.js",
