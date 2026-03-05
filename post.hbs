@@ -36,15 +36,11 @@
 
             <div class="flex flex-row items-center justify-center">
                 <ul class="flex list-none flex-row items-center justify-between text-sm font-semibold">
-                    <li class="hidden sm:inline-flex"><span>Published By</span></li>
-                    <li>
-                        {{#if authors}} {{#foreach authors}}
-                        <a href="{{url}}" title="{{name}}">{{name}}</a>
+                      {{#if authors}} {{#foreach authors}}
+                        <li> <a class="underline-offset-0 transition-[text-underline-offset] duration-300 hover:underline hover:underline-offset-4" href="{{url}}" title="{{name}}">{{name}}</a> </li>
                         {{#unless @last}}
-                        <span>,</span>
+                        <li>,</li>
                         {{/unless}} {{/foreach}} {{/if}}
-                    </li>
-                    <li><span>on</span></li>
                     <li>
                         <time datetime="{{date format='YYYY-MM-DD'}}">{{date format="DD MMMM YYYY"}}</time>
                     </li>
