@@ -5,9 +5,12 @@ A stylish, modern, and content-focused theme for Ghost. Logly is designed to be 
 <details>
     
 <summary>  Demo </summary>
-    
-![Desktop](./assets/screenshot-desktop.png)
 
+<video src="https://github.com/user-attachments/assets/acfe60fe-ab90-4a51-be87-2ce51e7aa990" width="600"></video>
+
+> Image 1
+![Desktop](./assets/screenshot-desktop.png)
+> Image 2
 ![Mobile](./assets/screenshot-mobile.png)
 
 </details>
