@@ -44,7 +44,7 @@
                         <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{tag.name}}">{{tag.name}}</li>
                     {{/is}}
                     {{#is "author"}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{author.name}}">{{author.name}}</li>
+                        {{{block "breadcrumb-author"}}}
                     {{/is}}
                      {{#is "page"}}
                         <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{page.title}}">{{page.title}}</li>
