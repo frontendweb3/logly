@@ -1,50 +1,49 @@
-@import 'tailwindcss';
-@plugin '@tailwindcss/typography';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@import "tw-animate-css";
 @import './penguinui.css';
 
+/* Tell Tailwind to scan all theme templates */
 @source '../**/*.hbs';
 @source '../../**/*.hbs';
-@source '../assets/js/**/*.js';
-
-@custom-variant dark (&:where(.dark, .dark *));
+@source '../assets/**/*.{js,css}';
 
 @custom-variant dark (&:is(.dark *));
 
-/* Add Dynamic Fonts in site on entire website*/
-@layer utilities {
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-        font-family: var(--gh-font-heading, 'Inter'), system-ui, sans-serif;
-    }
+@theme {
+  /* Ghost CMS dynamic font support */
+  --font-heading: var(--gh-font-heading, var(--font-inter));
+  --font-body: var(--gh-font-body, var(--font-inter));
+}
 
-    p,
-    span,
-    a,
-    li,
-    blockquote,
-    code {
-        font-family: var(--gh-font-body, 'Inter'), system-ui, sans-serif;
-    }
+@layer base {
 
+  body {
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
 
-    /* Remove borders/lines from highlight.js line-numbers wrapper so code blocks stay clean */
+  body :where(:not(h1, h2, h3, h4, h5, h6)) {
+    font-family: var(--font-body);
+  }
 
-    .hljs-ln,
-    .hljs-ln table,
-    .hljs-ln tr,
-    .hljs-ln td {
-        border: 0 !important;
-        outline: 0 !important;
-    }
+  body :where(h1, h2, h3, h4, h5, h6) {
+    font-family: var(--font-heading);
+    font-weight: 700;
+  }
 
-    .hljs-ln td {
-        padding: 0;
-    }
+  /* Remove borders from highlight.js line-numbers wrapper */
+  .hljs-ln,
+  .hljs-ln table,
+  .hljs-ln tr,
+  .hljs-ln td {
+    border: 0 !important;
+    outline: 0 !important;
+  }
+
+  .hljs-ln td {
+    padding: 0;
+  }
 }
 
 /* Add the support fonts in tailwindcss-typography */
@@ -67,6 +66,7 @@
     --tw-prose-pre-bg: rgba(0, 0, 0, 0.05);
     --tw-prose-th-borders: var(--prose-color);
     --tw-prose-td-borders: var(--prose-color);
+    
     /* dark mode */
     --tw-prose-invert-body: var(--prose-color);
     --tw-prose-invert-headings: var(--prose-color);
@@ -84,14 +84,21 @@
     --tw-prose-invert-pre-bg: rgba(255, 255, 255, 0.08);
     --tw-prose-invert-th-borders: var(--prose-color);
     --tw-prose-invert-td-borders: var(--prose-color);
+    
 }
 
 @layer components {
 
     /* Add the support fonts in tailwindcss-typography */
-    .prose {
+    /* .prose {
         --tw-prose-body: var(--gh-font-body);
         --tw-prose-headings: var(--gh-font-heading);
+    } */
+
+     /* ── Prose / Ghost card styles ── */
+    .prose {
+        --tw-prose-body: var(--font-body);
+        --tw-prose-headings: var(--font-heading);
     }
 
     .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card) {
@@ -106,7 +113,7 @@
         @apply w-full h-auto m-0;
     }
     .prose :where(.kg-bookmark-thumbnail) {
-        @apply -mt-0;
+        @apply mt-0;
     }
 
     .prose :where(.kg-bookmark-thumbnail) img {

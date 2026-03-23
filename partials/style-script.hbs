@@ -1,6 +1,10 @@
+<link rel="stylesheet" href="{{asset 'dist/css/main.css'}}" />
+<script defer src="{{asset 'dist/js/main.js'}}"></script>
+
 {{#is "post"}}
     <!-- Highlight.js CSS (Dark Theme) -->
     <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css"/>
+    <script defer src="{{asset 'dist/js/post.js'}}"></script>
 {{/is}}
             
 <style>
@@ -66,4 +70,4 @@
 
 </script>
 
-<script defer src="{{asset 'dist/js/alpine.js'}}"></script>
+
