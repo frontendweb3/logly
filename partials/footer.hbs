@@ -1,53 +1,32 @@
-<footer class="mx-auto mt-12 w-full px-8 py-12">
-    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-8 md:flex-row">
-        <div class="flex flex-col items-center gap-2 md:items-start">
-            <div class="flex items-center justify-center ps-2.5">
-                {{#if @site.logo}}
-                <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}" alt="{{@site.title}}"
-                    loading="lazy" decoding="async" />
-                {{#if @custom.logo_dark}}
-                <img width="120" height="120" class="hidden dark:block" src="{{@custom.logo_dark}}"
-                    alt="{{@site.title}}" loading="lazy" decoding="async" />
-                {{else}}
-                <img width="120" height="120" class="hidden dark:block" src="{{@site.logo}}" alt="{{@site.title}}"
-                    loading="lazy" decoding="async" />
-                {{/if}}
-                {{else}}
-                <span class="text-heading self-center text-lg font-semibold whitespace-nowrap">
-                    {{@site.title}}
-                </span>
-                {{/if}}
-            </div>
-        </div>
-
-    <nav aria-label="Footer navigation"> {{navigation type='secondary'}} </nav>
-
-        <div class="flex gap-4">
-            {{#if @site.twitter}}
-                {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
-                    {{> "icons/twitter"}}
-                {{/ "button"}}
-            {{/if}}
-
-            {{#if @site.facebook}}
-                {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
-                    {{> "icons/facebook"}}
-                {{/ "button"}}
-            {{/if}}
-        </div>
-    </div>
-    {{!-- Optional copyright line controlled by theme settings --}}
-    {{#if @custom.copyright_enabled}}
-    <div aria-label="Copyright information" class="mt-24 text-center text-sm">
-        <p>
-            {{#if @custom.copyright_text}}
-            {{@custom.copyright_text}}
+<!-- Footer -->
+<footer
+    class="container mx-auto border-t w-full pt-12 mt-28 mb-5 flex flex-col lg:flex-row justify-between items-center gap-8">
+        <div class="flex flex-col gap-2">
+            {{#if @site.logo}}
+            <img width="120" height="120" class="block dark:hidden" src="{{@site.logo}}" alt="{{@site.title}}"
+                loading="lazy" decoding="async" />
+            {{#if @custom.logo_dark}}
+            <img width="120" height="120" class="hidden dark:block" src="{{@custom.logo_dark}}" alt="{{@site.title}}"
+                loading="lazy" decoding="async" />
             {{else}}
-            Copyright &copy; {{date format="YYYY"}} {{@site.title}}. <a target="_blank"
-                class="underline underline-offset-4" href="https://github.com/frontendweb3">Frontend Web</a>. All rights
-            reserved.
+            <img width="120" height="120" class="hidden dark:block" src="{{@site.logo}}" alt="{{@site.title}}"
+                loading="lazy" decoding="async" />
             {{/if}}
-        </p>
-    </div>
-    {{/if}}
+            {{else}}
+            <span class="text-xl tracking-tighter"> {{@site.title}} </span>
+            {{/if}}
+
+            {{#if @custom.copyright_enabled}}
+            <span class="text-xs text-on-surface-variant">
+                {{#if @custom.copyright_text}} {{@custom.copyright_text}}
+                {{else}} Copyright &copy; {{date format="YYYY"}} {{@site.title}}. <a target="_blank" class="underline underline-offset-4" href="https://github.com/frontendweb3">Frontend Web</a>. All
+                rights reserved.
+                {{/if}}
+            </span>
+            {{/if}}
+        </div>
+
+        <div class="flex gap-8">
+            <nav aria-label="Footer navigation"> {{navigation type='secondary'}} </nav>
+        </div>
 </footer>
