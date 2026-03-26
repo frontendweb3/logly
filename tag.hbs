@@ -1,26 +1,24 @@
-{{!< default}} 
+{{!< default}} {{#tag}} 
 
-{{#tag}}
+<!-- Hero Section -->
+    <section class="mb-20 mt-10 mx-auto w-full px-8 md:px-12">
+        <h1 class="text-[5rem] md:text-[7rem] font-extrabold tracking-tighter leading-none mb-8"> {{name}} </h1>
+        <div class="max-w-2xl">
 
-    <header class="mx-auto w-full px-8 pt-12 pb-8 md:px-12">
-        <div class="flex flex-col gap-4">
-            <h1 class="flex items-center gap-4 text-5xl font-bold tracking-tight md:text-6xl ">
-                 {{> "icons/tag"}} {{!-- partials/icons/tag.hbs --}}
-                <span>{{name}} </span>
-            </h1>
-            {{#if description}}
-            <p class="max-w-4xl text-lg leading-relaxed">
-                {{description}} {{!-- Display the tag description if it exists --}}
+            <p class="text-xl leading-relaxed font-light">
+                {{#if description}} {{description}} {{else}} A collection of {{plural ../pagination.total empty='posts'
+                singular='% post' plural='% posts'}} tagged with # {{name}}.
+
+                {{/if}}
+
             </p>
-            {{else}}
-            <p class="max-w-4xl text-lg leading-relaxed">
-                A collection of {{plural ../pagination.total empty='posts' singular='% post' plural='% posts'}} tagged with # {{name}}.
-            </p>
-            {{/if}}
+
         </div>
-    </header>
+    </section>
 
-{{/tag}}
 
-<!-- Articles Grid -->
-{{> "layout/posts" posts=posts layout=@custom.layout }}
+
+    {{/tag}}
+
+    <!-- Articles Grid -->
+    {{> "layout/posts" posts=posts layout=@custom.layout }}

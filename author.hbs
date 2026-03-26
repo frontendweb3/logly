@@ -1,120 +1,84 @@
 {{!< default}} 
 
-    
-{{#author}}
+{{#author}} 
 
-{{#contentFor "breadcrumb-author"}}
-    <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{name}}">{{name}}</li>
+{{#contentFor "breadcrumb-author"}} 
+<li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{name}}">{{name}}</li>
 {{/contentFor}}
 
-    <header class="mx-auto max-w-6xl px-6 pt-16 pb-12">
-        <div class="flex flex-col items-center gap-8 md:flex-row md:items-start">
+    <!-- Profile Header Section -->
+    <section class="max-w-4xl mx-auto text-center mb-24 mt-12">
+        <div class="relative inline-block mb-10 group">
             {{#if profile_image}}
-
-            <div class="group relative">
-                <div class="size-32 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-                    <img class="h-full w-full object-cover" src="{{profile_image}}" alt="{{name}}" loading="lazy"
-                        decoding="async" />
+                <div class="w-40 h-40 md:w-44 md:h-44 rounded-full overflow-hidden p-1 bg-linear-to-tr from-primary dark:from-primary-dark to-on-primary dark:to-on-primary-dark shadow-2xl">
+                    <img class="w-full h-full object-cover rounded-full transition-all duration-700" src="{{profile_image}}" alt="{{name}}" loading="lazy" decoding="async" />
                 </div>
-                <div
-                    class="absolute right-2 bottom-2 size-5 rounded-full border-4 border-white bg-green-500 dark:border-slate-800">
-                </div>
-            </div>
-
             {{else}}
-
-            <div class="group relative">
-                <div class="size-32 overflow-hidden rounded-full border-4 border-white shadow-xl dark:border-slate-800">
-                    <img class="h-full w-full object-cover" src="{{asset "images/profile.png"}}" alt="{{name}}" loading="lazy"
-                        decoding="async" />
-                </div>
-                <div
-                    class="absolute right-2 bottom-2 size-5 rounded-full border-4 border-white bg-green-500 dark:border-slate-800">
-                </div>
+            <div class="w-40 h-40 md:w-44 md:h-44 rounded-full flex items-center justify-center overflow-hidden p-1 bg-linear-to-tr from-primary text-on-primary dark:text-on-primary-dark dark:from-primary-dark to-on-primary shadow-2xl">
+                {{> "components/icon" name="circle-user-round" class="size-40" ariaLabel="User icon"}} 
             </div>
-
             {{/if}}
-
-            <div class="flex-1 text-center md:text-left">
-                <div class="mb-4 flex flex-col gap-4 md:flex-row md:items-center">
-                    <h2 class="text-4xl font-extrabold tracking-tight">
-                        {{name}}
-                    </h2>
-                </div>
-                {{#if bio}}
-                <p class="mb-6 max-w-2xl text-xl leading-relaxed ">
-                    {{bio}}
-                </p>
-                {{/if}}
-
-                <div class="flex flex-col items-center gap-6 md:flex-row">
-                    <div class="flex justify-center gap-3 md:justify-start">
-                        
-                        {{#if twitter}}
-                            {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
-                                {{> "icons/twitter"}}
-                            {{/ "button"}}
-                        {{/if}} 
-                        
-                        {{#if facebook}}
-
-                            {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
-                                {{> "icons/facebook"}}
-                            {{/ "button"}}
-
-                        {{/if}}                   
-
-                        {{#if tiktok}}
-                            {{#> "button" href=(social_url type="tiktok") aria="Visit our TikTok profile"}}
-                                {{> "icons/tiktok"}}
-                            {{/ "button"}}
-                        {{/if}} 
-                        {{#if linkedin}}
-                       
-                            {{#> "button" href=(social_url type="linkedin") aria="Visit our LinkedIn profile"}}
-                                {{> "icons/linkedin"}}
-                            {{/ "button"}}
-
-                        {{/if}} 
-                        {{#if website}}
-                            {{#> "button" href=(social_url type="website") aria="Visit our website"}}
-                                {{> "icons/website"}} {{!-- partials/icons/website.hbs --}}
-                            {{/ "button"}}
-                        {{/if}} 
-                        {{#if youtube}}
-                            {{#> "button" href=(social_url type="youtube") aria="Visit our YouTube channel"}}
-                                {{> "icons/youtube"}} {{!-- partials/icons/youtube.hbs --}}
-                            {{/ "button"}}
-                        {{/if }} 
-                        {{#if instagram}}
-                            {{#> "button" href=(social_url type="instagram") aria="Visit our Instagram profile"}}
-                                {{> "icons/instagram"}} {{!-- partials/icons/instagram.hbs --}}
-                            {{/ "button"}}
-                        {{/if}}
-                    </div>
-                    <div class="flex items-center gap-2 font-medium">
-                        {{#if location }}
-                            <span> {{location}} </span>
-                            <span class="h-1 w-1 rounded-full bg-surface-alt dark:surface-alt-dark md:block "></span>
-                        {{/if}}
-                        <span>
-                            {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}}
-                        </span>
-                    </div>
-                </div>
+            <div class="absolute -bottom-2 -right-2 bg-primary text-on-primary w-10 h-10 rounded-full flex items-center justify-center border-4 border-surface shadow-xl">
+                {{> "components/icon" name="badge-check" class="size-5" ariaLabel="badge check icon"}}
+                {{primary_tag.name}}
             </div>
         </div>
-    </header>
+        <h1 class="text-5xl md:text-7xl font-black tracking-tighter mb-6 uppercase"> {{name}} </h1>
+        {{#if bio}}
+        <p class="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto font-light leading-relaxed mb-10">{{bio}}</p>
+        {{/if}}
+        <div class="flex items-center justify-center space-x-6">
+            {{#if twitter}}
+            {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
+            {{> "icons/twitter"}}
+            {{/ "button"}}
+            {{/if}}
+
+            {{#if facebook}}
+            {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
+            {{> "icons/facebook"}}
+            {{/ "button"}}
+            {{/if}}
+
+            {{#if tiktok}}
+            {{#> "button" href=(social_url type="tiktok") aria="Visit our TikTok profile"}}
+            {{> "icons/tiktok"}}
+            {{/ "button"}}
+            {{/if}}
+            {{#if linkedin}}
+            {{#> "button" href=(social_url type="linkedin") aria="Visit our LinkedIn profile"}}
+            {{> "icons/linkedin"}}
+            {{/ "button"}}
+            {{/if}}
+            {{#if website}}
+            {{#> "button" href=(social_url type="website") aria="Visit our website"}}
+            {{> "icons/website"}} {{!-- partials/icons/website.hbs --}}
+            {{/ "button"}}
+            {{/if}}
+            {{#if youtube}}
+            {{#> "button" href=(social_url type="youtube") aria="Visit our YouTube channel"}}
+            {{> "icons/youtube"}} {{!-- partials/icons/youtube.hbs --}}
+            {{/ "button"}}
+            {{/if }}
+            {{#if instagram}}
+            {{#> "button" href=(social_url type="instagram") aria="Visit our Instagram profile"}}
+            {{> "icons/instagram"}} {{!-- partials/icons/instagram.hbs --}}
+            {{/ "button"}}
+            {{/if}}
+            {{#if location }} <span> {{location}} </span> {{> "components/icon" name="dot" ariaLabel="dot icon"}}
+            {{/if}}
+            <span> {{plural ../pagination.total empty='No posts' singular='% post' plural='% posts'}} </span>
+        </div>
+    </section>
 
 {{/author}}
-    
+
     <section class="container mx-auto my-20 px-6">
         {{#author}}
-                <h3 class="text-xl lg:text-2xl xl:text-3xl font-bold tracking-tight">
-                    Latest from {{name}}
-                </h3>
+        <h3 class="text-xl lg:text-2xl xl:text-3xl font-bold tracking-tight">
+            Latest from {{name}}
+        </h3>
         {{/author}}
     </section>
-        
-        {{> "layout/posts" posts=posts layout=@custom.layout }}
 
+    {{> "layout/posts" posts=posts layout=@custom.layout }}
