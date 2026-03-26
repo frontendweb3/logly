@@ -1,57 +1,53 @@
 <!-- top navbar  -->
-<header class="sticky top-0 z-10 flex items-center h-16 justify-between border-b border-outline bg-surface-alt px-4 py-2 dark:border-outline-dark dark:bg-surface-dark-alt"
-    aria-label="Top navigation bar">
+<header class="sticky top-0 z-10 flex items-center h-16 justify-between px-4 py-2.5" aria-label="Top navigation bar">
 
     <div class="flex items-center gap-3">
-        
+
         <!-- toggle sidebar button for small screens  -->
-        <button
-            type="button"
-            class="md:hidden inline-block text-on-surface dark:text-on-surface-dark"
-            x-on:click="sidebarIsOpen = true"
-            :aria-expanded="sidebarIsOpen.toString()"
-            aria-controls="sidebar-navigation"
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="size-5"
-                aria-hidden="true">
-                <path
-                    d="M0 3a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2zm5-1v12h9a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM4 2H2a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h2z" />
-            </svg>
-            <span class="sr-only">sidebar toggle</span>
-        </button>
+        <div class="md:hidden flex items-center gap-3">
+            <button type="button" class="inline-block text-on-surface dark:text-on-surface-dark"
+                x-on:click="sidebarIsOpen = true" :aria-expanded="sidebarIsOpen.toString()"
+                aria-controls="sidebar-navigation">
+                {{> "components/icon" name="panel-left" class="size-4" ariaLabel="panel left icon"}}
+                <span class="sr-only">sidebar toggle</span>
+            </button>
+            <a href="{{@site.url}}" class="text-on-surface dark:text-on-surface-dark">
+                {{> "components/icon" name="house" class="size-4" ariaLabel="home icon"}}
+            </a>
+        </div>
 
         {{#if @custom.enable_breadcrumb }}
-             <!-- breadcrumbs  -->
-            <nav class="hidden md:inline-block text-sm font-medium text-on-surface dark:text-on-surface-dark" aria-label="breadcrumb">
-                <ol class="flex flex-wrap items-center gap-1">
-                    <li class="flex items-center gap-1">
-                        <a href="{{@site.url}}" class="hover:text-on-surface-strong dark:hover:text-on-surface-dark-strong">Home</a>
-                        {{^is "home" }}
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke="currentColor" fill="none"
-                                stroke-width="2" class="size-4" aria-hidden="true">
-                                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                            </svg>
-                        {{/is}}
-                    </li>
-                    {{#is "paged"}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="page">{{pagination.page}}</li>
-                    {{/is}}
+        <!-- breadcrumbs  -->
+        <nav class="hidden md:inline-block text-sm font-medium " aria-label="breadcrumb">
+            <ol class="flex flex-wrap items-center gap-1">
+                {{^is "home" }}
+                <li class="flex items-center gap-1 text-on-surface dark:text-on-surface-dark">
+                    <a href="{{@site.url}}" >
+                        {{> "components/icon" name="house" class="size-5" ariaLabel="home icon"}}
+                    </a>
+                    {{> "components/icon" name="chevron-right" class="size-4" ariaLabel="chevron right icon"}}
+                </li>
+                {{/is}}
 
-                    {{#is "post"}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{post.title}}">{{post.title}}</li>
-                    {{/is}}
-                    {{#is "tag"}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{tag.name}}">{{tag.name}}</li>
-                    {{/is}}
-                    {{#is "author"}}
-                        {{{block "breadcrumb-author"}}}
-                    {{/is}}
-                     {{#is "page"}}
-                        <li class="flex items-center gap-1 font-bold text-on-surface-strong dark:text-on-surface-dark-strong" aria-current="{{page.title}}">{{page.title}}</li>
-                    {{/is}}
+                {{#is "paged"}}
+                <li class="flex items-center gap-1" aria-current="page">{{pagination.page}}</li>
+                {{/is}}
 
-                </ol>
-            </nav>
+                {{#is "post"}}
+                <li class="flex items-center gap-1" aria-current="{{post.title}}">{{post.title}}</li>
+                {{/is}}
+                {{#is "tag"}}
+                <li class="flex items-center gap-1" aria-current="{{tag.name}}">{{tag.name}}</li>
+                {{/is}}
+                {{#is "author"}}
+                    {{{block "breadcrumb-author"}}}
+                {{/is}}
+                {{#is "page"}}
+                <li class="flex items-center gap-1" aria-current="{{page.title}}">{{page.title}}</li>
+                {{/is}}
+
+            </ol>
+        </nav>
 
         {{/if}}
     </div>
@@ -60,33 +56,32 @@
     <div class="justify-end flex items-center space-x-4">
 
         {{!-- Custom Search Form --}}
-        <button data-ghost-search="true"  aria-pressed="false" aria-label="Open Search form" type="button"
-            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full border border-primary bg-primary p-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark">
-             {{> "icons/search"}}
+        <button data-ghost-search="true" aria-pressed="false" aria-label="Open Search form" type="button"
+            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
+            {{> "components/icon" name="search" ariaLabel="search icon"}}
             <span class="sr-only">Search</span>
         </button>
 
         {{!-- Theme Toggle Button --}}
-        <button
-            x-data="themeSwitcher"
-            @click="toggle"
-            :aria-pressed="darkMode.toString()"
-            :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'"
-            type="button"
-            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full border border-primary bg-primary p-2 text-sm font-medium tracking-wide text-on-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:bg-primary-dark dark:text-on-primary-dark dark:focus-visible:outline-primary-dark"
-        >
-            <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "icons/sun" }}</span>
-            <span x-show="darkMode"  x-cloak aria-hidden="true"> {{> "icons/moon" }}</span>
+        <button x-data="themeSwitcher" @click="toggle" :aria-pressed="darkMode.toString()"
+            :aria-label="darkMode ? 'Switch to light mode' : 'Switch to dark mode'" type="button"
+            class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
+            <span x-show="!darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="sun" ariaLabel="sun icon"}}</span>
+            <span x-show="darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="moon" ariaLabel="moon icon"}}</span>
             <span class="sr-only">Toggle color theme</span>
         </button>
 
+        {{#> "button" href="/rss" aria="Visit our RSS feed"}}
+        {{> "components/icon" name="rss" ariaLabel="RSS icon"}}
+        {{/ "button"}}
 
+        {{!-- Twitter --}}
         {{#if @site.twitter}}
         {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
         {{> "icons/twitter"}}
         {{/ "button"}}
         {{/if}}
-        
+        {{!-- Facebook --}}
         {{#if @site.facebook}}
         {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
         {{> "icons/facebook"}}
@@ -94,7 +89,7 @@
         {{/if}}
 
         {{#if @member}}
-        <div class="hidden sm:block h-[20px] rounded-3xl w-0.5 bg-primary dark:bg-primary-dark"></div>
+        <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-primary dark:bg-primary-dark"></div>
         <a href="#/portal/account" aria-label="Open your account page"
             class="hidden sm:flex items-center gap-2 rounded-full shadow-sm transition-colors hover:text-primary dark:border-slate-700 dark:bg-slate-800">
             {{#if @member.avatar_image}}
@@ -107,6 +102,7 @@
             {{/if}}
             {{/foreach}}
             {{else}}
+            {{!-- #TODO: Fix image profile --}}
             <img class="h-9 w-9 rounded-full object-cover" src="{{asset "images/profile.png"}}"
                 alt="{{@member.name}} avatar" decoding="async" />
             {{/if}}
