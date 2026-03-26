@@ -22,4 +22,5 @@ projectFilesBackup
 .DS_Store
 
 dist/
-logly.zip
+logly-*.zip
+*.zip
