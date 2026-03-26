@@ -1,7 +1,5 @@
 # Builds the theme zip and uploads it as a release asset whenever a GitHub
-# Release is published. Uses only the built-in GITHUB_TOKEN — no extra secrets
-# or PATs are required. To trigger: publish a release in the GitHub UI or via
-# the API. The uploaded asset will be named logly-<tag>.zip.
+# Release is published. Uses only the built-in GITHUB_TOKEN.
 name: Release Zip
 
 env:
@@ -31,27 +29,32 @@ jobs:
           version: 9
           run_install: false
 
-      - name: Enable corepack (safety)
+      - name: Enable corepack
         run: corepack enable
-
-      - name: Check pnpm
-        run: pnpm --version
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Test theme
+        run: pnpm run test
+
       - name: Build assets
         run: pnpm run build
 
-      - name:  ls command
-        run: ls -la
-
-      - name: Check if zip file exists
-        run: '[ -e "logly-${{ github.event.release.tag_name }}.zip" ] && echo "logly-${{ github.event.release.tag_name }}.zip exists" || echo "logly-${{ github.event.release.tag_name }}.zip not found"'
-
       - name: Upload release asset
-        uses: softprops/action-gh-release@v2.6.1
-        with:
-          files: logly-${{ github.event.release.tag_name }}.zip
-          tag_name: ${{ github.event.release.tag_name }}
-          token: ${{ github.token }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # Get name and version from package.json
+          NAME=$(node -p "require('./package.json').name")
+          VERSION=$(node -p "require('./package.json').version")
+          ZIP_NAME="${NAME}-${VERSION}.zip"
+          
+          echo "Uploading $ZIP_NAME to release ${{ github.event.release.tag_name }}..."
+          
+          if [ -f "$ZIP_NAME" ]; then
+            gh release upload "${{ github.event.release.tag_name }}" "$ZIP_NAME" --clobber
+          else
+            echo "Error: $ZIP_NAME not found!"
+            exit 1
+          fi
