@@ -2,48 +2,49 @@
 @plugin "@tailwindcss/typography";
 @import "tw-animate-css";
 @import './penguinui.css';
+@import './scrollbar.css';
 
 /* Tell Tailwind to scan all theme templates */
 @source '../**/*.hbs';
 @source '../../**/*.hbs';
-@source '../assets/**/*.{js,css}';
+@source '../assets/**/*.{js,css,png,jpg,jpeg,gif,svg,webp,avif}';
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
-  /* Ghost CMS dynamic font support */
-  --font-heading: var(--gh-font-heading, var(--font-inter));
-  --font-body: var(--gh-font-body, var(--font-inter));
+    /* Ghost CMS dynamic font support */
+    --font-heading: var(--gh-font-heading, var(--font-inter));
+    --font-body: var(--gh-font-body, var(--font-inter));
 }
 
 @layer base {
 
-  body {
-    font-family: var(--font-body);
-    font-weight: 400;
-  }
+    body {
+        font-family: var(--font-body);
+        font-weight: 400;
+    }
 
-  body :where(:not(h1, h2, h3, h4, h5, h6)) {
-    font-family: var(--font-body);
-  }
+    body :where(:not(h1, h2, h3, h4, h5, h6)) {
+        font-family: var(--font-body);
+    }
 
-  body :where(h1, h2, h3, h4, h5, h6) {
-    font-family: var(--font-heading);
-    font-weight: 700;
-  }
+    body :where(h1, h2, h3, h4, h5, h6) {
+        font-family: var(--font-heading);
+        font-weight: 700;
+    }
 
-  /* Remove borders from highlight.js line-numbers wrapper */
-  .hljs-ln,
-  .hljs-ln table,
-  .hljs-ln tr,
-  .hljs-ln td {
-    border: 0 !important;
-    outline: 0 !important;
-  }
+    /* Remove borders from highlight.js line-numbers wrapper */
+    .hljs-ln,
+    .hljs-ln table,
+    .hljs-ln tr,
+    .hljs-ln td {
+        border: 0 !important;
+        outline: 0 !important;
+    }
 
-  .hljs-ln td {
-    padding: 0;
-  }
+    .hljs-ln td {
+        padding: 0;
+    }
 }
 
 /* Add the support fonts in tailwindcss-typography */
@@ -95,55 +96,69 @@
         --tw-prose-headings: var(--gh-font-heading);
     } */
 
-     /* ── Prose / Ghost card styles ── */
+    /* ── Prose / Ghost card styles ── */
     .prose {
+        @apply relative max-w-none;
         --tw-prose-body: var(--font-body);
         --tw-prose-headings: var(--font-heading);
     }
 
-    .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card) {
-        @apply w-full mx-auto ;
+    .prose :where(.kg-card) {
+        @apply w-full mx-auto;
     }
 
     .prose :where(.kg-bookmark-content, .kg-file-card-container) {
-        @apply bg-surface-alt text-on-surface dark:text-on-surface-dark-strong dark:bg-surface-dark-alt ;
+        @apply bg-surface-alt text-on-surface dark:text-on-surface-dark-strong dark:bg-surface-dark-alt;
     }
 
-    .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card, .kg-bookmark-thumbnail ) img {
+    .prose :where(.kg-card) img {
         @apply w-full h-auto m-0;
     }
+
     .prose :where(.kg-bookmark-thumbnail) {
         @apply mt-0;
     }
 
     .prose :where(.kg-bookmark-thumbnail) img {
-        @apply -top-8! w-full h-auto object-cover m-0;
+        @apply -top-8 w-full h-auto object-cover m-0;
     }
 
     .prose :where(.kg-embed-card) iframe {
         @apply h-120 w-full;
-    }    
-    
-   .prose :where(.kg-card, .kg-image-card, .kg-gallery-card, .kg-embed-card, .kg-bookmark-card) figcaption {
+    }
+
+    .prose :where(.kg-card) figcaption {
         @apply text-center;
     }
-    .prose :where(.kg-width-wide) {
-        @apply w-[min(1100px,90vw)] max-w-[min(1100px,90vw)] lg:w-[min(1200px,85vw)] mx-auto;
-    }
 
+    /* ghost cms handle .kg-width-full card */
     .prose :where(.kg-width-full) {
-        @apply relative left-1/2 right-1/2 -z-10 w-screen max-w-[70vw] -translate-x-1/2 transform;
+        @apply relative left-1/2 -translate-x-1/2 w-screen max-w-none;
     }
 
-    .prose :where(.kg-width-full, .kg-width-wide) img {
-        @apply w-full h-auto m-0;
+    @media (min-width: 768px) {
+        .prose :where(.kg-width-full) {
+            width: calc(100vw - 18rem);
+        }
     }
+
+    /* ghost cms handle .kg-width-wide card */
+    .prose :where(.kg-width-wide) {
+        @apply relative left-1/2 -translate-x-1/2 w-screen max-w-none;
+    }
+
+    @media (min-width: 768px) {
+        .prose :where(.kg-width-wide) {
+            @apply w-324;
+        }
+    }
+
 
     .prose :where(.kg-gallery-container, .kg-gallery-row) {
         @apply w-full mx-auto;
     }
 
     .prose :where(.kg-gallery-row) {
-        @apply w-full max-w-none flex-col! gap-1 md:flex-row! flex-wrap!;
+        @apply w-full max-w-none flex-col gap-1 md:flex-row flex-wrap!;
     }
 }

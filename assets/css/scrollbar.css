@@ -1,0 +1,32 @@
+
+/* /design scroll bar using the https://scrollbar.app website */
+@layer utilities {
+ 
+  .scrollbar-custom {
+    --sb-track-color: #232E33;
+    --sb-thumb-color: #ffffff;
+    --sb-size: 10px;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar {
+    width: var(--sb-size);
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-track {
+    background: var(--sb-track-color);
+    border-radius: 0.375rem;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-thumb {
+    background: var(--sb-thumb-color);
+    border-radius: 0.375rem;
+    /* border-radius: 3px; */
+    border: 1px solid #232E33;
+  }
+
+  .scrollbar-custom::-webkit-scrollbar-button {
+    display: none;
+    height: 0;
+    width: 0;
+  }
+}

@@ -18,7 +18,8 @@
         "format": "prettier .",
         "format-fix": "prettier --write .",
         "test": "pnpm dlx gscan@5.2.5 . --v6",
-        "pretest": "npm run build"
+        "pretest": "npm run build",
+        "clean": "rm -rf dist"
     },
     "author": {
         "name": "Rajdeep Singh",
@@ -49,6 +50,7 @@
         "@tailwindcss/typography": "^0.5.19",
         "@tailwindcss/vite": "^4.2.1",
         "@types/node": "^22.0.0",
+        "highlight.js": "^11.11.1",
         "prettier": "^3.7.3",
         "prettier-plugin-handlebars": "^0.0.1",
         "prettier-plugin-tailwindcss": "^0.7.2",
@@ -145,6 +147,21 @@
                 "type": "text",
                 "default": "",
                 "description": "Optional custom copyright message; leave blank to use the default"
+            },
+            "enable_title_and_description": {
+                "type": "boolean",
+                "default": true,
+                "description": "Show or hide the title and description on index page"
+            },
+            "title": {
+                "type": "text",
+                "default": "Logly Editorial",
+                "description": "Optional custom title for the website; leave blank to use the default"
+            },
+            "description": {
+                "type": "text",
+                "default": "Exploring the intersection of modern code and premium design. A curated journal for developers who value aesthetic excellence as much as functional logic.",
+                "description": "Optional custom description for the website; leave blank to use the default"
             }
         }
     },
