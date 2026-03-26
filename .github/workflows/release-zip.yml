@@ -4,6 +4,9 @@
 # the API. The uploaded asset will be named logly-<tag>.zip.
 name: Release Zip
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 on:
   release:
     types: [published]
@@ -15,15 +18,15 @@ jobs:
       contents: write
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
-          node-version: 20
+          node-version: 24
 
       - name: Setup pnpm
-        uses: pnpm/action-setup@v4.2.0
+        uses: pnpm/action-setup@v5.0.0
         with:
           version: 9
           run_install: false
@@ -43,8 +46,11 @@ jobs:
       - name:  ls command
         run: ls -la
 
+      - name: Check if zip file exists
+        run: '[ -e "logly-${{ github.event.release.tag_name }}.zip" ] && echo "logly-${{ github.event.release.tag_name }}.zip exists" || echo "logly-${{ github.event.release.tag_name }}.zip not found"'
+
       - name: Upload release asset
-        uses: softprops/action-gh-release@v2.5.0
+        uses: softprops/action-gh-release@v2.6.1
         with:
           files: logly-${{ github.event.release.tag_name }}.zip
           tag_name: ${{ github.event.release.tag_name }}
