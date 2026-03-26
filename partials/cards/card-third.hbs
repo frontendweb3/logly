@@ -1,5 +1,5 @@
 <a href="{{url}}">
-    <div class="group flex flex-col shadow-sm overflow-hidden bg-surface-alt text-on-surface dark:border-outline-dark dark:bg-surface-dark-alt dark:text-on-surface-dark cursor-pointer  rounded-2xl  transition-all duration-300">
+    <div class="group flex flex-col shadow-sm h-full overflow-hidden bg-surface-alt text-on-surface dark:border-outline-dark dark:bg-surface-dark-alt dark:text-on-surface-dark cursor-pointer  rounded-2xl  transition-all duration-300">
         
         {{#if feature_image}}
         <div class="mb-4 h-80 overflow-hidden rounded-sm">
@@ -17,34 +17,27 @@
             />
         </div>
         {{/if}}
-
         <div class="flex flex-col gap-3 p-5">
             <div class="mb-2 flex flex-row items-center justify-between">
-                <time
-                    class="text-xs"
-                    datetime="{{date format='YYYY-MM-DD'}}"
-                >
+                <time class="text-xs" datetime="{{date format='DD MMMM YYYY'}}">
                     {{date format='DD MMMM YYYY'}}
                 </time>
                 {{#if primary_tag}}
-                <span class="text-xs">
-                    # {{primary_tag.name}}
+                <span class="flex gap-0.5 items-center uppercase text-sm">
+                    {{> "components/icon" name="hash" class="size-4" ariaLabel="hash icon"}} {{primary_tag.name}}
                 </span>
                 {{/if}}
             </div>
 
-            <h2
-                class="mb-2 text-lg leading-snug font-bold  transition-colors"
-            >
+            <h2 class="mb-2 text-lg leading-snug font-bold  transition-colors">
                 {{title}}
             </h2>
-            <p class="line-clamp-3 text-sm">
-                {{excerpt characters='100'}}
-            </p>
+
+            <p class="line-clamp-3 text-sm"> {{excerpt characters='100'}} </p>
+            
             <div class="mt-3.5 flex items-center justify-between mb-2 text-xs font-bold tracking-wide" >
                <span>{{primary_author.name}}</span>
-
-               <span>{{reading_time}}</span>
+               <span class="uppercase">{{reading_time}}</span>
             </div>
         </div>
     </div>
