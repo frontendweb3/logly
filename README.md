@@ -2,10 +2,7 @@
 
 A stylish, modern, and content-focused theme for Ghost. Logly is designed to be easy to use and customize, providing a great reading experience for your audience.
 
-<details>
-    
-<summary>  Demo </summary>
-
+<details> <summary>  Demo </summary>
 <video src="https://github.com/user-attachments/assets/acfe60fe-ab90-4a51-be87-2ce51e7aa990" width="600"></video>
 
 > Image 1
@@ -14,8 +11,6 @@ A stylish, modern, and content-focused theme for Ghost. Logly is designed to be 
 ![Mobile](./assets/screenshot-mobile.png)
 
 </details>
-
-
 
 ## Installation Guide
 
@@ -69,23 +64,31 @@ This will compile the assets and enable live reloading. Any changes to CSS, Java
 
 ### 3. Build for Production
 
-When you're ready to deploy your changes, build the theme assets for production.
+When you're ready to deploy your changes, build the theme assets for production and  create a zip file.
 
 ```bash
 pnpm run build
 ```
 
-### 4. Create a Zip Archive
-
-To upload your customized theme to Ghost, create a zip file.
-
-```bash
-pnpm run zip
-```
-
 This will create a `logly.zip` file in the root of the project, which you can then upload to your Ghost blog.
 
-&nbsp;
+## 🟦 Background Variables
+
+1. `--color-surface`: The main background color for the page (usually white in light mode).
+
+2. `--color-surface-alt`: An alternate background color used for sections, cards, or sidebars to create subtle contrast.
+
+3. `--color-surface-dark`: The main background color for Dark Mode (usually a very dark neutral or slate).
+
+## 📝 Text Variables
+
+1. `--color-on-surface`: The standard body text color (usually a medium-dark gray).
+
+2. `--color-on-surface-strong`: Used for headings, bold text, or anything that needs high emphasis (usually near-black).
+
+3. `--color-on-surface-dark`: The standard text color for Dark Mode.
+
+4. `--color-on-surface-dark-strong`: High-emphasis text for Dark Mode (usually pure white).
 
 ## Copyright & License
 
