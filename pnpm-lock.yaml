@@ -30,6 +30,12 @@ importers:
       highlight.js:
         specifier: ^11.11.1
         version: 11.11.1
+      highlightjs-copy:
+        specifier: ^1.0.6
+        version: 1.0.6
+      highlightjs-line-numbers.js:
+        specifier: ^2.9.1
+        version: 2.9.1
       prettier:
         specifier: ^3.7.3
         version: 3.8.1
@@ -724,6 +730,12 @@ packages:
   highlight.js@11.11.1:
     resolution: {integrity: sha512-Xwwo44whKBVCYoliBQwaPvtd/2tYFkRQtXDWj1nackaV2JPXx3L0+Jvd8/qCJ2p+ML0/XVkJ2q+Mr+UVdpJK5w==}
     engines: {node: '>=12.0.0'}
+
+  highlightjs-copy@1.0.6:
+    resolution: {integrity: sha512-UaHIlJ4rkk5R4OVDnpgxevIuYdHggN5sPgs3E/2FKLxypvzAQVTOZl66hm8cEnhrEoLHTGkQymLtfJ/efyv24Q==}
+
+  highlightjs-line-numbers.js@2.9.1:
+    resolution: {integrity: sha512-OVLCl58g9hvY11jDCMDjyIM1HcWtElogmRpBBVb0KxMDXxtket58iHA4ex8HCWmQuR1rorYWkQ+4wn3S2T+xlg==}
 
   immediate@3.0.6:
     resolution: {integrity: sha512-XXOFtyqDjNDAQxVfYxuF7g9Il/IbWmmlQg2MYKOH8ExIT1qg6xc4zyS3HaEEATgs1btfzxq15ciUiY7gjSXRGQ==}
@@ -1559,6 +1571,10 @@ snapshots:
       uglify-js: 3.19.3
 
   highlight.js@11.11.1: {}
+
+  highlightjs-copy@1.0.6: {}
+
+  highlightjs-line-numbers.js@2.9.1: {}
 
   immediate@3.0.6: {}
 

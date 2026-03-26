@@ -51,6 +51,8 @@
         "@tailwindcss/vite": "^4.2.1",
         "@types/node": "^22.0.0",
         "highlight.js": "^11.11.1",
+        "highlightjs-copy": "^1.0.6",
+        "highlightjs-line-numbers.js": "^2.9.1",
         "prettier": "^3.7.3",
         "prettier-plugin-handlebars": "^0.0.1",
         "prettier-plugin-tailwindcss": "^0.7.2",
