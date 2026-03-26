@@ -1,8 +1,8 @@
 @theme {
     
     /* Fonts */
-    --font-title: 'Poppins', sans-serif;
-    --font-paragraph: 'Inter', sans-serif;
+    --font-title: "Inter Variable", sans-serif;
+    --font-paragraph: "Inter Variable", sans-serif;
     
     /* Light Theme */
     --color-surface: var(--color-white);
