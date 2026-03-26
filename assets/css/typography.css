@@ -1,0 +1,40 @@
+/* Add the support fonts in tailwindcss-typography */
+@utility prose-logly {
+
+    /* light mode */
+    --tw-prose-body: var(--prose-color);
+    --tw-prose-headings: var(--prose-color);
+    --tw-prose-lead: var(--prose-color);
+    --tw-prose-links: var(--prose-color);
+    --tw-prose-bold: var(--prose-color);
+    --tw-prose-counters: var(--prose-color);
+    --tw-prose-bullets: var(--prose-color);
+    --tw-prose-hr: var(--prose-color);
+    --tw-prose-quotes: var(--prose-color);
+    --tw-prose-quote-borders: var(--prose-color);
+    --tw-prose-captions: var(--prose-color);
+    /* --tw-prose-code: var(--prose-color); */
+    /* --tw-prose-pre-code: var(--prose-color); */
+    --tw-prose-pre-bg: rgba(0, 0, 0, 0.05);
+    --tw-prose-th-borders: var(--prose-color);
+    --tw-prose-td-borders: var(--prose-color);
+    
+    /* dark mode */
+    --tw-prose-invert-body: var(--prose-color);
+    --tw-prose-invert-headings: var(--prose-color);
+    --tw-prose-invert-lead: var(--prose-color);
+    --tw-prose-invert-links: var(--prose-color);
+    --tw-prose-invert-bold: var(--prose-color);
+    --tw-prose-invert-counters: var(--prose-color);
+    --tw-prose-invert-bullets: var(--prose-color);
+    --tw-prose-invert-hr: var(--prose-color);
+    --tw-prose-invert-quotes: var(--prose-color);
+    --tw-prose-invert-quote-borders: var(--prose-color);
+    --tw-prose-invert-captions: var(--prose-color);
+    /* --tw-prose-invert-code: var(--prose-color); */
+    /* --tw-prose-invert-pre-code: var(--prose-color); */
+    --tw-prose-invert-pre-bg: rgba(255, 255, 255, 0.08);
+    --tw-prose-invert-th-borders: var(--prose-color);
+    --tw-prose-invert-td-borders: var(--prose-color);
+    
+}
