@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
+@import "@fontsource-variable/inter";
 @import "tw-animate-css";
 @import './penguinui.css';
 @import './scrollbar.css';
@@ -11,27 +12,10 @@
 
 @custom-variant dark (&:is(.dark *));
 
-@theme {
-    /* Ghost CMS dynamic font support */
-    --font-heading: var(--gh-font-heading, var(--font-inter));
-    --font-body: var(--gh-font-body, var(--font-inter));
-}
+/* @theme {
+} */
 
 @layer base {
-
-    body {
-        font-family: var(--font-body);
-        font-weight: 400;
-    }
-
-    body :where(:not(h1, h2, h3, h4, h5, h6)) {
-        font-family: var(--font-body);
-    }
-
-    body :where(h1, h2, h3, h4, h5, h6) {
-        font-family: var(--font-heading);
-        font-weight: 700;
-    }
 
     /* Remove borders from highlight.js line-numbers wrapper */
     .hljs-ln,

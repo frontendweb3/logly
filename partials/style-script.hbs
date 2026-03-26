@@ -2,39 +2,39 @@
 <script defer src="{{asset 'dist/js/main.js'}}"></script>
 
 {{#is "post, page"}}
-        
-    {{!-- Download Highlight.js Scripts --}}
     {{!-- Highlight code and config the copy code button on code block --}}
-    <script src="{{asset "dist/js/post.js"}}"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
-
+    <script defer src="{{asset "dist/js/post.js"}}"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
 {{/is}}
             
 <style>
-        body {
-            font-family: var(--font-body);
-        }
+    /* Ghost CMS dynamic font support */
+    --font-heading: var(--gh-font-heading, "Inter Variable");
+    --font-body: var(--gh-font-body, "Inter Variable");
+    
+    body :where(:not(h1, h2, h3, h4, h5, h6)) {
+        font-family: var(--font-body);
+    }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: var(--font-heading);
-        }
+    body :where(h1, h2, h3, h4, h5, h6) {
+        font-family: var(--font-heading);
+        font-weight: 700;
+    }
+       
+    :root {
+        --color-background: {{#if @custom.background_color_for_light_mode}} {{@custom.background_color_for_light_mode}} {{else}} var(--color-surface) {{/if}};
+        --color-foreground: {{#if @custom.font_color_for_light_mode}}{{@custom.font_color_for_light_mode}}{{else}} var(--color-on-surface) {{/if}};
+        --prose-color: var(--color-foreground);
+    }
+    .dark {
+        --color-background: {{#if @custom.background_color_for_dark_mode}}{{@custom.background_color_for_dark_mode}}{{else}} var(--color-surface-dark) {{/if}};
+        --color-foreground: {{#if @custom.font_color_for_dark_mode}}{{@custom.font_color_for_dark_mode}}{{else}} var(--color-on-surface-dark) {{/if}};
+        --prose-color: var(--color-foreground);
+    }
 
-        :root {
-            --color-background: {{#if @custom.background_color_for_light_mode}} {{@custom.background_color_for_light_mode}} {{else}} var(--color-surface) {{/if}};
-            --color-foreground: {{#if @custom.font_color_for_light_mode}}{{@custom.font_color_for_light_mode}}{{else}} var(--color-on-surface) {{/if}};
-            --prose-color: var(--color-foreground);
-        }
-         .dark {
-            --color-background: {{#if @custom.background_color_for_dark_mode}}{{@custom.background_color_for_dark_mode}}{{else}} var(--color-surface-dark) {{/if}};
-            --color-foreground: {{#if @custom.font_color_for_dark_mode}}{{@custom.font_color_for_dark_mode}}{{else}} var(--color-on-surface-dark) {{/if}};
-            --prose-color: var(--color-foreground);
-        }
 </style>
 
-
 <script>
-    
     document.addEventListener('alpine:init', () => {
         Alpine.data('themeSwitcher', () => ({
             darkMode: localStorage.getItem('theme') === 'dark' ||  (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches),
