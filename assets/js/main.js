@@ -1,5 +1,5 @@
 // Import styles
-import '../css/styles.css';
+import '../css/styles.css'; 
 
 // Import utilities
 import './alpine.js';  // Initialize Alpine.js

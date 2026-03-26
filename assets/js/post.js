@@ -1,5 +1,6 @@
 import "./highlight";
 
+// Highlight code and config the copy code button on code block
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('pre').forEach((pre) => {
         if (pre.querySelector('.copy-icon')) return;

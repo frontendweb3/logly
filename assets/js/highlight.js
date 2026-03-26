@@ -43,7 +43,7 @@ const highlightCodeBlocks = () => {
         });
     }
 };
-
+// Highlight code blocks on DOMContentLoaded, or immediately if the document is already loaded.
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', highlightCodeBlocks);
 } else {
