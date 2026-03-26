@@ -1,18 +1,21 @@
-<nav role="navigation" aria-label="Pagination" class="container mx-auto my-32 px-4 flex items-center">
+<nav role="pagination" aria-label="Pagination" class="container mx-auto my-32 px-4 flex items-center">
+    
     {{#if prev}}
-        {{#> "button"  href=(page_url prev) class="h-14 w-14" aria="Previous page"}}
-            {{> "icons/chevron-left"}}
-        {{/ "button"}}
+        {{#> "button" href=(page_url prev) target="_self" aria="Previous page"}}
+            {{> "components/icon" name="chevron-left" class="size-5" ariaLabel="previous page"}}
+            PREVIOUS
+        {{/ "button"}}        
     {{/if}}
 
 
-    <button type="button" class="whitespace-nowrap mx-auto bg-transparent rounded-full border border-primary px-4 py-2 text-sm font-medium tracking-wide text-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:text-primary-dark dark:focus-visible:outline-primary-dark">
+    <button type="button" class="whitespace-nowrap mx-auto bg-transparent rounded-full px-4 py-2 text-sm font-medium tracking-wide text-primary transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed dark:border-primary-dark dark:text-primary-dark dark:focus-visible:outline-primary-dark">
         Page {{page}} of {{pages}}
     </button>
 
     {{#if next}}
-        {{#> "button" href=(page_url next) class="h-14 w-14" aria="Next page"}}
-            {{> "icons/chevron-right"}}
+        {{#> "button" href=(page_url next) target="_self" aria="Next page"}}
+            NEXT
+            {{> "components/icon" name="chevron-right" class="size-5" ariaLabel="next page"}}
         {{/ "button"}}
     {{/if}}
 </nav>
