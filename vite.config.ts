@@ -7,7 +7,8 @@ import path from 'node:path'
 
 export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production'
-
+  const packageName = JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).name
+  const packageVersion = JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).version
   return {
     plugins: [
       tailwindcss(),
@@ -23,7 +24,7 @@ export default defineConfig(({ mode }) => {
       isProduction && zipPack({
         inDir: './',
         outDir: './',
-        outFileName: `${JSON.parse(fs.readFileSync(path.join('.', 'package.json'), 'utf-8')).name}.zip`,
+        outFileName: `${packageName}-${packageVersion}.zip`,
         filter: (fileName, filePath) => {
           if (filePath.includes('assets/dist')) return true
           if (fileName.endsWith('.hbs')) return true
