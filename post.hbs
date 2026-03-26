@@ -7,9 +7,9 @@
     <section class="not-prose w-full mb-12 max-w-5xl mx-auto">
 
         <div class="flex items-center justify-between gap-4 mb-8">
-            <div class="flex flex-wrap md:flex-row text-xs list-disc items-center gap-4">
+            <div class="flex flex-wrap md:flex-row text-xs font-bold list-disc items-center gap-4">
                 {{#if primary_tag}}
-                    <a href="{{primary_tag.url}}" class="flex gap-1 items-center uppercase text-sm"> {{> "components/icon" name="hash" ariaLabel="hash icon"}}{{primary_tag.name}} </a>
+                    <a href="{{primary_tag.url}}" class="flex gap-1 items-center uppercase"> {{> "components/icon" name="hash" ariaLabel="hash icon"}} {{primary_tag.name}} </a>
                 {{/if}}
                     <span class="hidden sm:inline uppercase">{{reading_time}} </span>
                     <span class="uppercase"> <span class="hidden sm:inline"> Published on </span> <time datetime="{{date format="YYYY-MM-DD"}}">{{date format="DD MMMM YYYY"}}</time> </span>
