@@ -1,15 +1,4 @@
-// Highlight.js initialization and configuration for copy code button in posts.
-
-document.addEventListener('DOMContentLoaded', function () {
-    if (window.hljs) {
-        // Full bundle is loaded plus key language modules to guarantee React/JS/HTML/CSS
-        hljs.highlightAll();
-        hljs.initLineNumbersOnLoad();
-        hljs.configure({
-            languages: ['javascript', 'typescript', 'jsx', 'xml', 'css'],
-        });
-    }
-});
+import "./highlight";
 
 document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('pre').forEach((pre) => {
@@ -39,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
         pre.appendChild(copiedBtn);
 
         copyBtn.addEventListener('click', async () => {
-            const code = pre.querySelector('code').innerText;
+            const code = pre.querySelector('code')?.innerText ?? '';
             await navigator.clipboard.writeText(code);
 
             copyBtn.classList.add('hidden');
