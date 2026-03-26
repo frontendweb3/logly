@@ -1,16 +1,14 @@
 <link rel="stylesheet" href="{{asset 'dist/css/main.css'}}" />
-<script defer src="{{asset 'dist/js/main.js'}}"></script>
+<script type="module" defer src="{{asset 'dist/js/main.js'}}"></script>
 
 {{#is "post, page"}}
     {{!-- Highlight code and config the copy code button on code block --}}
-    <script defer src="{{asset "dist/js/post.js"}}"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script>
+    <script type="module" defer src="{{asset "dist/js/post.js"}}"></script>
+    <link rel="stylesheet" href="{{asset 'dist/css/post.css'}}" />
+    {{!-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.9.0/highlightjs-line-numbers.min.js"></script> --}}
 {{/is}}
             
 <style>
-    /* Ghost CMS dynamic font support */
-    --font-heading: var(--gh-font-heading, "Inter Variable");
-    --font-body: var(--gh-font-body, "Inter Variable");
     
     body :where(:not(h1, h2, h3, h4, h5, h6)) {
         font-family: var(--font-body);
