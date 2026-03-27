@@ -35,11 +35,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Test theme
-        run: pnpm run test
-
       - name: Build assets
         run: pnpm run build
+
+      - name: Test theme
+        run: pnpm dlx gscan@latest --v6 --canary --verbose -z ./logly-*.zip
 
       - name: Upload release asset
         env:
