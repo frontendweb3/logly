@@ -3,11 +3,22 @@
 A stylish, modern, and content-focused theme for Ghost. Logly is designed to be easy to use and customize, providing a great reading experience for your audience.
 
 <details> <summary>  Demo </summary>
-<video src="https://github.com/user-attachments/assets/acfe60fe-ab90-4a51-be87-2ce51e7aa990" width="600"></video>
+    
+<video src="https://github.com/user-attachments/assets/e6debd74-dd5d-4d50-8ec9-cf2935dd179a" width="724"></video>
 
 > Image 1
-![Desktop](./assets/screenshot-desktop.png)
+<img width="1920" height="961" alt="image" src="https://github.com/user-attachments/assets/68e8205b-6ce3-466a-93cb-0b4a2d9c8b20" />
+
 > Image 2
+<img width="1920" height="961" alt="image" src="https://github.com/user-attachments/assets/c4f8333f-ac41-49b7-9366-12d2d6bf1abd" />
+
+> Image 3
+<img width="1920" height="961" alt="image" src="https://github.com/user-attachments/assets/ea38eac2-60f4-43af-8a2c-fb83b7db33f0" />
+
+> Image 4
+<img width="1920" height="961" alt="image" src="https://github.com/user-attachments/assets/64484c8b-c711-4e9b-a438-6c3ba49dbb6e" />
+
+> Image 5
 ![Mobile](./assets/screenshot-mobile.png)
 
 </details>
@@ -18,7 +29,7 @@ Installing the Logly theme on your Ghost blog is a straightforward process. Foll
 
 1. **Download the Theme**
    - Navigate to the [releases page](https://github.com/frontendweb3/logly/releases) of this repository.
-   - Download the latest `logly.zip` file from latest release.
+   - Download the latest `logly.zip` file from the latest release.
 
 2. **Upload to Ghost**
    - Log in to your Ghost admin panel.
