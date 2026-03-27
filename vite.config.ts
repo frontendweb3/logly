@@ -26,7 +26,7 @@ export default defineConfig(({ mode }) => {
         outDir: './',
         outFileName: `${packageName}-${packageVersion}.zip`,
         filter: (fileName, filePath) => {
-          if (filePath.includes('assets/dist')) return true
+          if (filePath.includes('assets/dist') || fileName === 'assets') return true
           if (fileName.endsWith('.hbs')) return true
           if (filePath.includes('partials')) return true
           if (fileName === 'package.json') return true
