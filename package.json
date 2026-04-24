@@ -17,7 +17,7 @@
         "preview": "vite preview",
         "format": "prettier .",
         "format-fix": "prettier --write .",
-        "test": "pnpm dlx gscan@5.2.5 . --v6",
+        "test": "pnpm dlx gscan@latest . --v6",
         "pretest": "npm run build",
         "clean": "rm -rf dist"
     },
