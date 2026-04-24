@@ -70,23 +70,24 @@
             <span x-show="darkMode" x-cloak aria-hidden="true"> {{> "components/icon" name="moon" ariaLabel="moon icon"}}</span>
             <span class="sr-only">Toggle color theme</span>
         </button>
+        <div class="hidden sm:flex items-center justify-between gap-4">
+            {{#> "button" href="/rss" aria="Visit our RSS feed"}}
+            {{> "components/icon" name="rss" ariaLabel="RSS icon"}}
+            {{/ "button"}}
 
-        {{#> "button" href="/rss" aria="Visit our RSS feed"}}
-        {{> "components/icon" name="rss" ariaLabel="RSS icon"}}
-        {{/ "button"}}
-
-        {{!-- Twitter --}}
-        {{#if @site.twitter}}
-        {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
-        {{> "icons/twitter"}}
-        {{/ "button"}}
-        {{/if}}
-        {{!-- Facebook --}}
-        {{#if @site.facebook}}
-        {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
-        {{> "icons/facebook"}}
-        {{/ "button"}}
-        {{/if}}
+            {{!-- Twitter --}}
+            {{#if @site.twitter}}
+            {{#> "button" href=(social_url type="twitter") aria="Visit our Twitter profile"}}
+            {{> "icons/twitter"}}
+            {{/ "button"}}
+            {{/if}}
+            {{!-- Facebook --}}
+            {{#if @site.facebook}}
+            {{#> "button" href=(social_url type="facebook") aria="Visit our Facebook profile"}}
+            {{> "icons/facebook"}}
+            {{/ "button"}}
+            {{/if}}
+        </div>
 
         {{#if @member}}
         <div class="hidden sm:block h-5 rounded-3xl w-0.5 bg-primary dark:bg-primary-dark"></div>
