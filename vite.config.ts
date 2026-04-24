@@ -50,6 +50,9 @@ export default defineConfig(({ mode }) => {
             if (assetInfo.name?.endsWith('.css')) {
               return 'css/[name][extname]'
             }
+            if (assetInfo.name && /\.(woff|woff2|eot|ttf|otf)$/i.test(assetInfo.name)) {
+              return `fonts/[name]-[hash][extname]`;
+            }
             if (assetInfo.name && /\.(jpe?g|png|gif|svg|webp|avif)$/i.test(assetInfo.name)) {
               const name = assetInfo.name.split('/').pop()
               return `images/${name}`
