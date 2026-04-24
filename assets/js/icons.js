@@ -1,5 +1,5 @@
 // Initialize Lucide icons - include only the icons you need
-import { createIcons, Sun, Moon, Search,UserRound, SendHorizontal, House, ChevronRight,ChevronLeft, PanelLeft, CircleUserRound, Rss, Hash, Dot, ArrowRight, BadgeCheck, Copy, CopyCheck } from 'lucide';
+import { createIcons, Sun, Moon, Search,UserRound, SendHorizontal, House, ChevronRight,ChevronLeft, PanelLeft, CircleUserRound, Rss, Hash, Dot, ArrowRight, BadgeCheck, Copy, CopyCheck, Share2 } from 'lucide';
 
 export function initIcons() {
   createIcons({
@@ -20,7 +20,8 @@ export function initIcons() {
       ArrowRight,
       BadgeCheck,
       Copy,
-      CopyCheck
+      CopyCheck,
+      Share2
     }
   });
 }

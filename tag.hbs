@@ -1,6 +1,8 @@
-{{!< default}} {{#tag}} 
+{{!< default}} 
 
-<!-- Hero Section -->
+{{#tag}} 
+
+    <!-- Hero Section -->
     <section class="mb-20 mt-10 mx-auto w-full px-8 md:px-12">
         <h1 class="text-[5rem] md:text-[7rem] font-extrabold tracking-tighter leading-none mb-8"> {{name}} </h1>
         <div class="max-w-2xl">
@@ -8,9 +10,7 @@
             <p class="text-xl leading-relaxed font-light">
                 {{#if description}} {{description}} {{else}} A collection of {{plural ../pagination.total empty='posts'
                 singular='% post' plural='% posts'}} tagged with # {{name}}.
-
                 {{/if}}
-
             </p>
 
         </div>

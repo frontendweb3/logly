@@ -2,7 +2,7 @@
     "name": "logly",
     "description": "Logly is a minimalistic open-source theme designed for Ghost blogs.",
     "demo": "https://github.com/frontendweb3/logly",
-    "version": "2.0.8",
+    "version": "2.0.9",
     "engines": {
         "ghost": ">=6.0.0"
     },
@@ -17,7 +17,7 @@
         "preview": "vite preview",
         "format": "prettier .",
         "format-fix": "prettier --write .",
-        "test": "pnpm dlx gscan@5.2.5 . --v6",
+        "test": "pnpm dlx gscan@latest . --v6",
         "pretest": "npm run build",
         "clean": "rm -rf dist"
     },

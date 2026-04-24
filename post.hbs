@@ -25,22 +25,10 @@
                 {{/if}}
             </div>
             <div class="flex flex-row items-center gap-2">
-                {{#> "button" href=(concat 'https://twitter.com/intent/tweet?url=' (encode (url absolute='true'))
-                '&text='
-                (encode title)) aria="Share on Twitter"}}
-                {{> "icons/twitter"}}
-                {{/ "button"}}
-
-                {{#> "button" href=(concat 'https://www.facebook.com/sharer/sharer.php?u=' (encode (url
-                absolute='true')))
-                aria="Share on Facebook"}}
-                {{> "icons/facebook"}}
-                {{/ "button"}}
-
-                {{#> "button" href=(concat 'https://www.linkedin.com/sharing/share-offsite/?url=' (encode (url
-                absolute='true'))) aria="Share on LinkedIn"}}
-                {{> "icons/linkedin"}}
-                {{/ "button"}}
+                
+                <a href="#/share" aria="Share on social media" class="inline-flex justify-center items-center aspect-square whitespace-nowrap rounded-full p-2 text-sm font-medium tracking-wide transition hover:opacity-75 text-center focus-visible:outline-2 focus-visible:outline-offset-2 active:opacity-100 active:outline-offset-0 disabled:opacity-75 disabled:cursor-not-allowed">
+                    {{> "components/icon" name="share2" ariaLabel="share icon"}}
+                </a> 
 
                 <button
                     x-data="{ copied: false }"
